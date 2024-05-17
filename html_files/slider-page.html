@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Amazon.com</title>
+    <link rel="icon" href="https://th.bing.com/th/id/OIP.ayRsQH0mda6kJjYZLRHgkQHaGO?w=204&h=180&c=7&r=0&o=5&dpr=1.5&pid=1.7" type="image/png">
+    <link rel="stylesheet" href="../css_files/style.css">
+    <link rel="stylesheet" href="../css_files/navbar.css">
+    <link rel="stylesheet" href="../css_files/page.css">
+    <link rel="stylesheet" href="../css_files/content_page.css">
+</head>
+<body>
+    <div id="content"></div>
+    <div id="navigationtop">
+        <p style="font-size: 14px; margin-left: 10px;" id="resultfrom">1-48 of over 100,000 results for "kitchen"</p>
+        <select name="sort" id="sort-by-features" onchange="redirectToProductDetails()">
+            <option value="Featured">Sort by: Featured</option>
+            <option value="Price: Low to High">Price: Low to High</option>
+            <option value="Price: High to Low">Price: High to Low</option>
+            <option value="Avg. Customer Review">Avg. Customer Review</option>
+            <option value="Newest Arrivals">Newest Arrivals</option>
+            <option value="Best Sellers">Best Sellers</option>
+        </select>
+        <hr style="align-self: baseline;">
+    </div>
+    <maindiv>
+        <leftdiv>
+            <p style="font-size: 15px; font-weight: 600;">Popular Shopping Ideas</p>
+            <div id ="Shopping_Ideas">
+                <p> <a href="#" class="leftdiv">Drying Rack</a><br>
+                    <a href="#" class="leftdiv">Storage Rack</a><br>
+                    <a href="#" class="leftdiv">Food Spatula</a><br>
+                    <a href="#" class="leftdiv">Storage Container</a> </p>
+            </div>
+        </leftdiv>
+        <rightdiv>
+            <h3>Results</h3>
+            <p style="color:rgb(102, 102, 102); font-size: 14px;margin-top: 2px;">Price and other details may vary based on product size and color.</p>
+            <div class="slides" id="products_container">
+            </div>
+        </rightdiv>
+    </maindiv>
+    <div id="footer"></div>
+    <script src="../scripts/slide-page.js"></script>
+    <script src="../scripts/footer.js"></script>
+</body>
+</html>

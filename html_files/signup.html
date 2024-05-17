@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css_files/signin_page.css">
+</head>
+<body>
+    <div>
+        <img src="../background_images/logo.jpeg" alt="logo1" id="logo"/>
+        <div class="container">
+            <h1 style="font-weight:100;margin: 0px;">Create account</h1>
+            <form id="myForm">
+                <p class="left">Your name</p>
+                <input type="text" id="name" class="inputfield" placeholder="First and last name">
+                <p class="left">Mobile number or email</p>
+                <input type="email" id="email" class="inputfield">
+                <p class="left">Password</p>
+                <input type="password" id="password" class="inputfield" placeholder="At least 6 characters">
+                <p style="font-weight: normal;font-size: 13px; margin-top: 5px;" class="left"><span>&#9432; </span>Passwords must be at least 6 characters.</p>
+                <p class="left">Re-enter password</p>
+                <input type="password" id="repassword"class="inputfield"><br>
+                <input type="submit" value="Continue" style="margin-top: 0px;"><br>
+            </form>
+            <div class="signin_inner" >
+                <p id="text">By creating an account, you agree to Amazon's <a href="https://www.amazon.com/gp/help/customer/display.html/ref=ap_signin_notification_condition_of_use?ie=UTF8&nodeId=508088">Conditions of Use</a> and <a href="https://www.amazon.com/gp/help/customer/display.html/ref=ap_signin_notification_privacy_notice?ie=UTF8&nodeId=468496">Privacy Notice.</a></p>
+            </div>
+            <hr class="hr">
+            <p style="margin-bottom: 4px;">Buying for work?</p>
+            <a href="" style="font-size: 14px; font-weight: 100;">Create a free business account</a>
+            <hr class="hr">
+            <p style="margin-bottom: 8px; font-weight: normal;">Already have an account?<span><a href="../html_files/signin_page.html"> Sign in <span style="font-size: 7px;">▶</span></a></span></p>
+        </div>
+        <div class="lowercontainer">
+            <div id="sub">
+                <a href="https://www.amazon.com/gp/help/customer/display.html/ref=ap_desktop_footer_cou?ie=UTF8&nodeId=508088" style="font-size: 13px; font-weight: 100;">Conditions of Use</a>
+                <a href="https://www.amazon.com/gp/help/customer/display.html/ref=ap_desktop_footer_privacy_notice?ie=UTF8&nodeId=468496" style="font-size: 13px; font-weight: 100;">Privacy Notice</a>
+                <a href="https://www.amazon.com/gp/help/customer/display.html" style="font-size: 13px; font-weight: 100;">Help</a>
+            </div>
+            <p style="font-size: 13px; font-weight: 100; color: #605f5f;">© 1996-2024, Amazon.com, Inc. or its affiliates</p>
+        </div>
+    </div>
+</body>
+<script src="../scripts/signin.js"></script>
+</html>

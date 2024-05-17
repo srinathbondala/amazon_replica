@@ -1,0 +1,54 @@
+[
+    {
+      "title": "Shop activity trackers and smartwatches",
+      "imageUrls": ["https://images-na.ssl-images-amazon.com/images/G/01/AmazonExports/Fuji/2021/September/DashboardCards/Fuji_Dash_SmartWatch_2X._SY608_CB639922111_.jpg"],
+      "link": "activity-trackers-and-smartwatches",
+      "category": "smartwatches-and-activity-trackers"
+    },
+    {
+      "title": "Deals in PCs",
+      "imageUrls": ["https://images-na.ssl-images-amazon.com/images/G/01/AmazonExports/Events/2023/EBF23/Fuji_Desktop_Single_image_EBF_2x_v1._SY608_CB573698005_.jpg"],
+      "link": "Deals-pc",
+      "category": "personal-computers"
+    },
+    {
+      "title": "Player's paradise starts here",
+      "imageUrls": ["https://images-na.ssl-images-amazon.com/images/G/01/US-hq/2023/img/Consumer_Electronics/XCM_CUTTLE_1546843_2940864_758x608_2X_en_US._SY608_CB613273467_.jpg"],
+      "link": "video-gaming",
+      "category": "video-gaming"
+    },
+    {
+      "title": "A whole new way to work",
+      "imageUrls": ["https://images-na.ssl-images-amazon.com/images/G/01/US-hq/2023/img/Consumer_Electronics/XCM_CUTTLE_1622892_3373436_758x608_2X_en_US._SY608_CB597161294_.jpg"],
+      "link": "PC-for-work",
+      "category": "professional-computers"
+    },
+    {
+      "title": "Gifts for every Mom",
+      "imageUrls": ["https://images-na.ssl-images-amazon.com/images/G/01/AmazonExports/Events/2024/MothersDay24/Fuji_Mothers_day_Dashboard_card_2x._SY608_CB559063668_.jpg"],
+      "link": "gifts-for-mom",
+      "category": "gifts-for-mom"
+    },
+    {
+      "title": "Deals on shoes",
+      "imageUrls": ["https://images-na.ssl-images-amazon.com/images/G/01/AmazonExports/Events/2023/EBF23/Fuji_Desktop_Single_image_EBF_2x_v8._SY608_CB573698005_.jpg"],
+      "link": "Shoes",
+      "category": "Shoes"
+    },
+    {
+      "title": "Warm & welcoming decor",
+      "imageUrls": ["https://images-na.ssl-images-amazon.com/images/G/01/img22/Events/Fall23/FALL23_HP_Oct_Decor_QuadCard_D_04_372x232._SY232_CB596234042_.jpg"],
+      "link": "home-decor",
+      "category": "home-decor"
+    },
+    {
+      "title": "Best deal for your kitchen",
+      "imageUrls": ["https://m.media-amazon.com/images/I/51imrSup74L._AC_UL480_FMwebp_QL65_.jpg"],
+      "link": "kitchen",
+      "category": "Kitchen"
+    }
+]
+
+
+
+

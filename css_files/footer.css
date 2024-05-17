@@ -1,0 +1,169 @@
+*{
+    font-family: Arial, sans-serif;
+}
+body{
+    margin: 0%;
+    padding: 0%;
+}
+.foot-top1{
+    padding: 10px;
+}
+#foot-top1-heading{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 10px;
+}
+.browsing{
+    display: flex; overflow-x: scroll; overflow-y: hidden; max-height: 200px;
+    margin-top: 10px;
+}
+lower-footer,#backtotop,.signin{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+.foot-top{
+    width: calc(100%-1px);
+    border-radius: 8px;
+    border: solid 1px #D3D3D3;
+}
+.overany:hover{
+    color: coral;
+}
+#backtotop{
+    margin-top: 24px;
+    width: 100%;
+    padding-block: 16px;
+    color: white;
+    font-size: 13px;
+    background-color:#37475A;
+}
+#backtotop:hover{
+    cursor: pointer;
+    background-color: #4d5d71;
+}
+.signin #p1{
+    margin-bottom: 0;
+    font-size: 13px;
+}
+.signin #p2{
+    margin-top: 0;
+    font-size: 11px;
+    margin-bottom: 20px;
+}
+.signin a{
+    text-decoration: none;
+    color:darkcyan;
+}
+.signin_btn{
+    margin-top: 4px;
+    margin-bottom: 4px;
+    width: 230px;
+    padding: 6px;
+    border-radius: 5px;
+    border: solid 1px #f98f03;
+    font-size: 12px;
+    font-weight: 600;
+    background-image: linear-gradient(to bottom,rgb(242, 245, 176) 0%,#FEBD69 50%);
+}
+.signin_btn:hover{
+    cursor: pointer;
+}
+.hr{
+    border: none;
+    height: 0.5px;
+    background-color: #D3D3D3; 
+    /* margin-top: 25px; */
+}
+.footer-info{
+    width: 100%;
+    background-color: #232F3E;
+}
+.footer-info1{
+    /* width: 100%; */
+    display: flex;
+    gap: 9%;
+    padding: 28px;
+    padding-right: 10%;
+    padding-left: 40px;
+    color: white;
+}
+.footer-info1 > div{
+    max-width: 19%;
+    display: flex;
+    flex-direction: column;
+    /* align-items: center; */
+    gap:10px;
+}
+.footer-info1 > div > h4{
+    margin-bottom: 4px;
+}
+#div41{
+    max-width: 12%;
+}
+.footer-info1 > div > a{
+    text-decoration: none;
+    color: rgb(194 194, 194);
+    font-size: 14px;
+}
+.footer-info1 > div > a:hover{
+    text-decoration: underline;
+}
+.footer-info2{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 40px;
+    padding: 20px;
+    padding-bottom: 45px;
+}
+.footer-info2 > div{
+    display: flex;
+    gap: 10px;
+}
+.footer-info2 > img{
+    height: 30px;
+    width: 80px;
+    mix-blend-mode:color-dodge;
+}
+.footer-info2 button{
+    height: 36px;
+    display: inline-flex;
+    align-items: center;
+    justify-content:flex-start;
+    background:transparent;
+    border-radius: 4px;
+    border: solid 1px #D3D3D3;
+    padding: 14px;
+    color: white;
+    padding-right: 20px;
+}
+.footer-info2 button > img{
+    height: 12px;
+    width: 20px;
+}
+.footer-info2 button,.footer-info2 img:hover{
+    cursor: pointer;
+}
+sub-top{
+    width: 100%;
+    background-color: #131A22;
+    text-align: center;
+}
+#sub-inner{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 40px;
+    padding-top: 5px;
+}
+#sub-inner a{
+    text-decoration: none;
+    color: white;
+}
+#sub-inner a:hover{
+    text-decoration: underline;
+}

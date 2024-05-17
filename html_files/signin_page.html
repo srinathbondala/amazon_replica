@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css_files/signin_page.css">
+</head>
+<body>
+    <div>
+        <img src="../background_images/logo.jpeg" alt="logo1" id="logo"/>
+        <div class="container">
+            <h1 style="font-weight:100;margin-top: 0px;">Sign in</h1>
+            <p>Email or mobile phone number</p>
+            <div class="signin_inner" >
+                <input type="text" class="inputfield"/>
+                <button onclick="signin()">Continue</button><br>
+                <p id="text">By continuing, you agree to Amazon's <a href="https://www.amazon.com/gp/help/customer/display.html/ref=ap_signin_notification_condition_of_use?ie=UTF8&nodeId=508088">Conditions of Use</a> and <a href="https://www.amazon.com/gp/help/customer/display.html/ref=ap_signin_notification_privacy_notice?ie=UTF8&nodeId=468496">Privacy Notice.</a></p>
+            </div>
+            <a href="" id="a1">Need help?</a>
+            <div id="hide">
+                <a href ="" style="font-size: 14px; font-weight: 100; margin-left: 18px;">Forgot your password?</a><br>
+                <a href="" style="font-size: 14px; font-weight: 100;  margin-left: 18px;">Other issues with Sign-In</a>
+            </div>
+            <hr class="hr">
+            <p style="margin-bottom: 4px;">Buying for work?</p>
+            <a href="" style="font-size: 14px; font-weight: 100;">Shop on Amazon Business</a>
+        </div>
+        <div class="container1">
+            <hr class="hr">
+            <span class="text-over-line">New to Amazon?</span>
+            <button id="create" onclick="window.open('../html_files/signup.html','_self');">Create your Amazon account</button>
+        </div>
+        <div class="lowercontainer">
+            <div id="sub">
+                <a href="https://www.amazon.com/gp/help/customer/display.html/ref=ap_desktop_footer_cou?ie=UTF8&nodeId=508088" style="font-size: 13px; font-weight: 100;">Conditions of Use</a>
+                <a href="https://www.amazon.com/gp/help/customer/display.html/ref=ap_desktop_footer_privacy_notice?ie=UTF8&nodeId=468496" style="font-size: 13px; font-weight: 100;">Privacy Notice</a>
+                <a href="https://www.amazon.com/gp/help/customer/display.html" style="font-size: 13px; font-weight: 100;">Help</a>
+            </div>
+            <p style="font-size: 13px; font-weight: 100; color: #605f5f;">© 1996-2024, Amazon.com, Inc. or its affiliates</p>
+        </div>
+    </div>
+</body>
+<script src="../scripts/signin.js"></script>
+</html>

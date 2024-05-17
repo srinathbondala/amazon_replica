@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Amazon.com. Spend less. Smile more.</title>
+    <link rel="icon" href="https://th.bing.com/th/id/OIP.ayRsQH0mda6kJjYZLRHgkQHaGO?w=204&h=180&c=7&r=0&o=5&dpr=1.5&pid=1.7" type="image/png">
+    <link rel="stylesheet" href="../css_files/style.css">
+    <link rel="stylesheet" href="../css_files/navbar.css">
+    <link rel="stylesheet" href="../css_files/page.css">
+    <link rel="stylesheet" href="../css_files/footer.css">
+</head>
+<body>
+    <div id="content"></div>
+    <page-content>
+        <innerslider id="image-container">
+            <img src="../background_images/bg1.png" alt="demo" id="image" style="width: 100%; height: auto; display: block; opacity: 0; transition: transform 0.5s ease;"/>
+        </innerslider>
+        <upperscroll id="upperscroll1">
+            <div class="scroll-option-left" onclick="moveleft()"> <img src="https://cdn-icons-png.flaticon.com/128/5436/5436533.png" alt="<"> </div>
+            <div class="scroll-option-center" onclick="changeColor()"></div>
+            <div class="scroll-option-left"  onclick="moveright()"> <img src="https://cdn-icons-png.flaticon.com/128/5436/5436598.png" alt=">"> </div>
+        </upperscroll>
+        <innerpage>
+            <innerpage-content>
+                <div class="info-slide">
+                    You are on amazon.com. You can also shop on Amazon India for millions of products with fast local delivery. <a href="https://www.amazon.in/?ref=aisgw_intl_stripe_in" style="color:lightseagreen; font-size: 14px;">Click here to go to amazon.in</a>
+                </div>
+                <div class="slider" id="targetDiv"> </div>
+            </innerpage-content>
+        </innerpage>
+    </page-content>
+    <div id="footer" style="margin-top: 30px;"></div>
+    <script src="../scripts/index.js"></script>
+    <script src="../scripts/footer.js"></script>
+</body>
+</html>
