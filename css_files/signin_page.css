@@ -4,6 +4,7 @@ div{
     align-items: center;
     justify-content: center;
     margin-top: 16px;
+    font-family: Arial, Helvetica, sans-serif;
 }
 #logo{
     width: 100px;
@@ -13,7 +14,7 @@ div{
     display: block;
     width: 300px;
     border: solid #D3D3D3 1px;
-    padding: 10px 24px;
+    padding: 15px 24px;
     border-radius: 8px;
     margin-top: 20px;
 }
@@ -31,6 +32,7 @@ p{
     margin-bottom: 0px;
     font-weight: bold;
     font-size: 14px;
+    font-family: Arial, Helvetica, sans-serif;
 }
 button,input[type="submit"]{
     margin-top: 12px;
@@ -45,6 +47,14 @@ button:hover,input[type="submit"]:hover{
 }
 #create:hover{
     background-color: #f4f4f4;
+}
+.signin_sub{
+    display: flex;
+    flex-direction: row;
+    margin-top: 0px; 
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
 }
 .signin_inner{
     display: flex;

@@ -1,7 +1,5 @@
 body,html{
     font-family: 'Roboto', sans-serif;
-    /* background-color: #eeeeee; */
-    overflow: auto;
 }
 *{
     padding:0;
@@ -183,7 +181,11 @@ cart{
     padding: 0.4vw;
 }
 cart img{
-    width: 50px;
-    height: 100%;
-    mix-blend-mode:lighten;
+    width: 40px;
+    height: 30px;
+    filter: brightness(0) invert(1);
+}
+
+.no-scroll {
+    overflow: hidden;
 }

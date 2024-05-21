@@ -1,0 +1,64 @@
+.a{
+    color: darkcyan;
+}
+
+*{
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.order_hedding{
+    font-size: small;
+    padding: 15px 45px;
+}
+
+#mainOrder{
+   padding-left: 50px;
+}
+
+.mainOrderHeading{
+    font-size: 28px;
+    font-weight: 500;
+}
+
+#mainOrderinner{
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+#orderSearch{
+    width: 300px;
+    height: 30px;
+    border-radius: 5px;
+    padding-left: 10px;
+}
+.inputfield{
+    height: 30px;
+    border: solid #929292 1.33px; 
+    border-radius: 5px;
+    padding-inline-start: 8px;
+}
+.inputfield:focus, input:focus{
+    outline:none;
+    box-shadow: 0 0 5px rgba(0, 255, 255, 0.7), 0 0 3px rgba(0, 128, 0, 0.5);
+}
+.orderSearchButton{
+    padding: 8px 10px;
+    margin-right: 10px;
+    border-radius: 16px;
+    border: none;
+    color: white;
+    background-color: #383838;
+    font-size: 14px;
+    font-weight: 600;
+}
+.orderSearchButton:hover{
+    background-color: #0f1111;
+    cursor: pointer;
+}
+.mainOrderSearchdiv{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}

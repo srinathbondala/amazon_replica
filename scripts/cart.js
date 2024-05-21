@@ -3,8 +3,26 @@ window.onload = function() {
         adjustWidth();
     });
     loadPage('../html_files/footer-template.html', footerDiv);
+    // renderCartData(cartData);
     // loadCartData();
-    renderCartData(cartData);
+    if(getCookie('jwtToken')){
+        renderCartData(cartData);
+    }
+    else{
+        document.querySelector('cartleftbottom').innerHTML = "";
+        document.querySelector('cartrighttop').style.display = "none";
+        var txt = document.querySelector('cartlefttop').innerHTML=`<div style="display: flex; padding:0px 20px; padding-top:30px;">
+        <img src="../background_images/kettle-desaturated.svg" alt=":)" style="width:275px;">
+        <div class="faint-top">
+            <h2>Your Amazon Cart is empty</h2>
+            <a href="../html_files/slider-page.html?text=deals"style="margin-top:5px;">Shop today's deals</a>
+            <div class="faint-div">
+                <input type="button" value="Sign in to your account" class="btn" style="font-size: 15px; padding: 6px 12px;" onclick="window.location.href='signin_page.html';">
+                <input type="button" value="Sign up now" class="wish_list_btn" style="font-size: 15px; height:30px; width:100px; margin-top: 20px;" onclick="window.location.href='signup.html';">
+            </div>
+        </div>
+    </div>`;
+    }
 }
 const cartData = [
     {
@@ -175,7 +193,7 @@ function renderCartData(data) {
                             <span class="savelateritem-price">${item.price}</span>
                         </div>
                         <p class="savelateritem-stoct">${item.inStock ? 'In Stock' : 'Out of Stock'}</p>
-                        <button  id="wish_list_btn"> Add to Wish List</button>
+                        <button  class="wish_list_btn"> Add to Wish List</button>
                         <p class="a" onclick="deleteslt(this)">Delete</p>
                         <p class="a" onclick="">Add to list</p>
                     </div>
@@ -200,7 +218,7 @@ function renderCartData(data) {
                                         <label for="isgift" style="font-size: 12px; margin-left: 5px; font-family: Arial, sans-serif;">This is a gift</label>
                                     </div>
                                     <div style="margin-top: 14px;">
-                                        <select name="count" id="numberofitems" class="hover_over">
+                                        <select name="count" class="hover_over" onchange="handleChange()">
                                             ${generateQuantityOptions(item.quantity)}
                                         </select>
                                         <a href="#delete" class="aafter">Delete</a>
@@ -222,7 +240,6 @@ function renderCartData(data) {
             shoppingCartContainer.appendChild(itemDiv);
             }
         });
-
         // Calculate and display subtotal
         const subtotal = calculateSubtotal(data);
         const subtotalElement = document.createElement('p');
@@ -256,11 +273,14 @@ function generateQuantityOptions(selectedQuantity) {
     options += `<option value="10+" ${selectedQuantity >= 10 ? 'selected' : ''}>Qty: 10+</option>`;
     return options;
 }
+function handleChange() {
+    calculateSubtotal(cartData);
+}
 
 function calculateSubtotal(data) {
     let total = 0;
     data.forEach(item => {
-        total += parseFloat(item.price.replace('$', ''));
+        total += document.querySelector('.hover_over').value * parseFloat(item.price.replace('$', ''));
     });
     return `$${total.toFixed(2)}`;
 }

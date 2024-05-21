@@ -69,6 +69,7 @@ cartleftbottom{
     background-color: white;
     padding: 20px 10px;
     margin-top: 20px;
+    min-height: 40px;
 }
 .heading{
     font-size: 28px;
@@ -213,7 +214,7 @@ cartleftbottom{
     gap: 10px;
     flex-wrap: wrap;
 }
-#wish_list_btn{
+.wish_list_btn{
     margin-top: 10px;
     padding: 6px;
     background-color: white;
@@ -223,9 +224,10 @@ cartleftbottom{
     border-radius: 8px;
 }
 
-#wish_list_btn:hover{
+.wish_list_btn:hover{
     cursor: pointer;
     background-color:#f6f3f3;
+    
 }
 .a{
     font-size: 12px;
@@ -241,4 +243,11 @@ cartleftbottom{
 }
 .btn:hover{
     cursor: pointer;
+    background-color: rgb(242, 199, 89);
+}
+.faint-div{
+    display: flex; justify-content: space-between; width:290px; align-items: center;
+}
+.faint-top{
+    display: flex; flex-direction: column; margin-left:16px; margin-top:5px;
 }

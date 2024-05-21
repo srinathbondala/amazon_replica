@@ -5,7 +5,6 @@ window.onload = function() {
         loadPage('../html_files/template.html', contentDiv , function() {
             adjustWidth();
         });
-        
         loadPage('../html_files/footer-template.html', footerDiv);
     } catch (e) {
         alert(e);
@@ -30,42 +29,27 @@ window.onload = function() {
 // }
 
 
-var cachedETag = localStorage.getItem('cachedETag');
-// adjustWidth();
 
 function loadjsondata() {
     var xhr = new XMLHttpRequest();
     xhr.open('GET', 'http://localhost:8080/amazon/data', true);
-    
-    // Set the If-None-Match header with the cached ETag value
-    if (cachedETag) {
-        xhr.setRequestHeader('If-None-Match', cachedETag);
+    if(localStorage.getItem('cachedData')) {
+        renderData(JSON.parse(localStorage.getItem('cachedData')));
     }
-
+    else{
     xhr.onreadystatechange = function() {
         if (xhr.readyState == 4) {
             if (xhr.status == 200) {
                 var data = JSON.parse(xhr.responseText);
                 renderData(data);
-
-                // Cache fresh data and ETag value
-                var eTag = xhr.getResponseHeader('ETag');
-                if (eTag) {
-                    localStorage.setItem('cachedData', JSON.stringify(data));
-                    localStorage.setItem('cachedETag', eTag);
-                }
-            } else if (xhr.status == 304) {
-                // Use cached data if server returns Not Modified
-                var cachedData = localStorage.getItem('cachedData');
-                if (cachedData) {
-                    renderData(JSON.parse(cachedData));
-                }
-            } else {
-                console.error('Failed to fetch data');
+                localStorage.setItem('cachedData', JSON.stringify(data));
             }
         }
+        else {
+                console.error('Failed to fetch data');
+        }
     };
-    xhr.send();
+    xhr.send();}
 }
 
 function renderData(data) {
