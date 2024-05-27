@@ -1,12 +1,10 @@
 // loadPage('mainpage-content.html');
 window.onload = function() {
-    loadPage('../html_files/template.html', contentDiv , function() {
-        adjustWidth();
-    });
     loadPage('../html_files/footer-template.html', footerDiv);
+    loadPageh('../html_files/template.html', contentDiv);
     setSelectVal();
+    loadjsondata();
 };
-loadjsondata();
 const contentDiv = document.getElementById('content');
 const footerDiv=document.getElementById('footer');
 
@@ -58,7 +56,7 @@ function getTextFromURL() {
 //     };
 //     xhr.send();
 // }
-
+var rowcnt = 4;
 function setSelectVal(){
     var selectElement = document.getElementById("sort-by-features");
     var selectedValue = selectElement.value;
@@ -68,6 +66,20 @@ function setSelectVal(){
     }
     else{
         selectElement.selectedIndex = 0;
+    }
+}
+
+function performWidthChange(){
+    const jwtToken = getCookie('jwtToken');
+    if(jwtToken){
+        let targetDivs = document.querySelectorAll(".targetdiv-inner1");
+        if (targetDivs.length > 0) {
+            targetDivs.forEach(function(targetDiv) {
+                targetDiv.style.width = "33%";
+            });
+        } else {
+            console.error("No elements with class 'targetdiv-inner1' found.");
+        }
     }
 }
 
@@ -85,9 +97,15 @@ function getFeatureFromURL(){
 
 function loadjsondata() {
     var category = getTextFromURL();
-    // console.log(category);
-    const URL = `http://localhost:8080/amazon/dataByCategory/${category}/${getFeatureFromURL()}`;
-    var cachedData = getCachedData(category);
+    console.log(category);
+    var URL=""
+    if(getFeatureFromURL()!=null){
+        URL= `http://localhost:8080/amazon/dataByCategory/${category}/${getFeatureFromURL()}`;
+    }
+    else{
+        URL = `http://localhost:8080/amazon/dataByCategory/${category}`;
+    }
+    // var cachedData = getCachedData(category);
     // if (cachedData) {
     //     processData(cachedData);
     // } else {
@@ -98,7 +116,7 @@ function loadjsondata() {
             if (xhr.readyState == 4 && xhr.status == 200) {
                 var data = JSON.parse(xhr.responseText);
                 // Store data in cookies
-                setCachedData(category, data);
+                // setCachedData(category, data);
                 // Process and display data
                 processData(data);
             }
@@ -119,12 +137,18 @@ function setCachedData(category, data) {
 }
 
 function processData(data) {
-    document.title="Amazon.com: "+ data[0].category;
+    var demo = getTextFromURL();
+    var str=demo.split("-");
+    document.title="Amazon.com: "+ str[0];
+    console.log(str[0]);
     document.getElementById("resultfrom").innerHTML ="Over "+data.length+" Results for "+getTextFromURL().toUpperCase();
     var templateHTML = '';
+    if(getCookie('jwtToken')){
+        rowcnt=3;
+    }
     data.forEach(function (item, index) {
 
-        if (index % 4 === 0) {
+        if (index % rowcnt === 0) {
             templateHTML += '<div class="targetdiv-item1">';
         }
         templateHTML += `
@@ -147,10 +171,10 @@ function processData(data) {
                 </div>
             </div>
         `;
-        if ((index + 1) % 4 === 0 || (index + 1) === data.length) {
+        if ((index + 1) % rowcnt === 0 || (index + 1) === data.length) {
             templateHTML += '</div>';
         }
     });
     document.getElementById('products_container').innerHTML = templateHTML;
+    performWidthChange();
 }
-// ../background_images/

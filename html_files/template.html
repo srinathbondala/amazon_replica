@@ -223,15 +223,15 @@
             </li>
             <li class="hmenu-item-component">
                 <div class="hmenu-item">
-                    <div class="hmenu-item-inner">
+                    <div class="hmenu-item-inner1">
                         <p>Customer Service</p>
                     </div>
                 </div>
             </li>
-            <li class="hmenu-item-component">
+            <li class="hmenu-item-component" onclick="signout()">
                 <div class="hmenu-item">
-                    <div class="hmenu-item-inner">
-                        <p>Sign in</p>
+                    <div class="hmenu-item-inner1">
+                        <a href="../html_files/signin_page.html"  id="header_signin">Sign in</a>
                     </div>
                 </div>
             </li>
@@ -293,20 +293,20 @@
     </div>
     <div class="fill-right">
         <nav class="navigation">
-            <language class="over" style="margin-left: 10px;">
+            <language class="over" style="margin-left: 10px; width: 75px;">
                 <img src="../background_images/usflag.jpeg" alt="error"></img>
                 <p style="margin-right:0.5vw; font-size: 0.8em; font-weight: bold;">EN <span style="font-size: x-small; color: darkgray;">&#9660;</span></p>
             </language>
-            <signin class="over" onclick="siginbtn()">
+            <signin class="over" onclick="siginbtn()"style="width:125px">
                 <p style="font-size: 12px;" id="user_name_header">Hello, sign in</p>
                 <p style="font-weight: bold; font-size:1.1vw;">Account & Lists <span style="font-size: x-small; color:darkgrey;">&#9660;</span></p>
             </signin>
-            <order class="over" onclick="orderbtn()">
+            <order class="over" onclick="orderbtn()" style="width:65px">
                 <p style="font-size: small;">Returns</p>
                 <p class="font-weight: bold; font-size:1.1vw;">& Orders</p>
             </order>
             <a href="cart.html">
-                <cart class="over" >
+                <cart class="over" style="width:75px" >
                     <img src="../background_images/cart.jpeg" alt="error" ></img>
                     <p class="pstyle" style="font-weight: bold; align-self: flex-end;">Cart</p>
                 </cart>
@@ -347,3 +347,42 @@
         </div>
     </a>
 </navigation-bar>
+<div class="cartItemRight" id="cartItems">
+    <div class="cartItemRight-inner">
+        <p>Subtotal</p>
+        <h2>$1,189.49</h2>
+        <input type="button" value="Got to Cart" class="wish_list_btn" style="width: 90%;font-size: 12px;" onclick="window.location.href='../html_files/cart.html'">
+    </div>
+    <div class="ItemsInCart">
+        <hr class="hr">
+        <div class="cartBarItem">
+            <img src="../background_images/chef.png" alt="img" class="ImgeInCart">
+            <p>$19.50</p>
+            <div class="cartBarItemInner" style=>
+                <select name="1" id="select" class="categorydropdown" style="padding: 0px 15px; height: 20px;">
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                </select>
+                <span class="quantity" style="padding: 4px; width:15px; height:10px;"><img src="../background_images/trash_icon.png" alt="delete" style="height: 15px; width: 15px;"></span>
+            </div>
+        </div>
+    </div>
+    <div class="ItemsInCart">
+        <hr class="hr">
+        <div class="cartBarItem">
+            <img src="../background_images/chef.png" alt="img" class="ImgeInCart">
+            <p>$19.50</p>
+            <div class="cartBarItemInner" >
+                <select name="1" id="select" class="categorydropdown" style="padding: 0px 15px; height: 20px;">
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                </select>
+                <span class="quantity" style="padding: 4px; width:15px; height:10px;"><img src="../background_images/trash_icon.png" alt="delete" style="height: 15px; width: 15px;"></span>
+            </div>
+        </div>
+    </div>
+</div>

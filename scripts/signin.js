@@ -43,6 +43,12 @@ function logout(){
     });
 }
 
+function signincall(){
+    const overlay = document.getElementById("overshade");
+    overlay.style.display = "block";
+    signin();
+    overlay.style.display = "none";
+}
 async function signin(){
     let email = document.getElementById("emailinput").value;
     let password = document.getElementById("password").value;
@@ -68,20 +74,31 @@ async function signin(){
             const data = await response.json();
     
             localStorage.setItem('jwtToken', JSON.stringify({"id":data.id,"username": data.username,
-                "email": data.email,
-                "roles": data.roles,
-                "accessToken": data.accessToken,
-                "tokenType": data.tokenType
-            })
-        );
+                    "email": data.email,
+                    "roles": data.roles,
+                    "accessToken": data.accessToken,
+                    "tokenType": data.tokenType
+                })
+            );
 
             setCookie('jwtToken',data.accessToken);
+            launch_toast('Login successful');
             alert('Login successful');
             window.location.href = 'index.html';
         } catch (error) {
             console.error('Error:', error);
         }
     }
+    else{
+        launch_toast('Invalid email or password');
+    }
+}
+
+function launch_toast(text) {
+    var x = document.getElementById("snackbar");
+    x.textContent = text;
+    x.className = "show";
+    setTimeout(function(){ x.className = x.className.replace("show", ""); }, 3000);
 }
 
 function validatename(email) {

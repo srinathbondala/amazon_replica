@@ -1,3 +1,7 @@
+body{
+    font-family: Arial, Helvetica, sans-serif;
+    /* width: 91.9%; */
+}
 container{
     min-height: 500px;
     width: 100%;
@@ -121,6 +125,7 @@ div::-webkit-scrollbar {
     width:20%;
     padding: 15px;
     border: #d4d4d4 1px solid;
+    border-radius: 10px;
 }
 
 .product-info p{
@@ -157,22 +162,6 @@ th {
     font-weight: 500;
 }
 
-#quantity{
-    width: 200px;
-    margin-bottom: 10px;
-    padding: 8px;
-    border-radius: 5px;
-    border: 1px solid #d4d4d4;
-}
-
-#quantity:hover{
-    outline:none;
-    box-shadow: 0 0 5px rgba(0, 255, 255, 0.7), 0 0 3px rgba(0, 128, 0, 0.5);
-}
-
-#quantity:focus{
-    outline: none;
-}
 .add_cart{
     width: 220px;
     padding: 7px;
@@ -294,3 +283,6 @@ th {
 .comment{
     width: 80%;
 }
+/* .cartItemRight{
+    display: block;
+} */

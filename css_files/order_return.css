@@ -13,6 +13,7 @@
 
 #mainOrder{
    padding-left: 50px;
+   padding-right: 40px;
 }
 
 .mainOrderHeading{
@@ -25,6 +26,7 @@
     align-items: center;
     flex-direction: row;
     justify-content: space-between;
+    padding: 0px 10px 20px 0px
 }
 
 #orderSearch{
@@ -44,8 +46,7 @@
     box-shadow: 0 0 5px rgba(0, 255, 255, 0.7), 0 0 3px rgba(0, 128, 0, 0.5);
 }
 .orderSearchButton{
-    padding: 8px 10px;
-    margin-right: 10px;
+    padding: 7px 10px;
     border-radius: 16px;
     border: none;
     color: white;
@@ -62,3 +63,24 @@
     align-items: center;
     justify-content: space-between;
 }
+#orderSortDiv{
+    display: flex;
+    align-items: center;
+    /* justify-content: space-between; */
+    gap: 5px;
+    padding: 0px 10px 10px 0px;
+    font-size: small;
+}
+
+#orderSortDiv p{
+    font-weight: bold;
+}
+
+#Ordercontainer{
+    min-height: 200px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+

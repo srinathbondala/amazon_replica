@@ -12,7 +12,7 @@
 </head>
 <body>
     <div id="content"></div>
-    <div class="order_hedding"><p><a href="../html_files/index.html" class="a">Your Account</a> <span> > </span> <span style="color: #c45500;">Your Orders</span></p></div>
+    <div class="order_hedding"><p><a href="../html_files/homepage.html" class="a">Your Account</a> <span> > </span> <span style="color: #c45500;">Your Orders</span></p></div>
     <div id="mainOrder">
         <div id="mainOrderinner">
             <h1 class="mainOrderHeading">Your Orders</h1>
@@ -21,15 +21,16 @@
                 <input type="button" value="Search Orders" class="orderSearchButton">
             </div>
         </div>
-        <div>
+        <hr class="hr" style="margin-right: 10px; margin-bottom: 10px;">
+        <div id="orderSortDiv">
             <p><span>0</span> Orders</p><span>placed in</span>
-            <select name="category" id="category">
-                <option value="AllDepartments">All Departments</option>
-                <option value="Arts-Crafts">Arts & Crafts</option>
-                <option value="Automotive">Automotive</option>
+            <select name="category" id="category1" class="categorydropdown">
+                <option value="past 3 months" >past 3 months</option>
+                <option value="2023">2023</option>
+                <option value="2024">2024</option>
             </select>
         </div>
-        <div>
+        <div id="Ordercontainer">
             <p>Looks like you haven't placed an order in the last <span> 3 </span> months</p>
         </div>
     </div>

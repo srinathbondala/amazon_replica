@@ -1,0 +1,107 @@
+body {
+    color: #0f1111;
+    width: 91.9%;
+}
+cartItemsDiv{
+    display: flex;
+    align-items: center;
+    background-color: #f3f3f3 !important;
+}
+.CartItemLeft{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* background-color: aqua; */
+    overflow: auto;
+    gap:20px;
+}
+/* .cartItemRight{
+    width: 10%;
+    height: 100vh;
+    position: fixed;
+    right: 0;
+    top:0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: white;
+    overflow: auto;
+    gap: 10px;
+} */
+.CartItemInfo{
+    width: 96.5%;
+    height: 160px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 20px;
+}
+.CartItemAddDiv{
+    display: flex;
+    width: 70%;
+    height: 100%;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+    gap: 30px;
+}
+.CartItemAddDiv span{
+    display: flex;
+    font-size: 16px;
+    gap: 10px;
+}
+.CartPayDiv{
+    width: 28%;
+    height: 100%;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.cartimagetick{
+    width: 20px;
+    height: 20px;
+
+}
+#cartItemImg{
+    width: 100px;
+    height: 120px;
+}
+.ImgeInCart{
+    width:80px;
+    height:100px;
+}
+.suggestedDiv,.foot-top1{
+    width: 96.5%;
+    background-color: white;
+}
+#footer{
+    width: 100%;
+    background-color: white;
+}
+/*
+.cartItemRight-inner{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 18px;
+}
+.cartItemRight-inner p{
+    font-size: 12px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.cartItemRight-inner h2{
+    font-size: 14px;
+    font-family: Arial, Helvetica, sans-serif;
+    color: #b12704 !important;
+    margin-top: 4px;
+}
+.cartBarItem{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 10px;
+} */

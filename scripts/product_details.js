@@ -1,17 +1,29 @@
 
 window.onload = function() {
-    loadPage('../html_files/template.html', contentDiv , function() {
-        adjustWidth();
-    });
     loadPage('../html_files/footer-template.html', footerDiv);
+    loadPageh('../html_files/template.html', contentDiv );
     loadData();
     imageZoom("myimage", "myresult");
     document.getElementById("myresult").style.display="none";
+    performsomeaction();
 };
 
 const contentDiv = document.getElementById('content');
 const footerDiv=document.getElementById('footer');
 
+function performsomeaction(){
+    const jwtToken = getCookie('jwtToken');
+    if(jwtToken){
+        let item = document.querySelector(".img-sub-container");
+        let img = document.getElementById("myimage");
+        let marker = document.querySelector(".img-zoom-lens");
+        img.style.width = "80%";
+        item.style.paddingLeft = "40px";
+        marker.style.marginLeft = "40.5px";
+        document.querySelector(".result-content").style.width = "40%";
+        document.getElementById("myresult").style.width = "780px";
+    }
+}
 function loadData() {
     const id= getTextFromURL();
     const storedData = localStorage.getItem(id);
@@ -36,7 +48,6 @@ function getTextFromURL() {
 }
 
 function renderData(data) {
-    console.log(data);
     document.title="Amazon.com: "+data.title;
     document.querySelector(".product-info h2").textContent = data.title;
     document.querySelector(".product-info a").textContent += data.brand;
@@ -77,10 +88,24 @@ function renderData(data) {
         tr.appendChild(td2);
         detailsTable.appendChild(tr);
     }
+    if(data.features!=null){
+        data.features.forEach(feature => {
+            for (const key in feature) {
+                if (feature.hasOwnProperty(key)) {
+                    const tr = document.createElement("tr");
+                    const td1 = document.createElement("td");
+                    td1.textContent = key;
+                    const td2 = document.createElement("td");
+                    td2.textContent = feature[key];
+                    tr.appendChild(td1);
+                    tr.appendChild(td2);
+                    detailsTable.appendChild(tr);
+                }
+            }
+        });
+    }
     document.getElementById("objection").textContent = data.delivary;
-    document.getElementById("inner-pay-amount").textContent = data.price;
-    const addToCartButton = document.querySelector(".add_cart");
-    addToCartButton.addEventListener("click", addToCartClicked);
+    document.getElementById("inner-pay-amount").textContent = " $"+data.price;
     if(data.ratingCount!=="0" && data.ratingVal!==null){
        review(data.comments,data.rating,data.ratingCount,data.ratingVal);
     }
@@ -90,10 +115,6 @@ function renderData(data) {
     else{
         document.getElementById("commentsdiv").innerHTML = "<h3>No Comments Available</h3>";
     }
-}
-
-function addToCartClicked(event) {
-    console.log("Add to Cart clicked");
 }
 
 function review(comments,rating,count,ratingval){
@@ -111,11 +132,11 @@ function review(comments,rating,count,ratingval){
     <hr style="border:3px solid #f1f1f1">
     <div class="row">`;
     let v = {
-        0 : ratingval.rate5,
-        1 : ratingval.rate4,
+        4 : ratingval.rate5,
+        3 : ratingval.rate4,
         2 : ratingval.rate3,
-        3 : ratingval.rate2,
-        4 : ratingval.rate1
+        1 : ratingval.rate2,
+        0 : ratingval.rate1
     };
     for (let i = 5; i >= 1; i--) {
         let rate = v[i-1];
@@ -178,11 +199,59 @@ function comments(comment){
             </div>
             <br><hr class="hr">
         `;
-        console.log(review);
     }
 
     topReviewsDiv.innerHTML = html;
 
+}
+
+function AddToCart(){
+    try{
+        var id= getTextFromURL();
+        // var jwtToken = getCookie('jwtToken');
+        var jwtToken = 1;
+        if(jwtToken){
+            var quantity = document.getElementById("quantity").value;
+            if(quantity>0){
+                showloader();
+            //     fetch('http://localhost:8080/user/addToCart', {
+            //         method: 'POST',
+            //         headers: {
+            //             'Content-Type': 'application/json',
+            //             'Authorization': 'Bearer ' + jwtToken
+            //         },
+            //         body: JSON.stringify({
+            //             "productId": id,
+            //             "quantity": parseInt(quantity),
+            //             "inCart": true
+            //         })
+            //     })
+            //     .then(response => response)
+            //     .then(data =>{
+            //         console.log("Added to cart");
+            //         alert("Added to cart");
+            //     })
+            //     .catch(error => {
+            //         console.error('Error:', error);
+            //     });
+                console.log("Added to cart");
+                window.location.href = "smart-wagon.html?newitem="+id;
+            }
+            else{
+                alert("Please enter valid quantity");
+            }
+        }
+        else{
+            window.location.href = "signin_page.html";
+        }
+    }
+    catch (error) {
+        console.error('Error:', error);
+    }
+    setTimeout(function() {
+        hideloader();
+    }, 2000);
+    
 }
 
 function imageZoom(imgID, resultID) {

@@ -4,13 +4,47 @@ function backtotop(){
         behavior: 'smooth'
       });
 }
+
+async function getdatafromjwt(jwtToken){
+  try {
+    const response = await fetch('http://localhost:8080/auth1/details', {
+        method: 'GET',
+        headers: {
+            'Authorization': `Bearer ${jwtToken}`
+        }
+    });
+
+    if (response.ok) {
+        const data = await response.json();
+        localStorage.setItem('jwtToken', JSON.stringify({"id":data.id,"username": data.username,
+          "email": data.email,
+          "roles": data.roles,
+          "accessToken": data.accessToken,
+          "tokenType": data.tokenType
+          })
+        );
+        console.log(data.username);
+    } else {
+        alert('Failed to fetch user details');
+    }
+  } catch (error) {
+      console.error('Error:', error);
+      alert('An error occurred');
+  }
+}
+
 function checkSignIn(){
   const jwtToken = getCookie('jwtToken');
   if (jwtToken) {
       console.log('JWT token is available');
+      // console.log(jwtToken);
       const signinFooterDiv = document.querySelector('.signin');
       const usernameupdate = document.getElementById("user_name_header");
       const name_update_in_all = document.getElementById("all_username");
+      const usernameheader = document.getElementById("header_signin");
+      if(localStorage.getItem('jwtToken') == null){
+          getdatafromjwt(jwtToken);
+      }
       if (signinFooterDiv) {
           signinFooterDiv.style.display = "none";
       } else {
@@ -22,18 +56,59 @@ function checkSignIn(){
       if(name_update_in_all){
         name_update_in_all.innerHTML = "Hello, "+JSON.parse(localStorage.getItem('jwtToken')).username;
       }
+      if(usernameheader){
+        usernameheader.textContent = "Sign Out";
+      }
   } else {
       console.log('JWT token is not available');
   }
 }
 
+function validateCartDiv(){
+  const jwtToken = getCookie('jwtToken');
+  const cartdiv = document.getElementById("cartItems");
+  if (jwtToken) {
+    if(cartdiv){
+      cartdiv.style.display = "block";
+      document.body.style.width= "91.9%";
+    }
+  }
+  else{
+    console.log('JWT token is not available');
+  }
+}
 function loadPage(pageUrl, value) {
+  fetch(pageUrl)
+  .then(response => response.text())
+  .then(html => {
+      value.innerHTML = html;
+  })
+  .catch(error => {
+      console.error('Error fetching page:', error);
+      console.log(error);
+  });
+}
+function loadPagep(pageUrl, value) {
   fetch(pageUrl)
   .then(response => response.text())
   .then(html => {
       value.innerHTML = html;
       checkSignIn();
       adjustWidth();
+  })
+  .catch(error => {
+      console.error('Error fetching page:', error);
+      console.log(error);
+  });
+}
+function loadPageh(pageUrl, value) {
+  fetch(pageUrl)
+  .then(response => response.text())
+  .then(html => {
+      value.innerHTML = html;
+      checkSignIn();
+      adjustWidth();
+      validateCartDiv();
   })
   .catch(error => {
       console.error('Error fetching page:', error);
@@ -49,6 +124,32 @@ function adjustWidth() {
       // console.log("Width of category is adjusted to: " + category.style.width);
   } else {
       // console.error("Element with id 'category' not found");
+  }
+}
+
+function signout(){
+  if(getCookie('jwtToken')){
+    if(confirm("Are you sure you want to sign out?")){
+      deleteCookie('jwtToken');
+      localStorage.removeItem('jwtToken');
+      try{
+        fetch('http://localhost:8080/auth1/logout', {
+            method: 'POST'
+        })
+        .then(data =>{
+            console.log("logout success from server");
+        })
+        .catch(error => {
+            console.error('Error:', error);
+        });
+      } catch (error) {
+          console.error('Error:', error);
+      }
+      window.location.href = "index.html";
+    }
+  }
+  else{
+    window.location.href = "signin_page.html";
   }
 }
 
@@ -95,16 +196,21 @@ function deleteCookie(name) {
 }
 
 function orderbtn(){
-  // if(getCookie('jwtToken'))
-  {
+  if(getCookie('jwtToken')){
     window.location.href = "order_return.html";
   }
-  // else
-  // {
-  //   window.location.href = "signin_page.html";
-  // }
+  else{
+    window.location.href = "signin_page.html";
+  }
 }
-
+function togglerightb(){
+  const tglright = document.getElementById("browsing");
+  tglright.scrollLeft += 500;
+}
+function toggleleftb(){
+  const tglright = document.getElementById("browsing");
+  tglright.scrollLeft -= 500;
+}
 function draweropt(){
   const drawer = document.getElementById("drawer");
   const overlay = document.getElementById("overlay");
@@ -114,7 +220,6 @@ function draweropt(){
   overlay.style.display = "none";
   drawerbtn.classList.remove('visible');
   document.body.style.overflow = "auto";
-  document.html.style.overflow = "auto";
 }
 function openDrawer(){
   const drawer = document.getElementById("drawer");
@@ -141,4 +246,12 @@ function dosomething(){
     sall.style.display = "none";
     seetext.textContent = 'See all';
   }
+}
+function showloader(){
+  const overlay = document.getElementById("overshade");
+    overlay.style.display = "block";
+}
+function hideloader(){
+  const overlay = document.getElementById("overshade");
+    overlay.style.display = "none";
 }

@@ -2,60 +2,60 @@
 window.onload = function() {
     try {
         loadjsondata();
-        loadPage('../html_files/template.html', contentDiv , function() {
-            adjustWidth();
-        });
         loadPage('../html_files/footer-template.html', footerDiv);
+        loadPagep('../html_files/template.html', contentDiv);
+        
     } catch (e) {
         alert(e);
     }
 };
 
-// function loadjsondata(){
-//     var xhr = new XMLHttpRequest();
-//     // xhr.open('GET', '../data.json', true);
-//     xhr.open('GET', 'http://localhost:8080/amazon/data',true);
-//     xhr.onreadystatechange = function() {
-//         if (xhr.readyState == 4) {
-//             if (xhr.status == 200) {
-//                 var data = JSON.parse(xhr.responseText);
-//                 renderData(data);
-//             } else {
-//                 console.error('Failed to fetch data');
-//             }
-//         }
-//     };
-//     xhr.send();
-// }
-
-
-
-function loadjsondata() {
+function loadjsondata(){
     var xhr = new XMLHttpRequest();
-    xhr.open('GET', 'http://localhost:8080/amazon/data', true);
-    if(localStorage.getItem('cachedData')) {
-        renderData(JSON.parse(localStorage.getItem('cachedData')));
-    }
-    else{
+    // xhr.open('GET', '../data.json', true);
+    xhr.open('GET', 'http://localhost:8080/amazon/data',true);
     xhr.onreadystatechange = function() {
         if (xhr.readyState == 4) {
             if (xhr.status == 200) {
                 var data = JSON.parse(xhr.responseText);
                 renderData(data);
-                localStorage.setItem('cachedData', JSON.stringify(data));
+            } else {
+                console.error('Failed to fetch data');
             }
         }
-        else {
-                console.error('Failed to fetch data');
-        }
     };
-    xhr.send();}
+    xhr.send();
 }
+
+
+
+// function loadjsondata() {
+//     var xhr = new XMLHttpRequest();
+//     xhr.open('GET', 'http://localhost:8080/amazon/data', true);
+//     if(localStorage.getItem('cachedData')) {
+//         renderData(JSON.parse(localStorage.getItem('cachedData')));
+//     }
+//     else{
+//     xhr.onreadystatechange = function() {
+//         if (xhr.readyState == 4) {
+//             if (xhr.status == 200) {
+//                 var data = JSON.parse(xhr.responseText);
+//                 renderData(data);
+//                 localStorage.setItem('cachedData', JSON.stringify(data));
+//             }
+//         }
+//         else {
+//                 console.error('Failed to fetch data');
+//         }
+//     };
+//     xhr.send();}
+// }
 
 function renderData(data) {
     var templateHTML = '';
+    var cnt=0;
     data.forEach(function(item, index) {
-        if (index % 4 === 0) {
+        if (cnt % 4 === 0) {
             templateHTML += '<div class="targetdiv-item">';
         }
         templateHTML += `
@@ -69,9 +69,10 @@ function renderData(data) {
                 <a href="slider-page.html?text=${item.link}" class="targetdiv-inner-a">click here</a>
             </div>
         `;
-        if ((index + 1) % 4 === 0 || (index + 1) === data.length) {
+        if ((cnt + 1) % 4 === 0 || (cnt + 1) === data.length) {
             templateHTML += '</div>';
         }
+        cnt++;
     });
     document.getElementById('targetDiv').innerHTML = templateHTML;
 }
@@ -80,7 +81,7 @@ const contentDiv = document.getElementById('content');
 const footerDiv=document.getElementById('footer');
 
 const img11 = ["../background_images/bg1.png", "../background_images/bg2.png","../background_images/bg3.png"];
-const linksOrTexts = ["Link 1", "kitchen", "Link 3"];
+const linksOrTexts = ["deals", "Home_Kitchen", "toysandgames"];
 let currentIndex = 0;
 let intervalId;
 function changeBackground() {

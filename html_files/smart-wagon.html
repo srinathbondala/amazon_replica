@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Amazon.com. Shopping Cart</title>
+    <link rel="icon" href="https://th.bing.com/th/id/OIP.ayRsQH0mda6kJjYZLRHgkQHaGO?w=204&h=180&c=7&r=0&o=5&dpr=1.5&pid=1.7" type="image/png">
+    <link rel="stylesheet" href="../css_files/style.css">
+    <link rel="stylesheet" href="../css_files/navbar.css">
+    <link rel="stylesheet" href="../css_files/footer.css">
+    <link rel="stylesheet" href="../css_files/smart-wagon.css">
+</head>
+<body>
+    <div id="content"></div>
+    <cartItemsDiv>
+        <div class="CartItemLeft">
+            <div class="CartItemInfo" id="CartItemInfo">
+                <div class="CartItemAddDiv">
+                    <img src="../background_images/chef.png" alt="img" id="cartItemImg">
+                    <span><img src="https://cdn-icons-png.flaticon.com/128/5610/5610944.png" alt=":)" class="cartimagetick"><h3>Added to Cart</h3></span>
+                </div>
+                <div class="CartPayDiv">
+                    <h3>Cart Subtotal: <span id="Cart-amount"> $1,189.49</span></h3>
+                    <input type="button" value="Proceed to checkout" class="btn"style="width:230px">
+                    <input type="button" value="Got to Cart" class="wish_list_btn" >
+                </div>
+            </div>
+            <div class="suggestedDiv">
+                <div class="foot-top1">
+                    <div id="foot-top1-heading">
+                        <h3>Customers who viewed items in your browsing history also viewed</h3>
+                        <span>Page 1 of 7</span>
+                    </div>
+                    <div class="foot-top1-inner">
+                        <span class="togglebuttons" onclick="toggleleftb()"> <span><img src="https://cdn-icons-png.flaticon.com/128/271/271220.png" alt=">" class="toggleimgbtn"> </span></span>
+                        <span class="togglebuttons" style="right: 0;" onclick="togglerightb()"><span><img src="https://cdn-icons-png.flaticon.com/128/271/271228.png" alt="<" class="toggleimgbtn"></span> </span>
+                        <div>
+                            <ul class="browsing" id="browsing">
+                                <li><img src="https://images-na.ssl-images-amazon.com/images/I/71bcZVEOwqL._AC_UL320_SR320,320_.jpg" alt="Product Image"></li>
+                                <li><img src="https://images-na.ssl-images-amazon.com/images/I/71bcZVEOwqL._AC_UL320_SR320,320_.jpg" alt="Item Image"></li>
+                                <li><img src="https://images-na.ssl-images-amazon.com/images/I/71bcZVEOwqL._AC_UL320_SR320,320_.jpg" alt="Merchandise Image"></li>
+                                <li><img src="https://images-na.ssl-images-amazon.com/images/I/71bcZVEOwqL._AC_UL320_SR320,320_.jpg" alt="Product Image"></li>
+                                <li><img src="https://images-na.ssl-images-amazon.com/images/I/71bcZVEOwqL._AC_UL320_SR320,320_.jpg" alt="Item Image"></li>
+                                <li><img src="https://images-na.ssl-images-amazon.com/images/I/71bcZVEOwqL._AC_UL320_SR320,320_.jpg" alt="Merchandise Image"></li>
+                                <li><img src="https://images-na.ssl-images-amazon.com/images/I/71bcZVEOwqL._AC_UL320_SR320,320_.jpg" alt="Goods Image"></li>
+                                <li><img src="https://images-na.ssl-images-amazon.com/images/I/71bcZVEOwqL._AC_UL320_SR320,320_.jpg" alt="Merchandise Photo"></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- <div class="cartItemRight" id="cartItems">
+            <div class="cartItemRight-inner">
+                <p>Subtotal</p>
+                <h2>$1,189.49</h2>
+                <input type="button" value="Got to Cart" class="wish_list_btn" style="width: 90%;font-size: 12px;">
+            </div>
+            <div class="ItemsInCart">
+                <hr class="hr">
+                <div class="cartBarItem">
+                    <img src="../background_images/chef.png" alt="img" class="ImgeInCart">
+                    <p>$19.50</p>
+                    <div style="margin-top: 10px;">
+                        <select name="1" id="select" class="categorydropdown" style="padding: 0px 15px; height: 20px;">
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                        </select>
+                        <span class="quantity" style="padding: 4px;"><img src="../background_images/trash_icon.png" alt="delete" style="height: 15px; width: 15px;"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="ItemsInCart">
+                <hr class="hr">
+                <div class="cartBarItem">
+                    <img src="../background_images/chef.png" alt="img" class="ImgeInCart">
+                    <p>$19.50</p>
+                    <div style="margin-top: 10px;">
+                        <select name="1" id="select" class="categorydropdown" style="padding: 0px 15px; height: 20px;">
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                        </select>
+                        <span class="quantity" style="padding: 4px;"><img src="../background_images/trash_icon.png" alt="delete" style="height: 15px; width: 15px;"></span>
+                    </div>
+                </div>
+            </div>
+        </div> -->
+    </cartItemsDiv>
+    <div id="footer"></div>
+    <script src="../scripts/footer.js"></script>
+    <script src="../scripts/smart-wagon.js"></script>
+</body>
+</html>

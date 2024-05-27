@@ -214,37 +214,12 @@ cartleftbottom{
     gap: 10px;
     flex-wrap: wrap;
 }
-.wish_list_btn{
-    margin-top: 10px;
-    padding: 6px;
-    background-color: white;
-    width: 230px;
-    border: 1px solid #D3D3D3;
-    box-shadow: 0 0 10px rgba(210, 208, 208, 0.6);
-    border-radius: 8px;
-}
 
-.wish_list_btn:hover{
-    cursor: pointer;
-    background-color:#f6f3f3;
-    
-}
 .a{
     font-size: 12px;
     margin-top: 10px;
 }
 
-.btn{
-    background-color: gold;
-    padding: 6px 70px;
-    border: none;
-    border-radius: 8px;
-    margin-top: 20px;
-}
-.btn:hover{
-    cursor: pointer;
-    background-color: rgb(242, 199, 89);
-}
 .faint-div{
     display: flex; justify-content: space-between; width:290px; align-items: center;
 }

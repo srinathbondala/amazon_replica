@@ -1,8 +1,6 @@
 window.onload = function() {
-    loadPage('../html_files/template.html', contentDiv , function() {
-        adjustWidth();
-    });
     loadPage('../html_files/footer-template.html', footerDiv);
+    loadPagep('../html_files/template.html', contentDiv );
     // renderCartData(cartData);
     // loadCartData();
     if(getCookie('jwtToken')){
@@ -144,7 +142,7 @@ const cartData = [
                 id:"1122345678"
               }
   ];
-  var val=1;
+var val=1;
 const contentDiv = document.getElementById('content');
 const footerDiv=document.getElementById('footer');
 
@@ -218,7 +216,7 @@ function renderCartData(data) {
                                         <label for="isgift" style="font-size: 12px; margin-left: 5px; font-family: Arial, sans-serif;">This is a gift</label>
                                     </div>
                                     <div style="margin-top: 14px;">
-                                        <select name="count" class="hover_over" onchange="handleChange()">
+                                        <select name="count" class="categorydropdown" onchange="handleChange()">
                                             ${generateQuantityOptions(item.quantity)}
                                         </select>
                                         <a href="#delete" class="aafter">Delete</a>
@@ -278,9 +276,9 @@ function handleChange() {
 }
 
 function calculateSubtotal(data) {
-    let total = 0;
-    data.forEach(item => {
-        total += document.querySelector('.hover_over').value * parseFloat(item.price.replace('$', ''));
-    });
-    return `$${total.toFixed(2)}`;
+    // let total = 0;
+    // data.forEach(item => {
+    //     total += document.querySelector('.hover_over').value * parseFloat(item.price.replace('$', ''));
+    // });
+    // return `$${total.toFixed(2)}`;
 }
