@@ -21,8 +21,8 @@
                 </div>
                 <div class="CartPayDiv">
                     <h3>Cart Subtotal: <span id="Cart-amount"> $1,189.49</span></h3>
-                    <input type="button" value="Proceed to checkout" class="btn"style="width:230px">
-                    <input type="button" value="Got to Cart" class="wish_list_btn" >
+                    <input type="button" value="Proceed to checkout" class="btn" style="width:230px" onclick="loadBuyPage();">
+                    <input type="button" value="Got to Cart" class="wish_list_btn" onclick="window.location.href='./cart.html';">
                 </div>
             </div>
             <div class="suggestedDiv">
@@ -50,7 +50,7 @@
                 </div>
             </div>
         </div>
-        <!-- <div class="cartItemRight" id="cartItems">
+        <!-- <div class="cartItemRight">
             <div class="cartItemRight-inner">
                 <p>Subtotal</p>
                 <h2>$1,189.49</h2>

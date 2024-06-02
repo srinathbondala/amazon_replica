@@ -1,12 +1,13 @@
-
 window.onload = function() {
     loadPage('../html_files/footer-template.html', footerDiv);
     loadPageh('../html_files/template.html', contentDiv );
-    loadData();
     imageZoom("myimage", "myresult");
     document.getElementById("myresult").style.display="none";
     performsomeaction();
+    loadData();
+    var cartimg, cartprice, carturl;
 };
+
 
 const contentDiv = document.getElementById('content');
 const footerDiv=document.getElementById('footer');
@@ -26,20 +27,22 @@ function performsomeaction(){
 }
 function loadData() {
     const id= getTextFromURL();
-    const storedData = localStorage.getItem(id);
-    if (storedData) {
-        renderData(JSON.parse(storedData));
-    } else {
+    // const storedData = localStorage.getItem(id);
+    // if (storedData) {
+    //     renderData(JSON.parse(storedData));
+    //     loadCartData();
+    // } else {
         fetch('http://localhost:8080/amazon/dataByid/'+id)
             .then(response => response.json())
             .then(data => {
                 localStorage.setItem(id, JSON.stringify(data));
                 renderData(data);
+                loadCartData();
             })
             .catch(error => {
                 console.error('Error fetching data:', error);
             });
-    }
+    // }
 }
 
 function getTextFromURL() {
@@ -52,6 +55,9 @@ function renderData(data) {
     document.querySelector(".product-info h2").textContent = data.title;
     document.querySelector(".product-info a").textContent += data.brand;
     document.getElementById("soldbya").textContent = data.brand;
+    cartimg=data.imageUrl;
+    cartprice=data.price;
+    carturl=data.url;
     // document.getElementById("soldbya").setAttribute("href", "http://localhost:8080/amazon/brand.html?text=" + data.brand);
     // alert(data.brand);
     document.querySelector(".product-info p span").textContent = " "+ data.ratingCount + " ratings";
@@ -208,34 +214,48 @@ function comments(comment){
 function AddToCart(){
     try{
         var id= getTextFromURL();
-        // var jwtToken = getCookie('jwtToken');
-        var jwtToken = 1;
+        var jwtToken = getCookie('jwtToken');
+        // var jwtToken = 1;
         if(jwtToken){
             var quantity = document.getElementById("quantity").value;
             if(quantity>0){
                 showloader();
-            //     fetch('http://localhost:8080/user/addToCart', {
-            //         method: 'POST',
-            //         headers: {
-            //             'Content-Type': 'application/json',
-            //             'Authorization': 'Bearer ' + jwtToken
-            //         },
-            //         body: JSON.stringify({
-            //             "productId": id,
-            //             "quantity": parseInt(quantity),
-            //             "inCart": true
-            //         })
-            //     })
-            //     .then(response => response)
-            //     .then(data =>{
-            //         console.log("Added to cart");
-            //         alert("Added to cart");
-            //     })
-            //     .catch(error => {
-            //         console.error('Error:', error);
-            //     });
-                console.log("Added to cart");
-                window.location.href = "smart-wagon.html?newitem="+id;
+                // fetch('http://localhost:8080/user/addToCart', {
+                //     method: 'POST',
+                //     headers: {
+                //         'Content-Type': 'application/json',
+                //         'Authorization': 'Bearer ' + jwtToken
+                //     },
+                //     body: JSON.stringify({
+                //         "productId": id,
+                //         "quantity": parseInt(quantity),
+                //         "inCart": true
+                //     })
+                // })
+                // .then(response => response)
+                // .then(data =>{
+                //     console.log(data);
+                    // var cartitem = JSON.parse(localStorage.getItem('CartItems'));
+                    // cartitem.push({
+                    //         "product": {
+                    //             "id": id,
+                    //             "imageUrl":cartimg,
+                    //             "price": cartprice,
+                    //             "url": carturl
+                    //         },
+                    //         "quantity": parseInt(quantity),
+                    //         "inCart": true
+                    //     });
+                    // localStorage.setItem('CartItems',JSON.stringify(cartitem));
+                    // getCartDataFromServer();
+                    console.log("Added to cart");
+                    window.location.href = "smart-wagon.html?newitem="+id;
+                // })
+                // .catch(error => {
+                //     console.error('Error:', error);
+                // });
+                hideloader();
+                // localStorage.removeItem(id);
             }
             else{
                 alert("Please enter valid quantity");

@@ -4,7 +4,8 @@ window.onload = function() {
     // renderCartData(cartData);
     // loadCartData();
     if(getCookie('jwtToken')){
-        renderCartData(cartData);
+        // renderCartData(cartData);
+        loadCartDataC();
     }
     else{
         document.querySelector('cartleftbottom').innerHTML = "";
@@ -146,19 +147,16 @@ var val=1;
 const contentDiv = document.getElementById('content');
 const footerDiv=document.getElementById('footer');
 
-function loadCartData() {
-    fetch('http://localhost:8080/amazon/cart')
-        .then(response => response.json())
-        .then(data => {
-            if(!(data.length === 0)) {
-                renderCartData(data);
-            }
-        })
-        .catch(error => {
-            console.error('Failed to fetch cart data');
-        });
+function loadCartDataC() {
+    if(localStorage.getItem('CartItems') != null){
+        renderCartDataC(JSON.parse(localStorage.getItem('CartItems')));
+    }
+    else{
+        getCartDataFromServer();
+        renderCartDataC(JSON.parse(localStorage.getItem('CartItems')));
+    }
 }
-function renderCartData(data) {
+function renderCartDataC(data) {
     if(data.length !== 0) {
         const shoppingCartContainer = document.querySelector('.shopping-cart');
 
@@ -174,7 +172,8 @@ function renderCartData(data) {
         shoppingCartContainer.innerHTML = upperPart;
 
         data.forEach((item, index) => {
-            if (item.status === "STL") {
+            // console.log(item);
+            if (!item.inCart) {
                 const stldiv = document.querySelector('.savelater');
                 if(val==1){
                     stldiv.innerHTML="";
@@ -183,14 +182,14 @@ function renderCartData(data) {
                 stldiv.innerHTML +=`
                 <div class="savelateritem">
                     <div class="savelateritem-img-container">
-                        <a href='product_details.html?k=${item.category}&text=${item.id}' class="savelateritem-img-container"> <img src="${item.image}" class="savelateritem-img" alt=""></a>
+                        <a href='product_details.html?k=${item.product.category}&text=${item.product.id}' class="savelateritem-img-container"> <img src="${item.image}" class="savelateritem-img" alt=""></a>
                     </div>
                     <div class="savelateritem-details">
-                        <a href='product_details.html?k=${item.category}&text=${item.id}' class="savelateritem-h3">${item.name}</a>
+                        <a href='product_details.html?k=${item.product.category}&text=${item.id}' class="savelateritem-h3">${item.name}</a>
                         <div  class="savelateritem-price-div">
-                            <span class="savelateritem-price">${item.price}</span>
+                            <span class="savelateritem-price">"$ "+${item.product.price}</span>
                         </div>
-                        <p class="savelateritem-stoct">${item.inStock ? 'In Stock' : 'Out of Stock'}</p>
+                        <p class="savelateritem-stoct">${item.product.inStock ? 'In Stock' : 'Out of Stock'}</p>
                         <button  class="wish_list_btn"> Add to Wish List</button>
                         <p class="a" onclick="deleteslt(this)">Delete</p>
                         <p class="a" onclick="">Add to list</p>
@@ -198,6 +197,8 @@ function renderCartData(data) {
             </div>
                 `;
             } else {
+                var item1=item;
+                item= item.product;
                 const itemDiv = document.createElement('div');
                 itemDiv.classList.add('item');
 
@@ -206,27 +207,27 @@ function renderCartData(data) {
                 <label for="item${index + 1}" class="item-inner-div">
                     <span class="item-inner">
                         <div class="item-inner-div">
-                            <img src="${item.image}" alt="item${index + 1}" class="item-inner-div-img">
+                            <a href="product_details.html?k=${item.category}&text=${item.id}"><img src="${item.imageUrl}" alt="item${index + 1}" class="item-inner-div-img"> </a>
                             <div class="items-div">
                                 <div class="items-div-left">
-                                    <a href="#" class="pointer"><span><p class="itemp">${item.name}</p></span></a>
-                                    <p class="items-div-left-p">${item.inStock ? 'In Stock' : 'Out of Stock'}</p>
+                                    <a href="product_details.html?k=${item.category}&text=${item.id}" class="pointer"><span><p class="itemp">${item.title}</p></span></a>
+                                    <p class="items-div-left-p">${item.stock ? 'In Stock' : 'Out of Stock'}</p>
                                     <div style="margin-top: 8px; display: flex;align-items: center;">
                                         <input type="checkbox" name="isgift" id="isgiftcbx">
                                         <label for="isgift" style="font-size: 12px; margin-left: 5px; font-family: Arial, sans-serif;">This is a gift</label>
                                     </div>
                                     <div style="margin-top: 14px;">
                                         <select name="count" class="categorydropdown" onchange="handleChange()">
-                                            ${generateQuantityOptions(item.quantity)}
+                                            ${generateQuantityOptions(item1.quantity)}
                                         </select>
-                                        <a href="#delete" class="aafter">Delete</a>
+                                        <a href="#delete" class="aafter" onclick="DeleteFromCart(this);">Delete</a>
                                         <a href="#savelater" class="aafter">Save for later</a>
                                         <a href="#compare" class="aafter">Compare with Similar</a>
                                         <a href="#share" class="aafter">Share</a>
                                     </div>
                                 </div>
                                 <div class="items-div-right">
-                                    <span style="align-self: flex-end; font-size: large; font-weight: 600;">${item.price}</span>
+                                    <span style="align-self: flex-end; font-size: large; font-weight: 600;">$ ${item.price}</span>
                                 </div>
                             </div>
                         </div>

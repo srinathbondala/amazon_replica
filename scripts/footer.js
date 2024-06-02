@@ -38,30 +38,52 @@ function checkSignIn(){
   if (jwtToken) {
       console.log('JWT token is available');
       // console.log(jwtToken);
+      showloader();
       const signinFooterDiv = document.querySelector('.signin');
-      const usernameupdate = document.getElementById("user_name_header");
-      const name_update_in_all = document.getElementById("all_username");
-      const usernameheader = document.getElementById("header_signin");
-      if(localStorage.getItem('jwtToken') == null){
+      const usernameHeaderElement = document.getElementById("user_name_header");
+      const nameUpdateInAllElement = document.getElementById("all_username");
+      const headerSignInElement = document.getElementById("header_signin");
+
+      if (localStorage.getItem('jwtToken') === null) {
           getdatafromjwt(jwtToken);
       }
+      if (localStorage.getItem('UserItems') === null) {
+          getUserDataFromServer();
+      }
+      if (localStorage.getItem('CartItems') === null) {
+          getCartDataFromServer();
+      }
+
+      // Hide the signin footer if present
       if (signinFooterDiv) {
           signinFooterDiv.style.display = "none";
       } else {
-          console.log("Element with .sigin not found.");
+          console.log("Element with class .signin not found.");
       }
-      if(usernameupdate){
-         usernameupdate.innerHTML = "Hello "+JSON.parse(localStorage.getItem('jwtToken')).username;
+
+      // Update the username header if the element is present
+      const storedJwt = JSON.parse(localStorage.getItem('jwtToken'));
+      if (usernameHeaderElement) {
+          usernameHeaderElement.innerHTML = `Hello ${storedJwt.username}`;
       }
-      if(name_update_in_all){
-        name_update_in_all.innerHTML = "Hello, "+JSON.parse(localStorage.getItem('jwtToken')).username;
+      if (nameUpdateInAllElement) {
+          nameUpdateInAllElement.innerHTML = `Hello, ${storedJwt.username}`;
       }
-      if(usernameheader){
-        usernameheader.textContent = "Sign Out";
+
+      // Update the header signin element to show "Sign Out"
+      if (headerSignInElement) {
+          headerSignInElement.textContent = "Sign Out";
       }
-  } else {
+      setTimeout(function(){
+        hideloader();
+      }, 500);
+    } else {
+      // Remove stored items if JWT token is not available
+      localStorage.removeItem('jwtToken');
+      localStorage.removeItem('UserItems');
+      localStorage.removeItem('CartItems');
       console.log('JWT token is not available');
-  }
+    }
 }
 
 function validateCartDiv(){
@@ -71,6 +93,7 @@ function validateCartDiv(){
     if(cartdiv){
       cartdiv.style.display = "block";
       document.body.style.width= "91.9%";
+      loadCartData();
     }
   }
   else{
@@ -94,6 +117,12 @@ function loadPagep(pageUrl, value) {
   .then(html => {
       value.innerHTML = html;
       checkSignIn();
+      let signinFooterDiv = document.querySelector('.signin');
+      if (signinFooterDiv) {
+        signinFooterDiv.style.display = "none";
+      } else {
+          console.log("Element with class .signin not found.");
+      }
       adjustWidth();
   })
   .catch(error => {
@@ -250,8 +279,91 @@ function dosomething(){
 function showloader(){
   const overlay = document.getElementById("overshade");
     overlay.style.display = "block";
+    document.body.style.overflow = "hidden";
 }
 function hideloader(){
   const overlay = document.getElementById("overshade");
     overlay.style.display = "none";
+    document.body.style.overflow = "auto";
+}
+function getUserDataFromServer(){
+   fetch('http://localhost:8080/user/getUserData', {
+      method: 'GET',
+      headers: {
+          'Authorization': `Bearer ${getCookie('jwtToken')}`
+      }
+  })
+  .then(response => response.json())
+  .then(data => {
+      localStorage.setItem('UserItems', JSON.stringify(data));
+  })
+  .catch(error => {
+      console.error('Error:', error);
+  });
+}
+function getCartDataFromServer(){
+  fetch('http://localhost:8080/user/cart', {
+     method: 'GET',
+     headers: {
+         'Authorization': `Bearer ${getCookie('jwtToken')}`
+     }
+  })
+  .then(response => response.json())
+  .then(data => {
+      localStorage.setItem('CartItems', JSON.stringify(data.body));
+  })
+  .catch(error => {
+      console.error('Error:', error);
+  });
+}
+function DeleteFromCart(link){
+  try{
+    showloader();
+    const parentElement = link.closest('.item');
+    parentElement.parentNode.removeChild(parentElement);
+    setTimeout(function(){
+      hideloader();
+    }, 500);
+  }catch(error){
+    console.log(error);
+  }
+}
+function loadCartData() {
+  if(localStorage.getItem('CartItems') != null){
+      renderCartData(JSON.parse(localStorage.getItem('CartItems')));
+  }
+  else{
+        if(getCartDataFromServer()){
+          renderCartData(JSON.parse(localStorage.getItem('CartItems')));
+        }
+  }
+}
+function renderCartData(data){
+  const cartItems = document.getElementById('cartItems');
+  let templateinnerHTML = '';
+  data.forEach((item,index)=>{
+      item = item.product;
+      templateinnerHTML += `
+      <div class="ItemsInCart">
+          <hr class="hr">
+          <div class="cartBarItem">
+              <img src="${item.imageUrl}" alt="img" class="ImgeInCart">
+              <p>${item.price}</p>
+              <div class="cartBarItemInner">
+                  <select name="1" id="select" class="categorydropdown" style="padding: 0px 15px; height: 20px;">
+                      <option value="1">1</option>
+                      <option value="2">2</option>
+                      <option value="3">3</option>
+                      <option value="4">4</option>
+                  </select>
+                  <span class="quantity" style="padding: 4px; width:15px; height:15px;">
+                      <img src="../background_images/trash_icon.png" alt="delete" style="height: 15px; width: 15px;">
+                  </span>
+              </div>
+          </div>
+      </div>
+      `;
+  });
+  cartItems.innerHTML = '';
+  cartItems.innerHTML += templateinnerHTML;
 }

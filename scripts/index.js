@@ -4,7 +4,6 @@ window.onload = function() {
         loadjsondata();
         loadPage('../html_files/footer-template.html', footerDiv);
         loadPagep('../html_files/template.html', contentDiv);
-        
     } catch (e) {
         alert(e);
     }

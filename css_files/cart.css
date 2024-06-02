@@ -104,8 +104,11 @@ cartleftbottom{
 }
 .item-inner-div-img{
     /* width: 180px; */
-    width: 21%;
+    width: 100%;
     height: 180px;
+    min-width: 180px;
+    max-width: 200px;
+    /* width: 180px; */
 }
 
 .items-div{

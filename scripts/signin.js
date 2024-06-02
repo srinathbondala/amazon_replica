@@ -80,7 +80,6 @@ async function signin(){
                     "tokenType": data.tokenType
                 })
             );
-
             setCookie('jwtToken',data.accessToken);
             launch_toast('Login successful');
             alert('Login successful');

@@ -13,6 +13,8 @@ function getTextFromURL() {
     return urlParams.get('text');
 }
 
+
+
 // function loadjsondata(){
 //     var xhr = new XMLHttpRequest();
 //     // xhr.open('GET', '../product_data.json', true);
@@ -109,7 +111,6 @@ function loadjsondata() {
     // if (cachedData) {
     //     processData(cachedData);
     // } else {
-        // If data is not available in cookies, make an AJAX call
         var xhr = new XMLHttpRequest();
         xhr.open('GET', URL, true);
         xhr.onreadystatechange = function () {
@@ -119,6 +120,7 @@ function loadjsondata() {
                 // setCachedData(category, data);
                 // Process and display data
                 processData(data);
+                loadCartData();
             }
         };
         xhr.send();
