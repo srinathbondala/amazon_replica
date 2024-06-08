@@ -1,5 +1,5 @@
 *{
-    font-family: Arial, sans-serif;
+    font-family: "Amazon Ember", Arial, sans-serif;
 }
 body{
     margin: 0%;
@@ -16,9 +16,11 @@ body{
 }
 .browsing{
     display: flex; overflow-x: scroll; overflow-y: hidden; max-height: 250px;
+    width: 100%;
     margin-top: 10px;
     gap:10px;
     scroll-behavior: smooth;
+    scrollbar-width:thin;
 }
 .browsing li {
     display: inline-block;
@@ -34,8 +36,14 @@ body{
     height: 100%;
     width: 217.8px;
 }
+.fotter-inner-browse{
+    width : 90%;
+}
 .foot-top1-inner{
     position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 .togglebuttons >span{
     display: flex;
@@ -142,7 +150,7 @@ lower-footer,#backtotop,.signin{
     display: flex;
     gap: 9%;
     padding: 28px;
-    padding-right: 10%;
+    padding-right: 9%;
     padding-left: 40px;
     color: white;
 }

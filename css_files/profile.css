@@ -1,0 +1,153 @@
+body{
+    font-family: "Amazon Ember", Arial, sans-serif;
+}
+.profileDiv{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.profileDiv a{
+    color: #007185;
+}
+.profileDivInner{
+    width: 60%;
+    max-width: 600px;
+    padding-top: 30px;
+}
+.profileDiv li{
+    list-style-type: none;
+}
+.profileMain{
+    border: 1px solid #D3D3D3;
+    border-radius: 8px;
+    padding: 5px 15px;
+    margin-top: 10px;
+    margin-bottom: 120px;
+    line-height: 20px;
+}
+.profileMain span{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.profileMain p{
+    font-size: 13px;
+    max-width: 450px;
+}
+
+.Editbtn {
+    width: 130px !important;
+}
+.profileMain ul li{
+    padding-bottom: 30px;
+}
+#overshade1{
+    position: absolute;
+    /* top:-15px; */
+    height:150vh;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.2);
+    /* background-color: white; */
+    /* display: none; */
+    z-index: 10;
+}
+.closemark{
+    position: absolute; top:10px; right:20px; font-size: xx-large;
+}
+.closemark:hover{
+    cursor: pointer;
+}
+.abd{
+    color: #0066c0;
+    text-decoration: underline;
+}
+.abd:hover{
+    color: coral;
+}
+.verifypageinner{
+    background-color: white;
+    width:400px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: #D3D3D3 solid 1px;
+    border-radius: 8px;
+    padding-bottom: 40px;
+    position: relative;
+}
+#verifypage{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    flex-direction: column;
+}
+.verifyProfile{
+    display: flex;
+    align-items: center;
+    gap:10px;
+}
+.text{
+    font-size: 12px;
+    padding-left: 70px;
+}
+.verifyContainer{
+    padding: 20px;
+    width:300px;
+    display: flex;
+    flex-direction: column;
+    border: #D3D3D3 solid 1px;
+    border-radius: 8px;
+    gap: 20px;
+}
+.varifyLogo{
+    width: 50px;
+    height: 50px;
+}
+#logo{
+    width: 100px;
+    height: 30px;
+    margin-bottom: 10px;
+}
+.verify_inner{
+    display: flex;
+    flex-direction: column;
+}
+.inputfield{
+    width: 98%;
+    height: 30px;
+    border: solid #929292 1.33px; 
+    border-radius: 5px;
+    margin-top: 4px;
+    padding-inline-start: 8px;
+}
+.inputfield:focus{
+    outline:none;
+    box-shadow: 0 0 5px rgba(0, 255, 255, 0.7), 0 0 3px rgba(0, 128, 0, 0.5);
+}
+.button1{
+    margin-top: 12px;
+    width: 102%;
+    height: 30px;
+    border: solid #D3D3D3 1px; 
+    border-radius: 8px;
+    background-color:gold;
+    padding: 5px;
+    font-size: small;
+}
+.button1:hover{
+    background-color: #fbcb50;
+}
+.verify_sub{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 14px;
+}
+.forgota{
+    font-size: 14px; color: #0066c0;
+}
+.forgota:hover{
+    text-decoration: underline;
+    color: coral;
+}

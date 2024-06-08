@@ -11,6 +11,9 @@
     <link rel="stylesheet" href="../css_files/smart-wagon.css">
 </head>
 <body>
+    <div id="overshade">
+        <div id="loader" class="center"></div>
+    </div>
     <div id="content"></div>
     <cartItemsDiv>
         <div class="CartItemLeft">
@@ -25,7 +28,7 @@
                     <input type="button" value="Got to Cart" class="wish_list_btn" onclick="window.location.href='./cart.html';">
                 </div>
             </div>
-            <div class="suggestedDiv">
+            <!-- <div class="suggestedDiv">
                 <div class="foot-top1">
                     <div id="foot-top1-heading">
                         <h3>Customers who viewed items in your browsing history also viewed</h3>
@@ -48,7 +51,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> -->
         </div>
         <!-- <div class="cartItemRight">
             <div class="cartItemRight-inner">
@@ -90,6 +93,7 @@
             </div>
         </div> -->
     </cartItemsDiv>
+    <div id="suggestions"></div>
     <div id="footer"></div>
     <script src="../scripts/footer.js"></script>
     <script src="../scripts/smart-wagon.js"></script>

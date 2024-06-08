@@ -1,6 +1,6 @@
 window.onload = function() {
-    loadPageh('../html_files/template.html', contentDiv );
     loadPage('../html_files/footer-template.html', footerDiv);
+    loadPageh('../html_files/template.html', contentDiv );
     var img = document.getElementById('cartItemImg');
     let itemimg = JSON.parse(localStorage.getItem('CartItems'));
     img.src = itemimg[itemimg.length-1].product.imageUrl;
@@ -9,9 +9,12 @@ window.onload = function() {
     else{
         console.log('cartItems not found');
     }
+    loadSuggesions(suggestedDiv);
 };
+
 const contentDiv = document.getElementById('content');
 const footerDiv=document.getElementById('footer');
+const suggestedDiv=document.getElementById('suggestions');
 function loadBuyPage() {
     alert('Payment');
 }

@@ -1,0 +1,83 @@
+#reviewContent{
+    width: 100%;
+    min-height: 160px;
+    flex-direction: column;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.reviewContentInner{
+    width: 68%;
+    height: 80px;
+    background-color: #cc0c39;
+    padding: 2px;
+    border-radius: 8px;
+}
+.reviewContentInner1{
+    background-color: white;
+    border-radius: 8px;
+    margin-left: 10px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.reviewmsg{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap:10px;
+    padding: 20px;
+}
+.reviewmsgp{
+    font-size: 14.5px;
+    line-height: 20px;
+    color :#d00!important;
+}
+.reviewProductImage{
+    width:25px;
+    height: 25px;
+}
+.reviewContentWriteInner{
+    height: 100%;
+    padding:20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+.reviewContentWrite{
+    width: 100%;
+    min-height: 100px;
+    display: flex;
+    flex-direction: column;
+}
+#file-upload-container{
+    height: 80px; width: 80px; 
+    border: gray dashed 2px; 
+    display: flex; 
+    align-items: center;
+    justify-content: center; 
+    cursor: pointer;
+}
+/* .reviewstarsDiv{
+
+} */
+.reviewStars{
+    font-size: 25px;
+    margin-top: 8px;
+}
+.reviewPhotoDiv1{
+    margin-top: 20px; display: flex; gap:8px; flex-direction: column;
+}
+#Reviewtext{
+    box-sizing: border-box;
+    resize: none;
+    width: 92%; margin-top: 10px; padding: 8px;
+}
+#ReviewSubmit{
+    align-self: flex-end;
+    margin-right: 90px;
+}
+.checked {
+    color: orange;
+}

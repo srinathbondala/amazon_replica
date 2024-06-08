@@ -8,6 +8,7 @@ cartItemsDiv{
     background-color: #f3f3f3;
 }
 .CartItemLeft{
+    width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -74,7 +75,7 @@ cartItemsDiv{
     height:100px;
 }
 .suggestedDiv,.foot-top1{
-    width: 96.5%;
+    width: 98%;
     background-color: white;
 }
 #footer{

@@ -39,7 +39,7 @@ function checkSignIn(){
       console.log('JWT token is available');
       // console.log(jwtToken);
       showloader();
-      const signinFooterDiv = document.querySelector('.signin');
+      const signinFooterDiv = document.getElementById("signin_footer_div");
       const usernameHeaderElement = document.getElementById("user_name_header");
       const nameUpdateInAllElement = document.getElementById("all_username");
       const headerSignInElement = document.getElementById("header_signin");
@@ -105,6 +105,7 @@ function loadPage(pageUrl, value) {
   .then(response => response.text())
   .then(html => {
       value.innerHTML = html;
+      checkSignIn();
   })
   .catch(error => {
       console.error('Error fetching page:', error);
@@ -136,6 +137,12 @@ function loadPageh(pageUrl, value) {
   .then(html => {
       value.innerHTML = html;
       checkSignIn();
+      let signinFooterDiv = document.querySelector('.signin');
+      if (signinFooterDiv) {
+        signinFooterDiv.style.display = "none";
+      } else {
+          console.log("Element with class .signin not found.");
+      }
       adjustWidth();
       validateCartDiv();
   })
@@ -232,13 +239,13 @@ function orderbtn(){
     window.location.href = "signin_page.html";
   }
 }
-function togglerightb(){
-  const tglright = document.getElementById("browsing");
+function togglerightb(slide){
+  let tglright = slide.closest(".foot-top1-inner").querySelector(".browsing");//document.getElementById("browsing");
   tglright.scrollLeft += 500;
 }
-function toggleleftb(){
-  const tglright = document.getElementById("browsing");
-  tglright.scrollLeft -= 500;
+function toggleleftb(slide){
+  let tglleft = slide.closest(".foot-top1-inner").querySelector(".browsing"); //document.getElementById("browsing");
+  tglleft.scrollLeft -= 500;
 }
 function draweropt(){
   const drawer = document.getElementById("drawer");
@@ -347,23 +354,70 @@ function renderCartData(data){
       <div class="ItemsInCart">
           <hr class="hr">
           <div class="cartBarItem">
-              <img src="${item.imageUrl}" alt="img" class="ImgeInCart">
+               <a href='product_details.html?k=${item.category}&text=${item.id}' ><img src="${item.imageUrl}" alt="img" class="ImgeInCart"> </a>
               <p>${item.price}</p>
-              <div class="cartBarItemInner">
-                  <select name="1" id="select" class="categorydropdown" style="padding: 0px 15px; height: 20px;">
-                      <option value="1">1</option>
-                      <option value="2">2</option>
-                      <option value="3">3</option>
-                      <option value="4">4</option>
-                  </select>
-                  <span class="quantity" style="padding: 4px; width:15px; height:15px;">
-                      <img src="../background_images/trash_icon.png" alt="delete" style="height: 15px; width: 15px;">
-                  </span>
-              </div>
           </div>
       </div>
       `;
   });
-  cartItems.innerHTML = '';
-  cartItems.innerHTML += templateinnerHTML;
+//   <div class="cartBarItemInner">
+//   <select name="1" id="select" class="categorydropdown" style="padding: 0px 15px; height: 20px;">
+//       <option value="1">1</option>
+//       <option value="2">2</option>
+//       <option value="3">3</option>
+//       <option value="4">4</option>
+//   </select>
+//   <span class="quantity" style="padding: 4px; width:15px; height:15px;">
+//       <img src="../background_images/trash_icon.png" alt="delete" style="height: 15px; width: 15px;">
+//   </span>
+// </div>
+  cartItems.innerHTML = `
+    <div class="cartItemRight-inner">
+        <p>Subtotal</p>
+        <h2>$1,189.49</h2>
+        <input type="button" value="Got to Cart" class="wish_list_btn" style="width: 90%;font-size: 12px;" onclick="window.location.href='../html_files/cart.html'">
+    </div>`;
+  cartItems.innerHTML += templateinnerHTML+'</div>';
+}
+function loadSuggesions(suggestedDiv){
+  suggestedDiv.innerHTML += `
+      <div class="foot-top1">
+          <div id="foot-top1-heading">
+              <h3>Customers who viewed items in your browsing history also viewed</h3>
+              <span>Page 1 of 7</span>
+          </div>
+          <div class="foot-top1-inner">
+              <span class="togglebuttons" style="left:0;" onclick="toggleleftb(this)"> <span><img src="https://cdn-icons-png.flaticon.com/128/271/271220.png" alt=">" class="toggleimgbtn"> </span></span>
+              <span class="togglebuttons" style="right: 0;" onclick="togglerightb(this)"><span><img src="https://cdn-icons-png.flaticon.com/128/271/271228.png" alt="<" class="toggleimgbtn"></span> </span>
+              <div class="fotter-inner-browse">
+                  <ul class="browsing">
+                      <li><img src="https://images-na.ssl-images-amazon.com/images/I/71bcZVEOwqL._AC_UL320_SR320,320_.jpg" alt="Product Image"></li>
+                      <li><img src="https://images-na.ssl-images-amazon.com/images/I/71bcZVEOwqL._AC_UL320_SR320,320_.jpg" alt="Item Image"></li>
+                      <li><img src="https://images-na.ssl-images-amazon.com/images/I/71bcZVEOwqL._AC_UL320_SR320,320_.jpg" alt="Merchandise Image"></li>
+                      <li><img src="https://images-na.ssl-images-amazon.com/images/I/71bcZVEOwqL._AC_UL320_SR320,320_.jpg" alt="Product Image"></li>
+                      <li><img src="https://images-na.ssl-images-amazon.com/images/I/71bcZVEOwqL._AC_UL320_SR320,320_.jpg" alt="Item Image"></li>
+                      <li><img src="https://images-na.ssl-images-amazon.com/images/I/71bcZVEOwqL._AC_UL320_SR320,320_.jpg" alt="Merchandise Image"></li>
+                      <li><img src="https://images-na.ssl-images-amazon.com/images/I/71bcZVEOwqL._AC_UL320_SR320,320_.jpg" alt="Goods Image"></li>
+                      <li><img src="https://images-na.ssl-images-amazon.com/images/I/71bcZVEOwqL._AC_UL320_SR320,320_.jpg" alt="Merchandise Photo"></li>
+                  </ul>
+              </div>
+          </div>
+      </div>
+  `;
+  // fetch('http://localhost:8080/amazon/data')
+  // .then(response => response.json())
+  // .then(data => {
+  //     loadSuggesionsData(data);
+  // })
+  // .catch(error => console.error('Error:', error));
+}
+function loadSuggesionsData(data){
+  const browsing = document.getElementById('browsing');
+  let templateinnerHTML = '';
+  data.forEach((item,index)=>{
+      templateinnerHTML += `
+      <li><img src="${item.imageUrl}" alt="Product Image"></li>
+      `;
+  });
+  browsing.innerHTML = templateinnerHTML;
 }

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login and Security</title>
+    <link rel="icon" href="https://th.bing.com/th/id/OIP.ayRsQH0mda6kJjYZLRHgkQHaGO?w=204&h=180&c=7&r=0&o=5&dpr=1.5&pid=1.7" type="image/png">
+    <link rel="stylesheet" href="../css_files/style.css">
+    <link rel="stylesheet" href="../css_files/navbar.css">
+    <link rel="stylesheet" href="../css_files/footer.css">
+    <link rel="stylesheet" href="../css_files/profile.css">
+</head>
+<body>
+    <div id="overshade">
+        <div id="loader" class="center"></div>
+    </div>
+    <div id="overshade1">
+        <div id="verifypage">
+            <div class="verifypageinner">
+                <img src="../background_images/logo.jpeg" alt="logo1" id="logo"/>
+                <span class="closemark" onclick="closeVerifyPage();">×</span>
+                <div class="verifyContainer">
+                    <h1 style="font-weight:100;margin-top: 0px; font-size: 30px;" id="signin_heading">Sign in</h1>
+                    <hr class="hr">
+                    <div class="verify_inner">
+                        <div class="verifyProfile">
+                            <img src="../background_images/profileimg.png" alt=":)" class="varifyLogo">
+                            <div>
+                                <p>Srinath Bondala</p>
+                                <p style="font-size: 14px;">+918500152222</p>
+                            </div>
+                        </div>
+                        <div class="verify_sub">
+                            <p style="font-size: 14px;">Password</p>
+                            <a href="#" class="forgota">Forgot password</a>
+                        </div>
+                        <input type="password" class="inputfield" id="verifyPassword" placeholder="Password"/>
+                        <button onclick="signincall()" style="margin-top: 25px;" class="button1">Sign in</button><br>
+                        </div>
+                    <p class="text">To Switch Account <a href="../html_files/signin_page.html" class="abd">Click Here</a></p>
+                    <hr class="hr">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="content"></div>
+    <div class="profileDiv">
+        <div class="profileDivInner">
+            <div class="order_hedding"><p><a href="../html_files/homepage.html" class="a">Your Account</a> <span> > </span> <span style="color: #c45500; font-size: 14px;">Your Orders</span></p></div>
+            <h1 style="font-weight: 400;margin-top: 20px; font-size: 28px;">Login and Security</h1>
+            <div class="profileMain">
+                <ul>
+                    <li>
+                        <span><h4 style="font-weight: 700; font-size: 14px;">Name</h4> <input type="button" value="Edit" class="Editbtn wish_list_btn"> </span>
+                        <p>Srinath Bondala</p>
+                    </li>
+                    <hr class="hr">
+                    <li>
+                        <span><h4 style="font-weight: 700; font-size: 14px;">Email</h4> <input type="button" value="Edit" class="Editbtn wish_list_btn"> </span>
+                        <p>For stronger account security, add your email. If there’s an unusual sign-in, we’ll email you and verify that it’s really you.</p>
+                    </li>
+                    <hr class="hr">
+                    <li>
+                        <span><h4 style="font-weight: 700; font-size: 14px;">Primary mobile number</h4> <input type="button" value="Edit" class="Editbtn wish_list_btn"> </span>
+                        <p style="font-size: 15px;">+918500152222</p>
+                        <p>Quickly sign in, easily recover passwords and receive security notifications with this mobile number.</p>
+                    </li>
+                    <hr class="hr">
+                    <li>
+                        <span><h4 style="font-weight: 700; font-size: 14px;">Password</h4> <input type="button" value="Edit" class="Editbtn wish_list_btn"> </span>
+                        <p style="font-size: 20px;">*********</p>
+                    </li>
+                    <hr class="hr">
+                    <li>
+                        <span><h4 style="font-weight: 700; font-size: 14px;">Delete Account</h4> <input type="button" value="Delete Account" class="Editbtn wish_list_btn"> </span>
+                        <p style="font-size: 14px; color: #c45500;">Danger Once Account Deleted will Not Be revived !!!</p>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div id="footer"></div>
+    <script src="../scripts/profile.js"></script>
+    <script src="../scripts/footer.js"></script>
+</body>
+</html>

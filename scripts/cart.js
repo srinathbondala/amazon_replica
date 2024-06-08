@@ -6,6 +6,7 @@ window.onload = function() {
     if(getCookie('jwtToken')){
         // renderCartData(cartData);
         loadCartDataC();
+        loadSuggesions(suggestedDiv);
     }
     else{
         document.querySelector('cartleftbottom').innerHTML = "";
@@ -23,6 +24,7 @@ window.onload = function() {
     </div>`;
     }
 }
+const suggestedDiv=document.getElementById('suggestions');
 const cartData = [
     {
       id: 'item1',

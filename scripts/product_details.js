@@ -5,7 +5,7 @@ window.onload = function() {
     document.getElementById("myresult").style.display="none";
     performsomeaction();
     loadData();
-    var cartimg, cartprice, carturl;
+    var cartimg, cartprice, carturl,cartdis;
 };
 
 
@@ -22,7 +22,8 @@ function performsomeaction(){
         item.style.paddingLeft = "40px";
         marker.style.marginLeft = "40.5px";
         document.querySelector(".result-content").style.width = "40%";
-        document.getElementById("myresult").style.width = "780px";
+        document.getElementById("myresult").style.width = "690px";
+        document.getElementById("myresult").style.right="110px";
     }
 }
 function loadData() {
@@ -58,6 +59,7 @@ function renderData(data) {
     cartimg=data.imageUrl;
     cartprice=data.price;
     carturl=data.url;
+    cartdis=data.title;
     // document.getElementById("soldbya").setAttribute("href", "http://localhost:8080/amazon/brand.html?text=" + data.brand);
     // alert(data.brand);
     document.querySelector(".product-info p span").textContent = " "+ data.ratingCount + " ratings";
@@ -165,6 +167,12 @@ function review(comments,rating,count,ratingval){
         `;
     }
     template += `</div>`;
+    template+=`<br><br><hr class="hr">
+        <br><h3>Review this product</h3>
+        <p style="margin-top:10px; font-size:14.5px;">Share your thoughts with other customers</p>
+        <input type="button" value="Write a customer review" class="wish_list_btn" style="margin-top:15px; width:300px; margin-bottom:25px;" onclick="addComments();"> </div>
+        <hr class="hr">
+    `;
     reviewgdiv.innerHTML = template;
 }
 
@@ -182,10 +190,9 @@ function comments(comment){
         // Add more reviews data here
     ];
 
-    let html = "";
+    let html = `<span class="heading" >Top reviews</span><br> `;
     for (let review of comment) {
         html += `
-            <span class="heading" >Top reviews</span> <br>
             <div class="comment">
                 <br>
                 <span class="commentimg-div"><img src="${userImg}" alt="user" class="userimglogo"><a href="#" alt="user" style="color:black;"><p style="font-size:16px;">${review.user_name}</p></a></span>
@@ -272,6 +279,18 @@ function AddToCart(){
         hideloader();
     }, 2000);
     
+}
+function addComments(){
+    var id= getTextFromURL();
+    let revitem = {
+        "id": id,
+        "imageUrl":cartimg,
+        "price": cartprice,
+        "url": carturl,
+        "title":cartdis
+    }
+    localStorage.setItem('ReviewItems',JSON.stringify(revitem));
+    window.location.href = "review.html?text="+getTextFromURL();
 }
 
 function imageZoom(imgID, resultID) {

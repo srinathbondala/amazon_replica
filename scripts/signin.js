@@ -57,7 +57,7 @@ async function signin(){
             "username": email,
             "password": password
         };
-        console.log(loginRequest);
+        // console.log(loginRequest);
         try {
             const response = await fetch('http://localhost:8080/auth1/signin', {
                 method: 'POST',
@@ -86,6 +86,7 @@ async function signin(){
             window.location.href = 'index.html';
         } catch (error) {
             console.error('Error:', error);
+            launch_toast('Error Ocurred while logging in');
         }
     }
     else{
