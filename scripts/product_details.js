@@ -227,42 +227,42 @@ function AddToCart(){
             var quantity = document.getElementById("quantity").value;
             if(quantity>0){
                 showloader();
-                // fetch('http://localhost:8080/user/addToCart', {
-                //     method: 'POST',
-                //     headers: {
-                //         'Content-Type': 'application/json',
-                //         'Authorization': 'Bearer ' + jwtToken
-                //     },
-                //     body: JSON.stringify({
-                //         "productId": id,
-                //         "quantity": parseInt(quantity),
-                //         "inCart": true
-                //     })
-                // })
-                // .then(response => response)
-                // .then(data =>{
-                //     console.log(data);
-                    // var cartitem = JSON.parse(localStorage.getItem('CartItems'));
-                    // cartitem.push({
-                    //         "product": {
-                    //             "id": id,
-                    //             "imageUrl":cartimg,
-                    //             "price": cartprice,
-                    //             "url": carturl
-                    //         },
-                    //         "quantity": parseInt(quantity),
-                    //         "inCart": true
-                    //     });
-                    // localStorage.setItem('CartItems',JSON.stringify(cartitem));
-                    // getCartDataFromServer();
+                fetch('http://localhost:8080/user/addToCart', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': 'Bearer ' + jwtToken
+                    },
+                    body: JSON.stringify({
+                        "productId": id,
+                        "quantity": parseInt(quantity),
+                        "inCart": true
+                    })
+                })
+                .then(response => response)
+                .then(data =>{
+                    console.log(data);
+                    var cartitem = JSON.parse(localStorage.getItem('CartItems'));
+                    cartitem.push({
+                            "product": {
+                                "id": id,
+                                "imageUrl":cartimg,
+                                "price": cartprice,
+                                "url": carturl
+                            },
+                            "quantity": parseInt(quantity),
+                            "inCart": true
+                        });
+                    localStorage.setItem('CartItems',JSON.stringify(cartitem));
+                    getCartDataFromServer();
                     console.log("Added to cart");
                     window.location.href = "smart-wagon.html?newitem="+id;
-                // })
-                // .catch(error => {
-                //     console.error('Error:', error);
-                // });
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                });
                 hideloader();
-                // localStorage.removeItem(id);
+                localStorage.removeItem(id);
             }
             else{
                 alert("Please enter valid quantity");

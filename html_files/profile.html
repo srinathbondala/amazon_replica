@@ -19,6 +19,12 @@
             <div class="verifypageinner">
                 <img src="../background_images/logo.jpeg" alt="logo1" id="logo"/>
                 <span class="closemark" onclick="closeVerifyPage();">×</span>
+                <div id="incorrectMain">
+                    <div id="incorrectDiv">
+                        <span style="color: red; margin-right: 20px;font-size: 40px;">&#9888;</span>
+                        <p style="color: red; text-align: center;">Incorrect Password,<br>Please Enter Proper Password</p>
+                    </div>
+                </div>
                 <div class="verifyContainer">
                     <h1 style="font-weight:100;margin-top: 0px; font-size: 30px;" id="signin_heading">Sign in</h1>
                     <hr class="hr">
@@ -26,16 +32,16 @@
                         <div class="verifyProfile">
                             <img src="../background_images/profileimg.png" alt=":)" class="varifyLogo">
                             <div>
-                                <p>Srinath Bondala</p>
-                                <p style="font-size: 14px;">+918500152222</p>
+                                <p id="nameVerify">Srinath Bondala</p>
+                                <p style="font-size: 14px;" id="numberVerify">+918500152222</p>
                             </div>
                         </div>
                         <div class="verify_sub">
                             <p style="font-size: 14px;">Password</p>
                             <a href="#" class="forgota">Forgot password</a>
                         </div>
-                        <input type="password" class="inputfield" id="verifyPassword" placeholder="Password"/>
-                        <button onclick="signincall()" style="margin-top: 25px;" class="button1">Sign in</button><br>
+                        <input type="password" class="inputfield" id="verifyPassword" placeholder="Password" required/>
+                        <button style="margin-top: 25px;" class="button1" id="verifyUserBtn">Sign in</button><br>
                         </div>
                     <p class="text">To Switch Account <a href="../html_files/signin_page.html" class="abd">Click Here</a></p>
                     <hr class="hr">
@@ -46,34 +52,34 @@
     <div id="content"></div>
     <div class="profileDiv">
         <div class="profileDivInner">
-            <div class="order_hedding"><p><a href="../html_files/homepage.html" class="a">Your Account</a> <span> > </span> <span style="color: #c45500; font-size: 14px;">Your Orders</span></p></div>
-            <h1 style="font-weight: 400;margin-top: 20px; font-size: 28px;">Login and Security</h1>
+            <div class="order_hedding"><p><a href="../html_files/homepage.html" class="a">Your Account</a> <span> > </span> <span style="color: #c45500; font-size: 13px;">Login & Security</span></p></div>
+            <h1 style="font-weight: 400;margin-top: 20px; font-size: 28px;">Login & Security</h1>
             <div class="profileMain">
                 <ul>
                     <li>
-                        <span><h4 style="font-weight: 700; font-size: 14px;">Name</h4> <input type="button" value="Edit" class="Editbtn wish_list_btn"> </span>
-                        <p>Srinath Bondala</p>
+                        <span><h4 style="font-weight: 700; font-size: 14px;">Name</h4> <input type="button" value="Edit" class="Editbtn wish_list_btn" onclick="verifyUser('UserName')"> </span>
+                        <p id="nameVerify1">Srinath Bondala</p>
                     </li>
                     <hr class="hr">
                     <li>
-                        <span><h4 style="font-weight: 700; font-size: 14px;">Email</h4> <input type="button" value="Edit" class="Editbtn wish_list_btn"> </span>
+                        <span><h4 style="font-weight: 700; font-size: 14px;">Email</h4> <input type="button" value="Edit" class="Editbtn wish_list_btn" onclick="verifyUser('Email');"> </span>
                         <p>For stronger account security, add your email. If there’s an unusual sign-in, we’ll email you and verify that it’s really you.</p>
                     </li>
                     <hr class="hr">
                     <li>
-                        <span><h4 style="font-weight: 700; font-size: 14px;">Primary mobile number</h4> <input type="button" value="Edit" class="Editbtn wish_list_btn"> </span>
-                        <p style="font-size: 15px;">+918500152222</p>
+                        <span><h4 style="font-weight: 700; font-size: 14px;">Primary mobile number</h4> <input type="button" value="Edit" class="Editbtn wish_list_btn" onclick="verifyUser('PhoneNo');"> </span>
+                        <p style="font-size: 15px;" id="verifynumber">+918500152222</p>
                         <p>Quickly sign in, easily recover passwords and receive security notifications with this mobile number.</p>
                     </li>
                     <hr class="hr">
                     <li>
-                        <span><h4 style="font-weight: 700; font-size: 14px;">Password</h4> <input type="button" value="Edit" class="Editbtn wish_list_btn"> </span>
+                        <span><h4 style="font-weight: 700; font-size: 14px;">Password</h4> <input type="button" value="Edit" class="Editbtn wish_list_btn" onclick="verifyUser('Password');"> </span>
                         <p style="font-size: 20px;">*********</p>
                     </li>
                     <hr class="hr">
                     <li>
-                        <span><h4 style="font-weight: 700; font-size: 14px;">Delete Account</h4> <input type="button" value="Delete Account" class="Editbtn wish_list_btn"> </span>
-                        <p style="font-size: 14px; color: #c45500;">Danger Once Account Deleted will Not Be revived !!!</p>
+                        <span><h4 style="font-weight: 700; font-size: 14px;">Delete Account</h4> <input type="button" value="Delete Account" class="Editbtn wish_list_btn" onclick="verifyUser('Delete');"> </span>
+                        <p style="font-size: 14px; color: #c45500;">&#9888; Danger Once Account Deleted will Not Be revived !!!</p>
                     </li>
                 </ul>
             </div>

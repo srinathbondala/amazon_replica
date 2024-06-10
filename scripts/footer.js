@@ -209,9 +209,9 @@ function siginbtn(){
 }
 
 
-function setCookie(name, value) {
+function setCookie(name, value,minutes=86400000) {
   const date = new Date();
-  date.setTime(date.getTime() + 86400000); // 24 hours in milliseconds
+  date.setTime(date.getTime() +minutes ); // 24 hours in milliseconds
   const expires = "expires=" + date.toUTCString();
   document.cookie = name + "=" + value + ";" + expires + ";path=/";
 }
@@ -420,4 +420,11 @@ function loadSuggesionsData(data){
       `;
   });
   browsing.innerHTML = templateinnerHTML;
+}
+function stopScroll(){
+  window.scrollTo(0, 0);
+  document.documentElement.style.overflow = 'hidden';
+}
+function startScroll(){
+  document.documentElement.style.overflow = 'auto';
 }
