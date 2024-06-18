@@ -4,13 +4,9 @@ body{
 p{
     font-family:  Arial, sans-serif;
 }
-.atype,cartdiv a,.a{
+.atype,cartdiv a{
     color:darkcyan;
     font-size: 14px;
-}
-.a:hover{
-    text-decoration: underline;
-    cursor: pointer;
 }
 cartdiv a:hover, .atype:hover{
     color: lightcoral;

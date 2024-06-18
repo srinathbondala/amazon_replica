@@ -1,0 +1,60 @@
+body{
+    font-family: "Amazon Ember", Arial, sans-serif;
+    line-height: 20px;
+}
+.payMainBody{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.payBody{
+    padding: 0 100px;
+}
+.payLeftBody{
+    width: 70%;
+}
+.payHeraderupper{
+    width: 100%;
+}
+h1 {
+    font-weight: 400;
+    font-size: 28px;
+    line-height: 36px;
+}
+h1, h2, h3, h4 {
+    text-rendering: optimizeLegibility;
+}
+.payHeading{
+    border-color: #ddd !important;
+    border-style: solid !important;
+    border-width: 0 0 1px 0 !important;
+    height: 60px;
+    padding-top: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+#amazonicon{
+    width: 105px;
+    height: 32px;
+    mix-blend-mode:multiply;
+    margin-top: 10px;
+    margin-left: -25px;
+}
+.lock{
+    margin-right: 60px;font-size: x-large;
+}
+.lock:hover,#amazonicon:hover{
+    cursor: pointer;
+}
+.Addressoption{
+    display: none;
+}
+#AllAdress{
+    display:none;
+}
+li p{
+    color: #333;
+    font-size: 14px;
+}

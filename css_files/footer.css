@@ -334,3 +334,12 @@ sub-top{
 .quantity:focus{
     outline: none;
 }
+
+.a{
+    color:darkcyan;
+    font-size: 14px;
+}
+.a:hover{
+    text-decoration: underline;
+    cursor: pointer;
+}

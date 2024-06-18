@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Amazon.com Checkout</title>
+    <link rel="icon" href="/background_images/iconlogo.jpeg" type="image/png">
+    <link rel="stylesheet" href="../css_files/style.css">
+    <link rel="stylesheet" href="../css_files/navbar.css">
+    <link rel="stylesheet" href="../css_files/footer.css">
+    <link rel="stylesheet" href="../css_files/payment.css">
+</head>
+<body>
+    <div id="overshade">
+        <div id="loader" class="center"></div>
+    </div>
+    <div class="payMainBody">
+        <div class="payHeraderupper">
+            <div class="payHeading">
+                <img src="/background_images/logo.jpeg" alt="amazon" id="amazonicon" onclick="window.location.href=`../html_files/cart.html`;">
+                <h1 style="width:50%; text-align: center;">Checkout ( <span id="paycnt">1</span> itms )</h1>
+                <p class="lock" onclick="window.open(`https://www.amazon.com/gp/help/customer/display.html?nodeId=GX7NJQ4ZB8MHFRNJ&ref_=ox_spc_privacy&ie=UTF8`, '_blank');">&#x1F512;</p>
+            </div>
+        </div>
+        <div class="payBody">
+            <div class="payLeftBody">
+                <ol>
+                    <br>
+                    <li>
+                        <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+                        <h3 id="shipheading"> Shipping address</h3>
+                            <label class="defaultAddress">
+                                <input type="radio" name="group1" value="address1" class="Addressoption">
+                                <p>Chilukamari Krishna teja</p>
+                                <p>SENIOUR CIVIL JUDGE QUATERS . QUATER No.B3</p>
+                                <p>West Marredpally. SECUNDERABAD</p>
+                                <p>SECUNDERABAD, TELANGANA 500026</p>
+                            </label>
+                            <div id="AllAdress">
+                                <label>
+                                    <input type="radio" name="group1" value="address2">
+                                    Option 2
+                                </label>
+                            </div>
+                            <p onclick="ShowAdress();" class="a">Change</p>
+                        </div>
+                    </li><hr class="hr" style="margin: 10px -20px;">
+                    <li>
+                        <h3> Add ID for customs clearence</h3>
+                        <div class="customPayDetails">
+                            <p>Customs regulations for India require the following information for this shipping address: ID number. This ID will be stored securely and used solely for the purpose of clearing customs (including sharing it with carriers and customs officials) for this order, future orders, and any product returns.</p>
+                            <ul>
+                                <li>
+                                    <img src="/background_images/9_messageslogo.jpg" alt="i">
+                                    <div>
+                                        <p>Address on identification documents must match recipient’s address to clear customs. If this is different, or if a document type has been provided which does not include proof of address (e.g. PAN card, non-Indian passport), the carrier will request additional documentation to verify address in order to clear customs.</p>
+                                        <br>
+                                        <div id="payAdress" class="payaddress">
+                                            <p>Chilukamari Krishna teja
+                                                SENIOUR CIVIL JUDGE QUATERS . QUATER No.B3
+                                                West Marredpally. SECUNDRABAd SECUNDERABAD, TELANGANA
+                                                SECUNDERABAD, TELANGANA 500026
+                                                Phone number: 6303382490</p>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <select name="SelectId" id="custom_id">
+                                        <option value="" disabled selected>Select Id document</option>
+                                        <option value="aadhar">Aadhar Card</option>
+                                        <option value="pan">PAN Card</option>
+                                        <option value="passport">Passport</option>
+                                    </select>
+                                    <div class="collectIdData"></div>
+                                </li>
+                                <input type="button" value="Continue">
+                            </ul>
+                        </div>
+                    </li><hr class="hr" style="margin: 10px -20px;">
+                    <li>
+                        <h3> Items Info</h3>
+                        <div class="displayItems">
+                            <p>display items here</p>
+                        </div>
+                        <input type="button" value="Continue">
+                    </li><hr class="hr" style="margin: 10px -20px;">
+                    <li>
+                        <h3> Payment</h3>
+                        <div class="payMethod">
+                            <input type="button" value="Continue to Pay" id="razerpay">
+                        </div>
+                    </li>
+                    <hr class="hr" style="margin: 10px -20px; height: 2px;">
+                </ol>
+            </div>
+            <div class="payRightBody"></div>
+        </div>
+    </div>
+    <script src="../scripts/payment.js"></script>
+</body>

@@ -37,6 +37,10 @@ inner-head > img {
     
 }
 
+#payment_btn:hover{
+    background-color:#fa8900 !important;
+}
+
 #myimage{
     /* width:420px; */
     width:90%;
@@ -171,6 +175,7 @@ th {
 }
 .add_cart:hover{
     background-color: #fbcb50;
+    cursor: pointer;
 }
 
 #sub-sub-inner table{
