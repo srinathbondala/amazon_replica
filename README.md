@@ -4,13 +4,30 @@ Welcome to the Amazon Clone project! This is a simple e-commerce web application
 
 ## Features
 
-- User Authentication (JWT)
-- Product Listing
-- Shopping Cart
-- Order Management
-- User Profile Management
-- Product Reviews
-- Payment Processing
+- **User Authentication (JWT)**: Secure authentication mechanism using JSON Web Tokens.
+- **Product Listing**: Displaying a catalog of products available for purchase.
+- **Shopping Cart**: Ability to add/remove products to/from the cart.
+- **Order Management**: Processing orders and maintaining order history.
+- **User Profile Management**: Allowing users to manage their profiles.
+- **Product Reviews**: Enabling users to leave reviews for products.
+- **Payment Processing**: Integration with a payment gateway for secure transactions.
+
+## Technologies
+
+### Frontend
+
+- **HTML**: Markup language for creating web pages.
+- **CSS**: Styling language to design the presentation of HTML elements.
+- **JavaScript**: Programming language for interactive web elements and AJAX calls.
+- **AJAX**: Asynchronous JavaScript and XML for making asynchronous HTTP requests.
+
+### Backend
+
+- **Spring Boot**: Java-based framework for building enterprise-grade applications.
+- **JWT (JSON Web Tokens)**: Secure method for transmitting information between parties.
+- **Java**: Backend programming language.
+- **Maven**: Dependency management tool for Java projects.
+- **MongoDB**: NoSQL database for storing application data.
 
 ## Project Structure
 
@@ -95,4 +112,4 @@ This project is licensed under the MIT License.
 
 If you have any questions or suggestions, feel free to reach out.
 
-Happy coding!
+Happy coding
