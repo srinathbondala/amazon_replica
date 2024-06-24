@@ -44,10 +44,16 @@ function logout(){
 }
 
 function signincall(){
-    const overlay = document.getElementById("overshade");
-    overlay.style.display = "block";
-    signin();
-    overlay.style.display = "none";
+    showloader();
+    if(getQueryParam('openid.return_to') == 'SellerDashbord'){
+        sellerAccountSignIn();
+    }else{
+        signin();
+    }
+    hideloader();
+}
+function sellerAccountSignIn(){
+    // alert('Seller Account Setup');
 }
 async function signin(){
     let email = document.getElementById("emailinput").value;
@@ -81,6 +87,7 @@ async function signin(){
                 })
             );
             setCookie('jwtToken',data.accessToken);
+            hideloader();
             launch_toast('Login successful');
             alert('Login successful');
             window.location.href = 'index.html';

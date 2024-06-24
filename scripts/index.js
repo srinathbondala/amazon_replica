@@ -54,22 +54,49 @@ function renderData(data) {
     var templateHTML = '';
     var cnt=0;
     data.forEach(function(item, index) {
-        if (cnt % 4 === 0) {
-            templateHTML += '<div class="targetdiv-item">';
-        }
-        templateHTML += `
-            <div class="targetdiv-inner">
-                <h3 class="targetdiv-inner-h3">${item.title}</h3>
-                <div class="targetdiv-image-container">
-                    <a href="slider-page.html?text=${item.link}">
-                        ${item.imageUrls.map(url => `<img src="${url}" class="targetdiv-image" alt="">`).join('')}
-                    </a>
-                </div> 
-                <a href="slider-page.html?text=${item.link}" class="targetdiv-inner-a">click here</a>
-            </div>
-        `;
-        if ((cnt + 1) % 4 === 0 || (cnt + 1) === data.length) {
+        if(item.link.length>1){
             templateHTML += '</div>';
+            templateHTML+=`
+                <div class="suggestedDiv">
+                <div class="foot-top1">
+                    <div id="foot-top1-heading">
+                        <h3>${item.title}</h3>
+                        <span onclick="window.location.href='slider-page.html?text=${item.category}';" class='a' >See more</span>
+                    </div>
+                    <div class="foot-top1-inner">
+                        <span class="togglebuttons" style="left:0;" onclick="toggleleftb(this)"> <span><img src="https://cdn-icons-png.flaticon.com/128/271/271220.png" alt=">" class="toggleimgbtn"> </span></span>
+                        <span class="togglebuttons" style="right:0;" onclick="togglerightb(this)"><span><img src="https://cdn-icons-png.flaticon.com/128/271/271228.png" alt="<" class="toggleimgbtn"></span> </span>
+                        <div style="overflow:auto; -ms-overflow-style: none; scrollbar-width: none;">
+                            <ul class="browsing" id="browsing" style="-ms-overflow-style: none; scrollbar-width: none;">`
+                            for(var i=0;i<item.imageUrls.length;i++){
+                                templateHTML+=`<li><a href="product_details.html?text=${item.link[i]}"><img src="${item.imageUrls[i]}" alt="Product Image" class="product_img"></a></li>`;
+                            }
+                            templateHTML+=`</ul>
+                        </div>
+                    </div>
+                </div>
+            </div> 
+        `;
+        cnt--;
+        }
+        else{
+            if (cnt % 4 === 0) {
+                templateHTML += '<div class="targetdiv-item">';
+            }
+            templateHTML += `
+                <div class="targetdiv-inner">
+                    <h3 class="targetdiv-inner-h3">${item.title}</h3>
+                    <div class="targetdiv-image-container">
+                        <a href="slider-page.html?text=${item.link}">
+                            ${item.imageUrls.map(url => `<img src="${url}" class="targetdiv-image" alt="">`).join('')}
+                        </a>
+                    </div> 
+                    <a href="slider-page.html?text=${item.link}" class="targetdiv-inner-a">See more</a>
+                </div>
+            `;
+            if ((cnt + 1) % 4 === 0 || (cnt + 1) === data.length) {
+                templateHTML += '</div>';
+            }
         }
         cnt++;
     });

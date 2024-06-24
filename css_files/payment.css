@@ -1,6 +1,7 @@
 body{
     font-family: "Amazon Ember", Arial, sans-serif;
     line-height: 20px;
+    width: 98vw;
 }
 .payMainBody{
     display: flex;
@@ -10,12 +11,14 @@ body{
 }
 .payBody{
     padding: 0 100px;
+    position: relative;
 }
 .payLeftBody{
     width: 70%;
 }
 .payHeraderupper{
     width: 100%;
+    height: 70px;
 }
 h1 {
     font-weight: 400;
@@ -27,6 +30,7 @@ h1, h2, h3, h4 {
 }
 .payHeading{
     border-color: #ddd !important;
+    background-image: url(https://images-na.ssl-images-amazon.com/images/G/31/common/sprites/tspc-header-bkg.png);
     border-style: solid !important;
     border-width: 0 0 1px 0 !important;
     height: 60px;
@@ -34,13 +38,14 @@ h1, h2, h3, h4 {
     display: flex;
     align-items: center;
     justify-content: space-around;
+    margin-left: 2%;
+    margin-right: 2%;
 }
 #amazonicon{
     width: 105px;
     height: 32px;
     mix-blend-mode:multiply;
     margin-top: 10px;
-    margin-left: -25px;
 }
 .lock{
     margin-right: 60px;font-size: x-large;
@@ -50,11 +55,170 @@ h1, h2, h3, h4 {
 }
 .Addressoption{
     display: none;
+    align-self: flex-start;
+    margin-top: 5px;
+    margin-right: 10px;
 }
+
+#hiddentitle{
+    width: 100%;
+    display: none;
+}
+
 #AllAdress{
     display:none;
 }
+
 li p{
     color: #333;
     font-size: 14px;
+}
+
+.infoicon{
+    width:20px;
+    height: 20px;
+}
+
+.customPayDetails{
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 30px;
+    margin-left: 10px;
+    margin-top: 10px;
+}
+
+.defaultadd{
+    background-color: #FCF5EE;
+    border: 1px solid #FBD8B4;
+    border-radius: 5px;
+    padding: 9px;
+}
+
+.addAdress{
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.verifylist li {
+    list-style-type: none;
+    padding: 0;
+}
+
+.defaultAddress{
+    display: flex;
+}
+
+.addressSelect{
+    display: flex; justify-content: space-between; align-items: flex-start;
+}
+
+.addressAddStart{
+    flex-direction: column;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 10px;
+    margin-top: 10px;
+}
+#addNewAddressBtn{
+    color: #007185;
+}
+
+.addicon{
+    width: 14px; height: 14px;
+}
+
+.addAdress:hover{
+    cursor: pointer;
+}
+
+.collectIdData{
+    display: flex;
+    flex-direction: column;
+}
+
+.pa:hover{
+    cursor: pointer;
+}
+
+#adddochead{
+    display: none;
+}
+
+#newdocform{
+    display: none;
+}
+#displayItems{
+    display: none;
+    border-radius: 8px;
+    border : 1px solid #ddd;
+    padding: 20px;
+    margin-top: 10px;
+}
+.ItemsInOrder{
+    width: 100px;
+    border: 1px solid #ddd;
+    padding: 5px;
+}
+#displayOrderItems{
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+}
+.payRightBody{
+    width:25%;
+    position: fixed;
+    top: 80px;
+    right: 50px;
+}
+.payRightInner{
+    padding: 10px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.payRight{
+    border: 1px solid #ddd;
+    border-radius: 8px;
+}
+.orderSummary{
+    display: flex;
+    align-items: center;
+}
+.orderSummary > h3{
+    text-align: left; 
+}
+table tr td{
+    font-size: 12px;
+}
+.td1{
+    padding-right: 60px;
+}
+.ordertot{
+    display: flex; align-items: center; justify-content: space-between; padding: 0 10px;
+    color:brown; font-weight: 600; font-size: 18px;
+}
+@media (max-width: 768px) {
+    .payLeftBody{
+        width: 100%;
+    }
+    .payRightBody {
+        width: 100%;
+        position:relative;
+        right:auto;
+        
+    }
+    .totalHeading{
+        font-size: 16px;
+    }
+    #amazonicon{
+        width: 80px;
+        height: 25px;
+    }
+    .payHeraderupper{
+        height: 60px;
+    }
 }

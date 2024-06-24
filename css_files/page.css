@@ -94,10 +94,10 @@ innerpage-content{
     gap:20px;
     overflow: auto;
 }
-
 .targetdiv-inner{
     height: 100%;
     min-width: 289px;
+    max-width: 290px;
     display: flex;
     flex-direction: column;
     /* justify-content: center; */
@@ -116,12 +116,15 @@ innerpage-content{
     max-height: 280px;
     width: 86%;
     /* padding: 10px; */
-    background-color: violet;
 }
 .targetdiv-image{
     height: 100%;
     width: 100%;
     object-fit: cover;
+    transition: transform .2s;
+}
+.targetdiv-image:hover{
+    transform: scale(1.05);
 }
 .targetdiv-inner-h3{
     align-self: flex-start;
@@ -136,9 +139,17 @@ innerpage-content{
     padding: 20px;
     margin: 0;
     font-size: 14px;
+    margin-bottom: 18px;
 }
 body{
     width: 100%;
+}
+.product_img{
+    transition: transform .2s;
+}
+.product_img:hover{
+    cursor: pointer;
+    transform: scale(1.1);
 }
 /* .cartItemRight{
     display: none;

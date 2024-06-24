@@ -118,11 +118,14 @@ function loadPagep(pageUrl, value) {
   .then(html => {
       value.innerHTML = html;
       checkSignIn();
-      let signinFooterDiv = document.querySelector('.signin');
-      if (signinFooterDiv) {
-        signinFooterDiv.style.display = "none";
-      } else {
-          console.log("Element with class .signin not found.");
+      const jwtToken = getCookie('jwtToken');
+      if(!jwtToken){
+        let signinFooterDiv = document.querySelector('.signin');
+        if (signinFooterDiv) {
+          signinFooterDiv.style.display = "none";
+        } else {
+            console.log("Element with class .signin not found.");
+        }
       }
       adjustWidth();
   })
@@ -137,11 +140,14 @@ function loadPageh(pageUrl, value) {
   .then(html => {
       value.innerHTML = html;
       checkSignIn();
-      let signinFooterDiv = document.querySelector('.signin');
-      if (signinFooterDiv) {
-        signinFooterDiv.style.display = "none";
-      } else {
-          console.log("Element with class .signin not found.");
+      const jwtToken = getCookie('jwtToken');
+      if(!jwtToken){
+        let signinFooterDiv = document.querySelector('.signin');
+        if (signinFooterDiv) {
+          signinFooterDiv.style.display = "none";
+        } else {
+            console.log("Element with class .signin not found.");
+        }
       }
       adjustWidth();
       validateCartDiv();

@@ -9,9 +9,10 @@
     <link rel="stylesheet" href="../css_files/navbar.css">
     <link rel="stylesheet" href="../css_files/page.css">
     <link rel="stylesheet" href="../css_files/content_page.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body>
-    <div id="overshade">
+    <div id="overshade" style="height: 250%;">
         <div id="loader" class="center"></div>
     </div>
     <div id="content"></div>
@@ -28,16 +29,95 @@
         <hr style="align-self: baseline;">
     </div>
     <maindiv>
-        <leftdiv>
+        <leftdiv id="left">
             <p style="font-size: 15px; font-weight: 600;">Popular Shopping Ideas</p>
-            <div id ="Shopping_Ideas">
-                <p> <a href="#" class="leftdiv">Drying Rack</a><br>
-                    <a href="#" class="leftdiv">Storage Rack</a><br>
-                    <a href="#" class="leftdiv">Food Spatula</a><br>
-                    <a href="#" class="leftdiv">Storage Container</a> </p>
-            </div>
+            <ul class="allfildes">
+                <li id="Shopping_Ideas">
+                    <p> 
+                        <a href="#" class="leftdiv">Drying Rack</a><br>
+                        <a href="#" class="leftdiv">Storage Rack</a><br>
+                        <a href="#" class="leftdiv">Food Spatula</a><br>
+                        <a href="#" class="leftdiv">Storage Container</a>
+                    </p>
+                </li>
+                <br>
+                <hr class=""hr>
+                <br>
+                <li id="Department">
+                    <p style="font-size: 15px; font-weight: 600;">Department</p>
+                    <p style="padding-left: 10px; margin-top: 10px;">
+                        <a href="#" class="leftdiv">Home & Kitchen</a><br>
+                        <a href="#" class="leftdiv">Kitchen & Dining</a><br>
+                        <a href="#" class="leftdiv">Bedding & Bath</a><br>
+                        <a href="#" class="leftdiv">Furniture</a><br>
+                        <a href="#" class="leftdiv">Home Decor</a><br>
+                        <a href="#" class="leftdiv">Wall Art</a><br>
+                        <a href="#" class="leftdiv">Lighting</a><br>
+                        <a href="#" class="leftdiv">Storage & Organization</a><br>
+                        <a href="#" class="leftdiv">Cleaning Supplies</a><br>
+                        <a href="#" class="leftdiv">Vacuums & Floor Care</a><br>
+                        <a href="#" class="leftdiv">Heating & Cooling</a><br>
+                        <a href="#" class="leftdiv">Air Quality</a><br>
+                        <a href="#" class="leftdiv">Home Improvement</a><br>
+                        <a href="#" class="leftdiv">Kitchen & Bath Fixtures</a><br>
+                        <a href="#" class="leftdiv">Hardware</a><br>
+                        <a href="#" class="leftdiv">Smart Home</a><br>
+                        <a href="#" class="leftdiv">Home Automation</a><br>
+                        <a href="#" class="leftdiv">Subscribe & Save</a><br>
+                        <a href="#" class="leftdiv">Home</a><br>
+                        <a href="#" class="leftdiv">Home & Business Services</a><br>
+                    </p>
+                </li>
+                <br>
+                <hr class=""hr>
+                <li id="MoneyRange" class="slidecontainer">
+                    <p style="font-size: 15px; font-weight: 600; margin-bottom: 5px;">Price</p>
+                    <p style="margin-bottom: 5px;">$1 - $<span id="moneyselect">150</span></p>
+                    <span class="rangediv">
+                        <input type="range" class="slider1" min="1" max="400" step=1 value=150 id="myRange" oninput="document.getElementById('moneyselect').textContent=this.value;">
+                        <input type="button" value="Go" class="rangeGo" onclick="getProductsOfRange();" id="rangebtn">
+                    </span>
+                </li>
+                <hr class=""hr>
+                <br>
+                <li id="Reviews">
+                    <p style="font-size: 15px; font-weight: 600;">Avg. Customer Review</p>
+                    <p style="padding-left: 10px;">
+                        <a href="#" class="leftdiv" onclick="loadhref('4 Stars & Up');">4 Stars & Up</a><br>
+                        <a href="#" class="leftdiv" onclick="loadhref('3 Stars & Up');">3 Stars & Up</a><br>
+                        <a href="#" class="leftdiv" onclick="loadhref('2 Stars & Up');">2 Stars & Up</a><br>
+                        <a href="#" class="leftdiv" onclick="loadhref('1 Stars & Up');">1 Star & Up</a><br>
+                        <a href="#" class="leftdiv" onclick="loadhref('Avg. Customer Review');">Average Review</a>
+                    </p>
+                </li>
+                <br>
+                <hr class=""hr>
+                <br>
+                <li id="changeColor">
+                    <p style="font-size: 15px; font-weight: 600;">Color</p>
+                    <p style="padding-left: 10px;">
+                        <div class="color-picker">
+                            <input type="color" value="#000000" title="Black" disabled>
+                            <input type="color" value="#FFFFFF" title="White" disabled>
+                            <input type="color" value="#808080" title="Grey" disabled>
+                            <input type="color" value="#FF0000" title="Red" disabled>
+                            <input type="color" value="#0000FF" title="Blue" disabled>
+                            <input type="color" value="#008000" title="Green" disabled>
+                            <input type="color" value="#FFFF00" title="Yellow" disabled>
+                            <input type="color" value="#A52A2A" title="Brown" disabled>
+                            <input type="color" value="#F5F5DC" title="Beige" disabled>
+                            <input type="color" value="#FFA500" title="Orange" disabled>
+                            <input type="color" value="#FFC0CB" title="Pink" disabled>
+                            <input type="color" value="#800080" title="Purple" disabled>
+                            <input type="color" value="#FFD700" title="Gold" disabled>
+                            <input type="color" value="#C0C0C0" title="Silver" disabled>
+                            <a href="#">All</a>
+                        </div>
+                    </p>
+                </li>
+            </ul>
         </leftdiv>
-        <rightdiv>
+        <rightdiv id="right">
             <h3>Results</h3>
             <p style="color:rgb(102, 102, 102); font-size: 14px;margin-top: 2px;">Price and other details may vary based on product size and color.</p>
             <div class="slides" id="products_container">

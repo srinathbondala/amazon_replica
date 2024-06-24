@@ -14,6 +14,9 @@ body{
     justify-content: space-between;
     padding: 10px;
 }
+#foot-top1-heading > span{
+    font-size: small;
+}
 .browsing{
     display: flex; overflow-x: scroll; overflow-y: hidden; max-height: 250px;
     width: 100%;
@@ -336,7 +339,7 @@ sub-top{
 }
 
 .a{
-    color:darkcyan;
+    color:#007185;
     font-size: 14px;
 }
 .a:hover{

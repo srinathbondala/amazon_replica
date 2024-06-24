@@ -18,8 +18,10 @@
         <div class="payHeraderupper">
             <div class="payHeading">
                 <img src="/background_images/logo.jpeg" alt="amazon" id="amazonicon" onclick="window.location.href=`../html_files/cart.html`;">
-                <h1 style="width:50%; text-align: center;">Checkout ( <span id="paycnt">1</span> itms )</h1>
-                <p class="lock" onclick="window.open(`https://www.amazon.com/gp/help/customer/display.html?nodeId=GX7NJQ4ZB8MHFRNJ&ref_=ox_spc_privacy&ie=UTF8`, '_blank');">&#x1F512;</p>
+                <h1 style="width:50%; text-align: center;" class="totalHeading">Checkout ( <span id="paycnt">1</span> itms )</h1>
+                <a class="a-link-normal no-link" target="_blank" rel="noopener" href="https://www.amazon.com/gp/help/customer/display.html?nodeId=GX7NJQ4ZB8MHFRNJ&ref_=ox_spc_privacy&ie=UTF8">
+                    <img alt="Website is secured with SSL" src="https://m.media-amazon.com/images/G/01/x-locale/checkout/truespc/secured-ssl._CB485936932_.png">
+                </a>
             </div>
         </div>
         <div class="payBody">
@@ -27,73 +29,179 @@
                 <ol>
                     <br>
                     <li>
-                        <div style="display: flex; justify-content: space-between; align-items: flex-start;">
-                        <h3 id="shipheading"> Shipping address</h3>
-                            <label class="defaultAddress">
-                                <input type="radio" name="group1" value="address1" class="Addressoption">
-                                <p>Chilukamari Krishna teja</p>
-                                <p>SENIOUR CIVIL JUDGE QUATERS . QUATER No.B3</p>
-                                <p>West Marredpally. SECUNDERABAD</p>
-                                <p>SECUNDERABAD, TELANGANA 500026</p>
-                            </label>
-                            <div id="AllAdress">
-                                <label>
-                                    <input type="radio" name="group1" value="address2">
-                                    Option 2
-                                </label>
+                        <div style="display: flex; justify-content: space-between;">
+                            <h3 id="shipheading"> Shipping address</h3>
+                            <p onclick="ShowAdress();" class="a" id="change1">Change</p>
+                        </div>
+                        <div class="addressSelect">
+                            <div style="padding: 10px;"> 
+                                <div id="hiddentitle">
+                                <h3 style="margin-bottom: 5px;">Your addresses</h3>
+                                    <hr class="hr" style="margin-bottom: 10px;">
+                                </div>
+                                <div class="defaultAddress">
+                                    <input type="checkbox" name="group1" value="address1" class="Addressoption" id="adresscheck" checked>
+                                    <div style="color: black;">
+                                        <p style="font-weight: bold;">Chilukamari Krishna teja</p>
+                                        <p>SENIOUR CIVIL JUDGE QUATERS . QUATER No.B3</p>
+                                        <p>West Marredpally. SECUNDERABAD</p>
+                                        <p>SECUNDERABAD, TELANGANA 500026</p>
+                                    </div>
+                                </div>
+                                <div id="AllAdress">
+                                    <br>
+                                    <div class="addAdress" onclick="addNewAddressTab();">
+                                        <img src="../background_images/addicon.png" alt="+" class="addicon">
+                                        <p id="addNewAddressBtn">Add a new address</p>
+                                    </div>
+                                    <input type="button" name="idSubmit" value="Continue" class="btn" onclick="addressSelected();">
+                                </div>
                             </div>
-                            <p onclick="ShowAdress();" class="a">Change</p>
                         </div>
                     </li><hr class="hr" style="margin: 10px -20px;">
                     <li>
                         <h3> Add ID for customs clearence</h3>
                         <div class="customPayDetails">
                             <p>Customs regulations for India require the following information for this shipping address: ID number. This ID will be stored securely and used solely for the purpose of clearing customs (including sharing it with carriers and customs officials) for this order, future orders, and any product returns.</p>
-                            <ul>
+                            <ul class="verifylist">
                                 <li>
-                                    <img src="/background_images/9_messageslogo.jpg" alt="i">
+                                    <span style="display: flex; gap:5px;">
+                                        <img src="/background_images/infoicon.png" alt="i" class="infoicon">
+                                        <div>
+                                            <p>Address on identification documents must match recipient’s address to clear customs. If this is different, or if a document type has been provided which does not include proof of address (e.g. PAN card, non-Indian passport), the carrier will request additional documentation to verify address in order to clear customs.</p>
+                                            <br>
+                                            <div id="payAdress" class="payaddress">
+                                                <p style="font-weight: bold;">Chilukamari Krishna teja</p>
+                                                <p>SENIOUR CIVIL JUDGE QUATERS . QUATER No.B3</p>
+                                                <p>West Marredpally. SECUNDERABAD</p>
+                                                <p>SECUNDERABAD, TELANGANA 500026</p>
+                                            </div>
+                                        </div>
+                                    </span>
+                                </li>
+                                <li>
+                                    <br>
+                                    <h3>Select Saved ID</h3><br>
                                     <div>
-                                        <p>Address on identification documents must match recipient’s address to clear customs. If this is different, or if a document type has been provided which does not include proof of address (e.g. PAN card, non-Indian passport), the carrier will request additional documentation to verify address in order to clear customs.</p>
-                                        <br>
-                                        <div id="payAdress" class="payaddress">
-                                            <p>Chilukamari Krishna teja
-                                                SENIOUR CIVIL JUDGE QUATERS . QUATER No.B3
-                                                West Marredpally. SECUNDRABAd SECUNDERABAD, TELANGANA
-                                                SECUNDERABAD, TELANGANA 500026
-                                                Phone number: 6303382490</p>
+                                        <div class="defaultadd">
+                                            <span style="display: flex; gap:5px;"><input type="radio" name="id" value="Name1"><p>Name1</p></span>
+                                            <span style="display: flex; gap:5px;"><input type="radio" name="id" value="Name2"><p>Name2</p></span>
+                                            <span style="display: flex; gap:5px;"><input type="radio" name="id" value="Name3"><p>Name3</p></span>
+                                            <span style="display: flex; gap:5px;"><input type="radio" name="id" value="skip"><p>Skip for now</p></span>
+                                        </div><br>
+                                        <div class="addAdress" onclick="addNewIdTab();">
+                                            <img src="../background_images/addicon.png" alt="+" class="addicon">
+                                            <p id="addNewAddressBtn">Add a new address</p>
                                         </div>
                                     </div>
+                                    <br>
+                                    <span id="adddochead"> <div style="display: flex; justify-content: space-between;"><h3>Add a new ID</h3> <p class="a" onclick="closeNewIdtab();">Close</p></div></span>
+                                    <form style="padding: 0 10px;" id="newdocform" onsubmit="addnewIdToDatabase();">
+                                        <br>
+                                        <select name="SelectId" id="custom_id" class="categorydropdown" style="margin-bottom: 10px;" required>
+                                            <option value="" disabled selected>Select Id document</option>
+                                            <option value="aadhar">Aadhar Card</option>
+                                            <option value="pan">PAN Card</option>
+                                            <option value="passport">Passport</option>
+                                        </select>
+                                        <div class="collectIdData">
+                                            <h5 for="id" style="margin-bottom: 5px;">ID number</h5>
+                                            <input type="text" name="id" id="id" placeholder="Enter ID number" class="quantity" required>
+                                            <br><h5>Front and back of ID</h5 >
+                                            <span style="display: flex; gap:5px;"><img src="/background_images/infoicon.png" alt="i" class="infoicon"><p>JPG image upload of up to 4 MB accepted. Be sure that your name, photograph, and ID number are clearly visible in the ID photograph, or it may be rejected at customs, causing delivery delays.</p></span>
+                                            <br><span style="display: flex; gap: 5px;"><p>Document : <span>
+                                                <p style="color: #007185;" onclick="getDoc();" class="pa">upload</p>
+                                                <input type="file" name="fileInput" id="DocInput" style="display:none;" required>
+                                            </span></p></span>
+                                            <h5 style="margin-top: 10px;">Save this ID as</h5>
+                                            <input type="text" placeholder="File Name" class="quantity" style="margin-top: 5px;">
+                                        </div>
+                                        <input type="submit" value="Continue" class="btn">
+                                    </form>
+                                    <input type="button" name="idSubmit" value="Continue" class="btn" onclick="openItemViews();">
                                 </li>
-                                <li>
-                                    <select name="SelectId" id="custom_id">
-                                        <option value="" disabled selected>Select Id document</option>
-                                        <option value="aadhar">Aadhar Card</option>
-                                        <option value="pan">PAN Card</option>
-                                        <option value="passport">Passport</option>
-                                    </select>
-                                    <div class="collectIdData"></div>
-                                </li>
-                                <input type="button" value="Continue">
                             </ul>
                         </div>
                     </li><hr class="hr" style="margin: 10px -20px;">
                     <li>
                         <h3> Items Info</h3>
-                        <div class="displayItems">
-                            <p>display items here</p>
+                        <div style="padding-left: 10px;">
+                            <div id="displayItems">
+                                <h4>Items to order</h4>
+                                <hr class="hr" style="margin-top:10px; margin-bottom: 10px;">
+                                <div id="displayOrderItems"></div>
+                                <input type="button" value="Confrime Order Items" class="btn" onclick="confirmOrderItems();">
+                            </div>
                         </div>
-                        <input type="button" value="Continue">
-                    </li><hr class="hr" style="margin: 10px -20px;">
-                    <li>
-                        <h3> Payment</h3>
-                        <div class="payMethod">
-                            <input type="button" value="Continue to Pay" id="razerpay">
-                        </div>
+                    </li><hr class="hr" style="margin: 30px -20px; height: 2px;">
+                    <li style="list-style-type: none;">
+                        <p style="font-size: 12px;">
+                            *Why has sales tax been applied? <a href="#" class="a" style="font-size: 12px;">See tax and seller information.</a></p>
+                            <p style="font-size: 12px;">Need help? Check our <a href="#" class="a" style="font-size: 12px;">Help pages</a> or <a href="#" class="a" style="font-size: 12px;">contact us</a></p>
+                            <p style="font-size: 12px;">For an item sold by Amazon.com: When you click the "Place your order" button, we'll send you an email message acknowledging receipt of your order. Your contract to purchase an item will not be complete until we send you an email notifying you that the item has been shipped.</p>
+                            <p style="font-size: 12px; margin-top: 10px;">All items in this order are sold by Amazon Export Sales LLC (AES), unless otherwise noted. By placing your order, you authorize AES to designate a carrier to clear the package and pay the import fees on your (or the recipient's) behalf. Customs declarations will be made in the name and on the behalf of your (or the recipient's) behalf by the designated carrier. You can find the complete terms and conditions of your order here
+                            Important information about sales tax you may owe in your state</p><br>
+                            <p style="font-size: 12px;">You may return new, unopened merchandise in original condition within 30 days of delivery. Exceptions and restrictions apply. See Amazon.com's <a href="#" class="a" style="font-size: 12px;">Returns Policy</a>.</p>
+                            <br>
+                            <p style="font-size: 12px;">Need to add more items to your order? Continue shopping on the <a href="/html_files/index.html" class="a" style="font-size: 12px;">Amazon.com homepage</a>.</p>
+                            <br><br>
                     </li>
-                    <hr class="hr" style="margin: 10px -20px; height: 2px;">
                 </ol>
             </div>
-            <div class="payRightBody"></div>
+            <div class="payRightBody">
+                <div class="payRight">
+                    <div class="payRightInner">
+                        <div style="text-align: center;">
+                            <input type="button" value="Continue" class="btn" onclick="confirmOrderItens();" style="margin-top: 8px;width: 100%; border-radius: 16px; padding: 10px;">
+                            <p style="font-size: 12px; color: #565959 !important;">By placing your order, you agree to Amazon's</p>
+                            <p style="font-size: 12px; color: #565959 !important;">
+                                <a href="#"class="a" style="font-size: 12px;">privacy notice</a> and <a href="#"class="a" style="font-size: 12px;">conditions of use.</a>
+                            </p>
+                            <hr class="hr" style="width: 100%; margin-top:10px; margin-bottom: 10px;">
+                        </div>
+                        <h3>Order Summary</h3>
+                        <br>
+                        <div class="orderSummary">
+                            <table>
+                                <tr>
+                                    <td class="td1">Item(s)</td>
+                                    <td>$<span id="subtotal">0.00</span></td>
+                                </tr>
+                                <tr>
+                                    <td class="td1">Shipping & Handling</td>
+                                    <td>$<span id="shipping">0.00</span></td>
+                                </tr>
+                                <tr>
+                                    <td></td>
+                                    <td><hr class="hr" width="70px" style="margin-left: -30px;" height="1px;"></td>
+                                </tr>
+                                <tr>
+                                    <td class="td1">Total before tax:</td>
+                                    <td>$<span id="tax">0.00</span></td>
+                                </tr>
+                                <tr>
+                                    <td class="td1">Estimated tax to be collected</td>
+                                    <td>$<span id="tax">0.00</span></td>
+                                </tr>
+                                <tr>
+                                    <td class="td1">Import Fees Deposit:</td>
+                                    <td>$<span id="total">0.00</span></td>
+                                </tr>
+                            </table>
+                        </div>
+                        <hr class="hr" style="width: 100%; margin-top:10px; margin-bottom: 10px;">
+                        <div class="ordertot">
+                            <td class="td1">Order Total</td>
+                            <td>$<span id="total">0.00</span></td>
+                        </div>
+                    </div>
+                    <hr class="hr">
+                    <div style="padding: 20px 20px; background-color: #f0f2f2 !important; font-size: 12px;line-height: 16px !important;">
+                        <p>You can track your shipment and view any applicable import fees deposit before placing your order. <a href="https://www.amazon.com/gp/help/customer/display.html/ref=chk_faq_amzglobal_pri?nodeId=GJF6884LHHZ5ELD4&ie=UTF8&ref_=chk_faq_amzglobal_pri#customs"  class="a" style="font-size: 12px;">Learn more</a></p>
+                        <p style="margin-top: 5px;"><a href="https://www.amazon.com/gp/help/customer/display.html/ref=chk_help_shipcosts_pri?nodeId=GGE5X8EV7VNVTK6R&ie=UTF8&ref_=chk_help_shipcosts_pri" class="a" style="font-size: 12px;">How are shipping costs calculated?</a></p>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
     <script src="../scripts/payment.js"></script>

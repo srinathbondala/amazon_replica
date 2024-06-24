@@ -5,8 +5,8 @@ window.onload = function() {
     document.getElementById("myresult").style.display="none";
     performsomeaction();
     loadData();
-    var cartimg, cartprice, carturl,cartdis;
 };
+var cartimg, cartprice, carturl,cartdis;
 
 
 const contentDiv = document.getElementById('content');
@@ -291,6 +291,27 @@ function addComments(){
     }
     localStorage.setItem('ReviewItems',JSON.stringify(revitem));
     window.location.href = "review.html?text="+getTextFromURL();
+}
+
+function orderItem(){
+    var id= getTextFromURL();
+    var quantity = document.getElementById("quantity").value;
+    if(quantity>0){
+        localStorage.setItem('OrderItems',JSON.stringify(
+            [{
+                "product": {
+                    "id": id,
+                    "imageUrl":cartimg,
+                    "price": cartprice,
+                    "url": carturl,
+                    "title":cartdis
+                },
+                "quantity": parseInt(quantity),
+                "inCart": false
+            }]
+        ));
+        window.location.href=`../html_files/payment.html`;
+    }
 }
 
 function imageZoom(imgID, resultID) {
