@@ -11,7 +11,7 @@ window.onload = function() {
     else{
         document.querySelector('cartleftbottom').innerHTML = "";
         document.querySelector('cartrighttop').style.display = "none";
-        var txt = document.querySelector('cartlefttop').innerHTML=`<div style="display: flex; padding:0px 20px; padding-top:30px;">
+        var txt = document.querySelector('cartlefttop').innerHTML=`<div class="aline-div-cartTop">
         <img src="../background_images/kettle-desaturated.svg" alt=":)" style="width:275px;">
         <div class="faint-top">
             <h2>Your Amazon Cart is empty</h2>
