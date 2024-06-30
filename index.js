@@ -69,7 +69,7 @@ function renderData(data) {
                         <div style="overflow:auto; -ms-overflow-style: none; scrollbar-width: none;">
                             <ul class="browsing" id="browsing" style="-ms-overflow-style: none; scrollbar-width: none;">`
                             for(var i=0;i<item.imageUrls.length;i++){
-                                templateHTML+=`<li><a href="product_details.html?text=${item.link[i]}"><img src="${item.imageUrls[i]}" alt="Product Image" class="product_img"></a></li>`;
+                                templateHTML+=`<li><a href="../html_files/product_details.html?text=${item.link[i]}"><img src="${item.imageUrls[i]}" alt="Product Image" class="product_img"></a></li>`;
                             }
                             templateHTML+=`</ul>
                         </div>
@@ -87,11 +87,11 @@ function renderData(data) {
                 <div class="targetdiv-inner">
                     <h3 class="targetdiv-inner-h3">${item.title}</h3>
                     <div class="targetdiv-image-container">
-                        <a href="slider-page.html?text=${item.link}">
+                        <a href="../html_files/slider-page.html?text=${item.link}">
                             ${item.imageUrls.map(url => `<img src="${url}" class="targetdiv-image" alt="">`).join('')}
                         </a>
                     </div> 
-                    <a href="slider-page.html?text=${item.link}" class="targetdiv-inner-a">See more</a>
+                    <a href="../html_files/slider-page.html?text=${item.link}" class="targetdiv-inner-a">See more</a>
                 </div>
             `;
             if ((cnt + 1) % 4 === 0 || (cnt + 1) === data.length) {
@@ -143,5 +143,5 @@ function moveright(){
 }
 function changeColor() {
     const linkOrText = linksOrTexts[currentIndex];
-    window.open(`slider-page.html?text=${linkOrText}`, "_self");
+    window.open(`../html_files/slider-page.html?text=${linkOrText}`, "_self");
 }

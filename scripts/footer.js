@@ -187,11 +187,11 @@ function signout(){
       } catch (error) {
           console.error('Error:', error);
       }
-      window.location.href = "index.html";
+      window.location.href = "../index.html";
     }
   }
   else{
-    window.location.href = "signin_page.html";
+    window.location.href = "../html_files/signin_page.html";
   }
 }
 
@@ -207,10 +207,10 @@ function getTextWidth(text) {
 
 function siginbtn(){
   if(getCookie('jwtToken')){
-    window.location.href = "homepage.html";
+    window.location.href = "../html_files/homepage.html";
   }
   else{
-    window.location.href = "signin_page.html";
+    window.location.href = "../html_files/signin_page.html";
   }
 }
 
@@ -239,10 +239,10 @@ function deleteCookie(name) {
 
 function orderbtn(){
   if(getCookie('jwtToken')){
-    window.location.href = "order_return.html";
+    window.location.href = "../html_files/order_return.html";
   }
   else{
-    window.location.href = "signin_page.html";
+    window.location.href = "../html_files/signin_page.html";
   }
 }
 function togglerightb(slide){

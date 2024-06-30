@@ -281,16 +281,21 @@ function AddToCart(){
     
 }
 function addComments(){
-    var id= getTextFromURL();
-    let revitem = {
-        "id": id,
-        "imageUrl":cartimg,
-        "price": cartprice,
-        "url": carturl,
-        "title":cartdis
+    if(getCookie('jwtToken')){
+        var id= getTextFromURL();
+        let revitem = {
+            "id": id,
+            "imageUrl":cartimg,
+            "price": cartprice,
+            "url": carturl,
+            "title":cartdis
+        }
+        localStorage.setItem('ReviewItems',JSON.stringify(revitem));
+        window.location.href = "review.html?text="+getTextFromURL();
     }
-    localStorage.setItem('ReviewItems',JSON.stringify(revitem));
-    window.location.href = "review.html?text="+getTextFromURL();
+    else{
+        window.location.href = "signin_page.html";   
+    }
 }
 
 function orderItem(){
