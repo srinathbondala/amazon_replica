@@ -1,6 +1,6 @@
 <div id="overlay" class="overlay" style="display: none;" onclick="draweropt()"></div>
 <div id="drawer" class="drawer">
-  <a href="javascript:void(0)" class="closebtn" onclick="draweropt()">&times;</a>
+  <a href="javascript:void(0)" class="closebtn" onclick="draweropt()" id="closeh">&times;</a>
   <div class="drawerinner">
       <img src="../background_images/profileimg.png" alt="Hi">
       <p id="all_username" onclick="siginbtn()">Hello, sign in</p>
@@ -239,58 +239,61 @@
   </div>
 </div>
 <header>
-    <div class="fill-left">
-        <span id="logo" class="over">
-            <a href="../index.html">
-                <img src="../background_images/logoblack.png" alt="logo" id  ="imglogo">
-                <!-- <img src="https://th.bing.com/th/id/R.96bbbeb9cd9ee71d82254c396bf66aa8?rik=vSqltwMTDsTbxg&riu=http%3a%2f%2fwww.bizmonthly.com%2fwp-content%2fuploads%2f2020%2f04%2famazon-logo-black.png&ehk=Ffc4jD16P4sohdWSrk%2bC9y5lDgYcvATKVJfYzCM2YPc%3d&risl=&pid=ImgRaw&r=0" alt="logo" id  ="imglogo"> -->
-            </a>
-        </span>
-        <span id="delivery" class="over">
-            <img src="../background_images/image.png" alt="logo" style="height: 30%; align-self: self-end; margin-bottom: 2.5vh; mix-blend-mode:screen;"/>
-            <div id=inner-delivery >
-                <p class="para1">Deilver to Srinath..</p>
-                <p class="delivery-address">Hyderabad 500026 India</p>
+    <div class="adjust">
+        <div class="fill-left">
+            <span id="logo" class="over">
+                <a href="../index.html">
+                    <img src="../background_images/logoblack.png" alt="logo" id  ="imglogo">
+                    <!-- <img src="https://th.bing.com/th/id/R.96bbbeb9cd9ee71d82254c396bf66aa8?rik=vSqltwMTDsTbxg&riu=http%3a%2f%2fwww.bizmonthly.com%2fwp-content%2fuploads%2f2020%2f04%2famazon-logo-black.png&ehk=Ffc4jD16P4sohdWSrk%2bC9y5lDgYcvATKVJfYzCM2YPc%3d&risl=&pid=ImgRaw&r=0" alt="logo" id  ="imglogo"> -->
+                </a>
+            </span>
+            <span id="delivery" class="over">
+                <img src="../background_images/image.png" alt="logo" style="height: 30%; align-self: self-end; margin-bottom: 2.5vh; mix-blend-mode:screen;"/>
+                <div id=inner-delivery >
+                    <p class="para1">Deilver to Srinath..</p>
+                    <p class="delivery-address">Hyderabad 500026 India</p>
+                </div>
+            </span>
+        </div>
+        <div class="fill-center">
+            <div class="search-container">
+                <div class="search-adapter">
+                    <select name="category" id="category" onchange="adjustWidth()">
+                        <option value="AllDepartments">All</option>
+                        <option value="Arts-Crafts">Arts & Crafts</option>
+                        <option value="Automotive">Automotive</option>
+                        <option value="Beauty-PersonalCare">Beauty & Personal Care</option>
+                        <option value="Books">Books</option>
+                        <option value="BoysFashion">Boy's Fashion</option>
+                        <option value="Computers">Computers</option>
+                        <option value="Deals">Deals</option>
+                        <option value="DigitalMusic">Digital Music</option>
+                        <option value="GirlsFaction">Girl's Faction</option>
+                        <option value="Health-HouseHold">Health & HouseHold</option>
+                        <option value="Home-Kitchen">Home & Kitchen</option>
+                        <option value="Industrial-Scientific">Industrial & Scientific</option>
+                        <option value="KindleStore">Kindle Store</option>
+                        <option value="Luggage">Luggage</option>
+                        <option value="MensFashion">Men's Fashion</option>
+                        <option value="Movies-TV">Movies & TV</option>
+                        <option value="Music-CDs-Vinyl">Music, CDs & Vinyl</option>
+                        <option value="PetSupplies">Pet Supplies</option>
+                        <option value="PrimeVideo">Prime Video</option>
+                        <option value="Software">Software</option>
+                        <option value="Sports-Outdoors">Sports & Outdoors</option>
+                        <option value="Tools-HomeImprovement">Tools & Home Improvement</option>
+                        <option value="Toys-Games">Toys & Games</option>
+                        <option value="VideoGames">Video Games</option>
+                        <option value="Watches">Watches</option>
+                        <option value="WomensFashion">Women's Fashion</option>
+                    </select>
+                    <input type="text" placeholder="Search Amazon" style="font-size: medium; padding-left: 2%;">
+                </div>
+                <button type="submit"><img src="https://img.icons8.com/?size=100&id=132&format=png" alt="error"></img></button>
             </div>
-        </span>
-    </div>
-    <div class="fill-center">
-        <div class="search-container">
-            <div class="search-adapter">
-                <select name="category" id="category"  onchange="adjustWidth()">
-                    <option value="AllDepartments">All</option>
-                    <option value="Arts-Crafts">Arts & Crafts</option>
-                    <option value="Automotive">Automotive</option>
-                    <option value="Beauty-PersonalCare">Beauty & Personal Care</option>
-                    <option value="Books">Books</option>
-                    <option value="BoysFashion">Boy's Fashion</option>
-                    <option value="Computers">Computers</option>
-                    <option value="Deals">Deals</option>
-                    <option value="DigitalMusic">Digital Music</option>
-                    <option value="GirlsFaction">Girl's Faction</option>
-                    <option value="Health-HouseHold">Health & HouseHold</option>
-                    <option value="Home-Kitchen">Home & Kitchen</option>
-                    <option value="Industrial-Scientific">Industrial & Scientific</option>
-                    <option value="KindleStore">Kindle Store</option>
-                    <option value="Luggage">Luggage</option>
-                    <option value="MensFashion">Men's Fashion</option>
-                    <option value="Movies-TV">Movies & TV</option>
-                    <option value="Music-CDs-Vinyl">Music, CDs & Vinyl</option>
-                    <option value="PetSupplies">Pet Supplies</option>
-                    <option value="PrimeVideo">Prime Video</option>
-                    <option value="Software">Software</option>
-                    <option value="Sports-Outdoors">Sports & Outdoors</option>
-                    <option value="Tools-HomeImprovement">Tools & Home Improvement</option>
-                    <option value="Toys-Games">Toys & Games</option>
-                    <option value="VideoGames">Video Games</option>
-                    <option value="Watches">Watches</option>
-                    <option value="WomensFashion">Women's Fashion</option>
-                </select>
-                <input type="text" placeholder="Search Amazon" style="font-size: medium; padding-left: 2%;">
-            </div>
-            <button type="submit"><img src="https://img.icons8.com/?size=100&id=132&format=png" alt="error"></img></button>
         </div>
     </div>
+    <hr class="fill-hr hr">
     <div class="fill-right">
         <nav class="navigation">
             <language class="over" style="margin-left: 10px; width: 75px;">
@@ -317,7 +320,7 @@
 <navigation-bar>
     <span class="over" onclick="openDrawer()">
         <div>
-            <img src="https://cdn-icons-png.flaticon.com/128/8727/8727897.png" alt="noimg" style="height: 3vh;">
+            <img src="https://cdn-icons-png.flaticon.com/128/8727/8727897.png" alt="noimg" class="alloption">
             <p class="pstyle">All</p>
         </div>
     </span>

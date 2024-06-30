@@ -185,6 +185,7 @@ lower-footer,#backtotop,.signin{
     gap: 40px;
     padding: 20px;
     padding-bottom: 45px;
+    flex-wrap: wrap;
 }
 .footer-info2 > div{
     display: flex;
@@ -345,4 +346,54 @@ sub-top{
 .a:hover{
     text-decoration: underline;
     cursor: pointer;
+}
+.footer-info1 hr{
+    display: none;
+}
+
+@media (max-width: 768px) {
+    #footer-options button, #footer-options button span{
+        font-size: 11px;
+    }
+    #foot-top1-heading{
+        font-size: 11px;
+    }
+    #foot-top1-heading span{
+        font-size: 11px;
+        padding-left: 20px;
+    }
+    .targetdiv-inner{
+        height: 300px;
+    }
+    .targetdiv-item{
+        height: 300px;
+    }
+    .targetdiv-image-container{
+        height: 200px;
+    }
+    .targetdiv-inner a{
+        font-size: 11px;
+    }
+}
+
+@media (max-width: 430px) {
+    .footer-info1{
+        flex-wrap: wrap;
+        flex-direction: column;
+        padding: 5px;
+        gap:10px;
+    }
+    .footer-info1 div{
+        width: 100%;
+        max-width: 100% !important;
+    }
+    .footer-info1 hr{
+        display: block;
+    }
+    #footer-options button, #footer-options button span{
+        font-size: 10px;
+    }
+    .footer-info1 div{
+        text-align: center;
+    }
 }

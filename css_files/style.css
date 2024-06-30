@@ -16,7 +16,9 @@ header{
     padding: 0;
     justify-content: space-between;
     overflow: hidden;
+    align-items: center;
 }
+
 .fill-left{
     display: flex;
     align-items: center;
@@ -41,7 +43,7 @@ header{
     cursor: pointer;
 }
 #imglogo{
-    width: 17vh;
+    width: 100px;
     padding: 0px 5px 0px 5px;
     mix-blend-mode: lighten;
 }
@@ -92,7 +94,174 @@ header{
     align-items: center;
     justify-content: center;
     height: 100%;
+    flex:1;
 }
+
+.adjust{
+    height: inherit;
+    display: inline-flex;
+    margin: 0;
+    padding: 0;
+    justify-content: space-between;
+    overflow: hidden;
+    align-items: center;
+}
+
+.fill-hr{
+    display: none;
+}
+
+@media (min-width: 769px){
+    .adjust{
+        flex:1;
+    }
+    .fill-hr{
+        display: none;
+    }
+}
+
+@media (max-width: 768px) {
+    #imglogo{
+        width: 60px;
+    }
+    .logo{
+        margin-left: 5px;
+    }
+    header{
+        height: 100px;
+        flex-direction: column;
+    }
+    /* #delivery{
+        display: none;
+    } */
+    .fill-center{
+        height: 50px;
+        width: 350px;
+    }
+    .search-container button{
+        width: 30px;
+    }
+    #catagory{
+        width:30px
+    }
+    .search-container button img{
+        width: 12px;
+    }
+    .adjust{
+        width: 96%;
+    }
+    .fill-right{
+        width: 100%;
+        display: flex;
+        height: 30px;
+    }
+    .navigation{
+        height: inherit !important;
+        justify-content: flex-start !important;
+        right: 0% !important;
+    }
+    #upperscroll1{
+        max-height: 120px;
+    }
+    #image{
+        transform: scale(1.5);
+    }
+    html,body{
+        overflow-x: hidden !important;
+    }
+    .alloption{
+        height: 20px;
+    }
+    .fill-hr{
+        width: 100%;
+        display: block;
+    }
+    header{
+        height: 13vh !important;
+    }
+    language{
+        width: 40px !important;
+    }
+    signin p{
+        font-size: 8px !important;
+        display: flex;
+    }
+    signin{
+        width: 75px !important;
+    }
+    order{
+        width: 40px !important;
+    }
+    order p{
+        font-size: 8px !important;
+    }
+    cart{
+        width: 20px !important;
+    }
+    cart p{
+        font-size: 8px !important;
+    }
+    cart img {
+        height: 20px !important;
+    }
+}
+
+/* Extra small devices (phones, less than 600px) */
+@media (max-width: 430px) {
+    #logo{
+        margin-left: 0px;
+    }
+    #imglogo{
+        width: 45px;
+        height: 20px;
+    }
+    .fill-center{
+        height: 40px;
+        width: 60px;
+        justify-content: flex-start;
+    }
+    #delivery{
+        display: none;
+    }
+    .search-container button{
+        width: 30px;
+    }
+    #category{
+        /* width:50px !important; */
+        font-size: 8px !important;
+    }
+    #category option {
+        font-size: 8px !important;
+    }
+    .search-container input {
+        width: 120px;
+        font-size: 8px !important;
+    }
+    .search-container button img{
+        width: 14px;
+        height: 14px;
+    }
+    header{
+        height: 100px;
+        flex-direction: column;
+    }
+    .navigation p{
+        font-size: 12px;
+    }
+    .alloption{
+        height: 20px;
+    }
+    html,body{
+        overflow-x: hidden;
+    }
+    .fill-right{
+        height: 30px !important;
+    }
+    .navigation{
+        font-size: 10px;
+    }
+}
+
 .search-adapter {
     display: flex;
     align-items: center;
@@ -126,6 +295,7 @@ header{
     color: #000000;
     border-right: 1px solid #ccc;
     transition: background-color 0.3s;
+    width : 54px;
 }
 .search-adapter input[type="text"]:focus{
     outline: none;
@@ -155,7 +325,6 @@ header{
 .fill-right{
     height: 100%;
     margin-right: 5px;
-    width: wrap-content;
     justify-content: space-between;
 }
 .navigation{
@@ -165,10 +334,11 @@ header{
     top: 0;
     float: right;
     right: 2%;
-    display: flex;
+    display: inline-flex;
     align-items: center;
     justify-content: center;
     margin-left: 10px;
+    flex-wrap: nowrap;
 }
 language{
     color: white;
@@ -283,4 +453,7 @@ cart img{
 .suggestedDiv{
     width: 100%;
     background-color: white;
+}
+.alloption{
+    height:3vh;
 }

@@ -48,6 +48,16 @@ navigation-bar a div img , navigation-bar span div img{
     z-index: 1000;
   }
   
+  @media (max-width:480px){
+    .drawer{
+      width: 280px;
+    }
+    #closeh{
+      left: 285px;
+      font-size: 30px;
+    }
+  }
+  
   .drawer ul {
     list-style-type: none;
     padding: 0;

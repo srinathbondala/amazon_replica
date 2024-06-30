@@ -129,6 +129,9 @@ function loadjsondata() {
                 processData(data);
                 loadCartData();
             }
+            else{
+                console.log("error");
+            }
         };
         xhr.send();
     // }
