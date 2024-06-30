@@ -92,7 +92,6 @@ header{
     align-items: center;
     justify-content: center;
     height: 100%;
-    width: 50%;
 }
 .search-adapter {
     display: flex;
