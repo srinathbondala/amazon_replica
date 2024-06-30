@@ -362,18 +362,7 @@ sub-top{
         font-size: 11px;
         padding-left: 20px;
     }
-    .targetdiv-inner{
-        height: 300px;
-    }
-    .targetdiv-item{
-        height: 300px;
-    }
-    .targetdiv-image-container{
-        height: 200px;
-    }
-    .targetdiv-inner a{
-        font-size: 11px;
-    }
+    
 }
 
 @media (max-width: 430px) {

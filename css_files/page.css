@@ -168,7 +168,22 @@ body{
         font-size: 10px;
     }
     .targetdiv-inner-h3, .suggestedDiv{
-        font-size: 12px;
+        font-size: 14px;
+    }
+    .targetdiv-inner{
+        height: 320px;
+    }
+    .targetdiv-item{
+        height: 320px;
+    }
+    .targetdiv-image-container{
+        height: 200px;
+    }
+    .targetdiv-inner a{
+        font-size: 11px;
+    }
+    .targetdiv-inner-a{
+        margin-bottom: 5px;       
     }
  }
 @media (max-width: 430px) {
