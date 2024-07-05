@@ -5,10 +5,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="https://th.bing.com/th/id/OIP.ayRsQH0mda6kJjYZLRHgkQHaGO?w=204&h=180&c=7&r=0&o=5&dpr=1.5&pid=1.7" type="image/png">
     <link rel="stylesheet" href="../css_files/signin_page.css">
+    <link rel="stylesheet" href="../css_files/footer.css">
 </head>
 <body>
     <div id="overshade">
         <div id="loader" class="center"></div>
+        <div class="container" id="container1">
+            <div class="circle-border"></div>
+            <div class="circle">
+                <div class="success"></div>
+                </div>
+            </div>
+        </div>
     </div>
     <div>
         <img src="../background_images/logo.jpeg" alt="logo1" id="logo"/>
@@ -48,7 +56,20 @@
             <p style="font-size: 13px; font-weight: 100; color: #605f5f;">© 1996-2024, Amazon.com, Inc. or its affiliates</p>
         </div>
     </div>
-    <div id="snackbar">Some text some message..</div>
+    <div class="wrapper">
+        <div id="toast">
+            <div class="container-1">
+                <i class="fas fa-check-square"></i>
+            </div>
+            <div class="container-2">
+                <p>Success</p>
+                <p id="txt">Your changes are saved successfully.</p>
+            </div>
+            <button id="close" onclick="closeToast()">
+                &times;
+            </button>
+        </div>
+    </div>
 </body>
 <script src="../scripts/signin.js"></script>
 <script src="../scripts/footer.js"></script>

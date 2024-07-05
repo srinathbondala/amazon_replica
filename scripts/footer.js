@@ -290,6 +290,7 @@ function dosomething(){
   }
 }
 function showloader(){
+  scrollTo(0,0);
   const overlay = document.getElementById("overshade");
     overlay.style.display = "block";
     document.body.style.overflow = "hidden";
@@ -329,18 +330,63 @@ function getCartDataFromServer(){
       console.error('Error:', error);
   });
 }
-function DeleteFromCart(link){
+function DeleteFromCart(link,productId){
   try{
-    showloader();
-    const parentElement = link.closest('.item');
-    parentElement.parentNode.removeChild(parentElement);
-    setTimeout(function(){
-      hideloader();
-    }, 500);
+      showloader();
+      const parentElement = link.closest('.item');
+      parentElement.parentNode.removeChild(parentElement);
+      const cartItems = JSON.parse(localStorage.getItem('CartItems'));
+      const index = cartItems.findIndex(item => item.product.id == productId);
+      if (index !== -1) {
+          cartItems.splice(index, 1);
+      }
+      localStorage.setItem('CartItems', JSON.stringify(cartItems));
+      saveCart();
+      setTimeout(function(){
+        hideloader();
+      }, 500);
   }catch(error){
     console.log(error);
   }
 }
+
+async function saveCart() {
+  try {
+    if(confirm('Are you sure you want to save changes?')){
+        showloader();
+          let data=[];
+          const cartdata=JSON.parse(localStorage.getItem('CartItems'));
+          cartdata.forEach((value,index)=>{
+              data.push(
+                {
+                  "productId":value.product.id,
+                  "inCart":value.inCart,
+                  "quantity":value.quantity
+                }
+              );
+          });
+          const response = await fetch('http://localhost:8080/user/removeFromCart', {
+              method: 'POST',
+              headers: {
+                  'Content-Type': 'application/json',
+                  'Authorization': `Bearer ${getCookie('jwtToken')}`
+              },
+              body: JSON.stringify(data)
+          });
+  
+          if (!response.ok) {
+              console.error('Error updating cart:', response.statusText);
+          }
+          hideloader();
+      }
+      else{
+          alert('Changes not saved');
+      }
+  } catch (error) {
+      console.error('Error:', error);
+  }
+}
+
 function loadCartData() {
   if(localStorage.getItem('CartItems') != null){
       renderCartData(JSON.parse(localStorage.getItem('CartItems')));
@@ -354,6 +400,7 @@ function loadCartData() {
 function renderCartData(data){
   const cartItems = document.getElementById('cartItems');
   let templateinnerHTML = '';
+  let total = 0;
   data.forEach((item,index)=>{
       item = item.product;
       templateinnerHTML += `
@@ -365,6 +412,7 @@ function renderCartData(data){
           </div>
       </div>
       `;
+      total += item.price;
   });
 //   <div class="cartBarItemInner">
 //   <select name="1" id="select" class="categorydropdown" style="padding: 0px 15px; height: 20px;">
@@ -380,7 +428,7 @@ function renderCartData(data){
   cartItems.innerHTML = `
     <div class="cartItemRight-inner">
         <p>Subtotal</p>
-        <h2>$1,189.49</h2>
+        <h2>$ ${total}</h2>
         <input type="button" value="Got to Cart" class="wish_list_btn" style="width: 90%;font-size: 12px;" onclick="window.location.href='../html_files/cart.html'">
     </div>`;
   cartItems.innerHTML += templateinnerHTML+'</div>';

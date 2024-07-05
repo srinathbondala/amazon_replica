@@ -81,3 +81,33 @@
 .checked {
     color: orange;
 }
+@media screen and (max-width: 770px) {
+    .reviewContentInner{
+        width: 90%;
+        height: 180px;
+    }
+    .reviewContentInner1{
+        width: 90%;
+    }
+    .reviewContentWriteInner{
+        padding: 10px;
+    }
+    #reviewContent{
+        height: 300px;
+    }
+    .reviewmsg{
+        padding: 10px;
+    }
+    .reviewmsg a{
+        font-size: 14px;
+    }
+    #Reviewtext{
+        width: 90%;
+    }
+    #ReviewSubmit{
+        margin-right: 10px;
+    }
+    body{
+        width: 100% !important;
+    }
+}

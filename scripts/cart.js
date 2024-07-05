@@ -11,7 +11,7 @@ window.onload = function() {
     else{
         document.querySelector('cartleftbottom').innerHTML = "";
         document.querySelector('cartrighttop').style.display = "none";
-        var txt = document.querySelector('cartlefttop').innerHTML=`<div class="aline-div-cartTop">
+        document.querySelector('cartlefttop').innerHTML=`<div class="aline-div-cartTop">
         <img src="../background_images/kettle-desaturated.svg" alt=":)" style="width:275px;">
         <div class="faint-top">
             <h2>Your Amazon Cart is empty</h2>
@@ -24,6 +24,8 @@ window.onload = function() {
     </div>`;
     }
 }
+var totalSelected=0;
+var selectedItems = new Set();
 const suggestedDiv=document.getElementById('suggestions');
 const cartData = [
     {
@@ -149,32 +151,41 @@ var val=1;
 const contentDiv = document.getElementById('content');
 const footerDiv=document.getElementById('footer');
 
-function loadCartDataC() {
+async function loadCartDataC() {
     if(localStorage.getItem('CartItems') != null){
         renderCartDataC(JSON.parse(localStorage.getItem('CartItems')));
     }
     else{
-        getCartDataFromServer();
+        await getCartDataFromServer();
         renderCartDataC(JSON.parse(localStorage.getItem('CartItems')));
     }
 }
+function dosome(){
+    if(confirm("Do you want to delete Item from cart")){
+        saveCart();
+    }
+}
 function renderCartDataC(data) {
-    if(data.length !== 0) {
+    if(data && data.length !== 0) {
         const shoppingCartContainer = document.querySelector('.shopping-cart');
 
         shoppingCartContainer.innerHTML = '';
 
         const upperPart = `
             <div style="padding-left: 10px; padding-right: 10px; display: flex; flex-direction: column;">
-                <h2 class="heading">Shopping Cart</h2>
-                <span class="atype">Deselect all items</span>
-                <span style="font-size:14px; align-self: flex-end; color: #5b5959;">Price</span><hr>
+                <div class="divadj">
+                    <h2 class="heading">Shopping Cart</h2>
+                    <button class="wish_list_btn" style="font-size:14px; width:150px;" onclick="dosome();">Save Changes</button>
+                </div>
+                <span class="atype" style="width:max-content;">Deselect all items</span>
+                <span style="font-size:14px; align-self: flex-end; color: #5b5959; margin-bottom: 10px;">Price</span><hr>
             </div>
         `;
         shoppingCartContainer.innerHTML = upperPart;
-
+        let total = 0;
+        let cnt=0,totcnt=0;
+        let sumary="";
         data.forEach((item, index) => {
-            // console.log(item);
             if (!item.inCart) {
                 const stldiv = document.querySelector('.savelater');
                 if(val==1){
@@ -203,9 +214,9 @@ function renderCartDataC(data) {
                 item= item.product;
                 const itemDiv = document.createElement('div');
                 itemDiv.classList.add('item');
-
+                let abc=(item1.quantity * parseFloat(item.price)).toFixed(2);
                 itemDiv.innerHTML = `
-                <input type="checkbox" id="item${index + 1}" name="item${index + 1}">
+                <input type="checkbox" id="item${index + 1}" name="item${index + 1}" onclick="updateTotal(this,'${item1.quantity}','${item.price}','${item.title}','${item.id}');">
                 <label for="item${index + 1}" class="item-inner-div">
                     <span class="item-inner">
                         <div class="item-inner-div">
@@ -219,17 +230,17 @@ function renderCartDataC(data) {
                                         <label for="isgift" style="font-size: 12px; margin-left: 5px; font-family: Arial, sans-serif;">This is a gift</label>
                                     </div>
                                     <div style="margin-top: 14px;">
-                                        <select name="count" class="categorydropdown" onchange="handleChange()">
+                                        <select name="count" class="categorydropdown" onchange="handleChange(this,'${String(item.id)}','${item.price}')">
                                             ${generateQuantityOptions(item1.quantity)}
                                         </select>
-                                        <a href="#delete" class="aafter" onclick="DeleteFromCart(this);">Delete</a>
-                                        <a href="#savelater" class="aafter">Save for later</a>
+                                        <a href="#delete" class="aafter" onclick="DeleteFromCart(this,'${String(item.id)}');">Delete</a>
+                                        <a href="#savelater" class="aafter" onclick="addToLater(this,'${String(item.id)}');">Save for later</a>
                                         <a href="#compare" class="aafter">Compare with Similar</a>
                                         <a href="#share" class="aafter">Share</a>
                                     </div>
                                 </div>
                                 <div class="items-div-right">
-                                    <span style="align-self: flex-end; font-size: large; font-weight: 600;">$ ${item.price}</span>
+                                    <span style="align-self: flex-end; font-size: large; font-weight: 600;" id="${item.id}price">$ ${abc}</span>
                                 </div>
                             </div>
                         </div>
@@ -237,33 +248,64 @@ function renderCartDataC(data) {
                     </span>
                 </label>
             `;
-
-            shoppingCartContainer.appendChild(itemDiv);
+                shoppingCartContainer.appendChild(itemDiv);
+                total += item1.quantity * parseFloat(item.price);
+                cnt++;
+                totcnt += item1.quantity;
+                // sumary+=`<tr>
+                //             <td class="titleSum">${cnt} . ${item.title}</td>
+                //             <td>${item1.quantity}</td>    
+                //     </tr>
+                // `;
             }
         });
-        // Calculate and display subtotal
-        const subtotal = calculateSubtotal(data);
         const subtotalElement = document.createElement('p');
         subtotalElement.style.alignSelf = 'flex-end';
         subtotalElement.style.fontSize = 'large';
         subtotalElement.style.marginTop = '5px';
-        subtotalElement.textContent = `Subtotal (${data.length} item): ${subtotal}`;
+        subtotalElement.id="subTotal";
+        // document.getElementById("result").innerHTML+=sumary;
+        subtotalElement.textContent = `Subtotal (${cnt} item): ${total.toFixed(2)}`;
         shoppingCartContainer.appendChild(subtotalElement);
-        if(val==0){
-            document.getElementById("valuetocart").textContent=`Subtotal (${data.length} item): ${subtotal}`;
-            const subtotalElement1 = document.createElement('button');
+        if(cnt>0){
+            // document.getElementById("valuetocart").textContent=`Subtotal (${cnt} item): ${total.toFixed(2)}`;
+            let subtotalElement1 = document.createElement('button');
             subtotalElement1.textContent = 'Proceed to checkout';
             subtotalElement1.classList.add('btn');
             subtotalElement1.addEventListener('click', function() {
-                window.location.href = 'your_page_url';
+                redirectPayment();
             });
             document.querySelector('cartrighttop').appendChild(subtotalElement1);
         }
+        else{
+            document.querySelector('cartrightbottom').style.display="none";
+        }
+    }
+}
+
+function redirectPayment(){
+    if(noselected>0){
+        let cartvalues = JSON.parse(localStorage.getItem("CartItems"));
+        let val=[];
+        cartvalues.forEach((values,index)=>{
+            if(selectedItems.has(values.product.id)){
+                val.push(values);
+            }
+        });
+        localStorage.setItem('OrderItems',JSON.stringify(val));
+        window.location.href = './payment.html';
+    }
+    else{
+        alert("Please select Items");
     }
 }
 
 function deleteslt(ref){
     alert(ref);
+}
+
+function addToLater(self,id){
+    alert("work in progress");
 }
 
 function generateQuantityOptions(selectedQuantity) {
@@ -274,14 +316,55 @@ function generateQuantityOptions(selectedQuantity) {
     options += `<option value="10+" ${selectedQuantity >= 10 ? 'selected' : ''}>Qty: 10+</option>`;
     return options;
 }
-function handleChange() {
-    calculateSubtotal(cartData);
+function handleChange(self,productId,price){
+    let preval= self.closest('select').value;
+    if(preval=="10+"){
+        alert("products Not available");
+        return;
+    }
+    let cartdata=JSON.parse(localStorage.getItem('CartItems'));
+    let index = cartdata.findIndex(item => item.product.id == productId);
+    document.getElementById(productId+"price").textContent="$ "+(preval*price).toFixed(2);
+    let currsubtot=document.getElementById("subTotal").textContent;
+    let currsubtot2= parseFloat(currsubtot.split(':')[1].trim());
+    if (index !== -1) {
+        document.getElementById("subTotal").textContent = currsubtot.split(':')[0]+" : "+(currsubtot2+(preval-cartdata[index].quantity)*price).toFixed(2);
+        cartdata[index].quantity = parseInt(preval);
+    }
+    else{
+        alert('Item not found');
+    }
+    localStorage.setItem('CartItems', JSON.stringify(cartdata));
 }
 
-function calculateSubtotal(data) {
-    // let total = 0;
-    // data.forEach(item => {
-    //     total += document.querySelector('.hover_over').value * parseFloat(item.price.replace('$', ''));
-    // });
-    // return `$${total.toFixed(2)}`;
+var sum=0;
+var noselected=0;
+function updateTotal(self,quantity,price,title,id){
+    showloader();
+    if(self.closest('input').checked){
+        totalSelected++;
+        sum+=quantity*parseFloat(price);
+        noselected++;
+        document.getElementById("result").innerHTML+=`<tr id="${id}">
+                        <td class="titleSum"> # ${title}</td>
+                        <td>${quantity}</td>    
+                </tr>`;
+                selectedItems.add(id);
+    }
+    else{
+        totalSelected--;
+        sum-=quantity*parseFloat(price);
+        noselected--;
+        const row = document.getElementById(id);
+        if(row){
+            row.remove();
+            if (selectedItems.has(id)) {
+                selectedItems.delete(id);
+            }
+        }
+    }
+    document.getElementById("valuetocart").textContent=`Subtotal (${totalSelected} item): ${sum.toFixed(2)}`;    
+    setTimeout(()=>{
+        hideloader();
+    },500);
 }

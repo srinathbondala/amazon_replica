@@ -5,10 +5,27 @@ window.onload = function() {
         loadSuggesions(suggestedDiv);
         let urlParams = new URLSearchParams(window.location.search);
         let a=urlParams.get('text');
-        getIsProductOrdered(a);
+        if(a=="success"){
+            const reviewContent = document.getElementById('reviewContent');
+            reviewContent.innerHTML += `
+            <div class="reviewContentInner" style="background-color:#28a745;">
+                <div class="reviewContentInner1" style="gap:10px;">
+                    <img src="https://cdn-icons-png.flaticon.com/128/5610/5610944.png" alt=":)" style="width: 30px; height: 30px;">
+                    <p> Order Successfull</p>
+                    <a href="./order_return.html" style="color:#28a745; font-size:14px;" class="a">Track Order</a>
+                </div>
+            </div>
+            `;
+        }
+        else{
+            getIsProductOrdered(a);
+        }
     } catch (e) {
         alert(e);
     }
+}
+window.BeforeUnloadEvent = function(event){
+    localStorage.removeItem("ReviewItems");
 }
 const suggestedDiv=document.getElementById('suggestions');
 const contentDiv = document.getElementById('content');
@@ -32,12 +49,12 @@ function getIsProductOrdered(a) {
 }
 function LoadReview(data){
     console.log(data);
-    if(data!=false){
+    if(data==false){
         const reviewContent = document.getElementById('reviewContent');
         reviewContent.innerHTML += `
         <div class="reviewContentInner">
             <div class="reviewContentInner1">
-                <span class="reviewmsg">
+                <span class="reviewmsg"><img src="https://cdn-icons-png.flaticon.com/128/5610/5610944.png" alt=":)" style="width: 15px; height: 15px;">
                     <img src="https://cdn-icons-png.flaticon.com/128/14090/14090276.png" alt="product" class="reviewProductImage">
                     <p class="reviewmsgp">We apologize but this account has not met the minimum eligibility requirements to write a review. If you would like to learn more about our eligibility requirements, please see our <a href="https://www.amazon.com/gp/help/customer/display.html" style="color:#007185;">community guidelines</a>.</p>
                 </span>

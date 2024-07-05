@@ -234,11 +234,11 @@ sub-top{
 #overshade{
     position: absolute;
     top:-15px;
-    height:120vh;
+    height:115vh;
     width: 100%;
     background-color: rgba(0, 0, 0, 0.2);
     display: none;
-    z-index: 100;
+    z-index: 1000 !important;
 }
 
 #sub-inner a:hover{

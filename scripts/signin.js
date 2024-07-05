@@ -44,18 +44,26 @@ function logout(){
 }
 
 function signincall(){
-    showloader();
+
     if(getQueryParam('openid.return_to') == 'SellerDashbord'){
         sellerAccountSignIn();
     }else{
         signin();
     }
-    hideloader();
 }
+let x;
+let toast = document.getElementById("toast");
+function closeToast(){
+    toast.style.transform = "translateX(445px)";
+}
+
 function sellerAccountSignIn(){
     // alert('Seller Account Setup');
 }
 async function signin(){
+    scrollTo(0,0);
+    document.getElementById("container1").style.display="none";
+    showloader();
     let email = document.getElementById("emailinput").value;
     let password = document.getElementById("password").value;
     if(validatename(email) && password.length>5){
@@ -87,25 +95,29 @@ async function signin(){
                 })
             );
             setCookie('jwtToken',data.accessToken);
-            hideloader();
-            launch_toast('Login successful');
-            alert('Login successful');
-            window.location.href = 'index.html';
+            // alert('Login successful');
+            setTimeout(()=>{
+                document.getElementById("container1").style.display="flex";
+                document.getElementById("txt").innerHTML="Login successful";
+            },1000);
+            setTimeout(()=>{
+                hideloader();
+                toast.style.transform = "translateX(-50px)";
+                x = setTimeout(()=>{
+                    toast.style.transform = "translateX(445px)"
+                }, 4000);
+            },2000)
+            clearTimeout(x);
+            setTimeout(()=>{
+                window.location.href = '../index.html';
+            }, 5000);
         } catch (error) {
             console.error('Error:', error);
-            launch_toast('Error Ocurred while logging in');
         }
     }
     else{
-        launch_toast('Invalid email or password');
+        alert('Invalid email or password');
     }
-}
-
-function launch_toast(text) {
-    var x = document.getElementById("snackbar");
-    x.textContent = text;
-    x.className = "show";
-    setTimeout(function(){ x.className = x.className.replace("show", ""); }, 3000);
 }
 
 function validatename(email) {

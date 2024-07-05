@@ -1,0 +1,17 @@
+.cen{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.logic{
+    width: 100%;
+}
+.innerlogic{
+    width:85%;
+    margin: 20px 0px;
+}
+h1 {
+    font-weight: 400;
+    font-size: 28px;
+    line-height: 36px;
+}

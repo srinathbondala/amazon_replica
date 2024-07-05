@@ -7,6 +7,7 @@ p{
 .atype,cartdiv a{
     color:darkcyan;
     font-size: 14px;
+    /* width: max-content; */
 }
 .shopping-cart{
     padding-left: 10px; padding-right: 10px; display: flex; flex-direction: column;
@@ -69,6 +70,16 @@ cartleftbottom{
     padding: 20px 10px;
     margin-top: 20px;
     min-height: 40px;
+}
+cartrightbottom{
+    margin-top: 10px;
+    width:90%;
+    padding: 20px 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    background-color: white;
 }
 .heading{
     font-size: 28px;
@@ -142,6 +153,11 @@ cartleftbottom{
     font-size: 12px; 
     color: rgb(6, 130, 70);
     margin-top: 10px;
+}
+.divadj{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 #numberofitems{
     padding: 6px 2px;
@@ -230,6 +246,31 @@ cartleftbottom{
 }
 .aline-div-cartTop{
     display: flex; padding:0px 20px; padding-top:30px;
+}
+table tr td{
+    font-size: 14px;
+}
+.td1{
+    padding-right: 60px;
+}
+.orderSummary{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+.orderSummary table{
+    width: 100%;
+    text-align: center;
+}
+.titleSum{
+    width: 80%;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 1; 
+    line-clamp: 1;
+    -webkit-box-orient: vertical;
+    text-align: start;
 }
 @media (max-width: 768px) {
     .aline-div-cartTop{

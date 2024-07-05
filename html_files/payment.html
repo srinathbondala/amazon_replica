@@ -13,12 +13,19 @@
 <body>
     <div id="overshade">
         <div id="loader" class="center"></div>
+        <div class="container" id="container1">
+            <div class="circle-border"></div>
+            <div class="circle">
+                <div class="success"></div>
+                </div>
+            </div>
+        </div>
     </div>
     <div class="payMainBody">
         <div class="payHeraderupper">
             <div class="payHeading">
                 <img src="/background_images/logo.jpeg" alt="amazon" id="amazonicon" onclick="window.location.href=`../html_files/cart.html`;">
-                <h1 style="width:50%; text-align: center;" class="totalHeading">Checkout ( <span id="paycnt">1</span> itms )</h1>
+                <h1 style="width:50%; text-align: center;" class="totalHeading">Checkout ( <span id="paycnt" style="font-size: x-large;">1</span> itms )</h1>
                 <a class="a-link-normal no-link" target="_blank" rel="noopener" href="https://www.amazon.com/gp/help/customer/display.html?nodeId=GX7NJQ4ZB8MHFRNJ&ref_=ox_spc_privacy&ie=UTF8">
                     <img alt="Website is secured with SSL" src="https://m.media-amazon.com/images/G/01/x-locale/checkout/truespc/secured-ssl._CB485936932_.png">
                 </a>
@@ -130,7 +137,10 @@
                                 <h4>Items to order</h4>
                                 <hr class="hr" style="margin-top:10px; margin-bottom: 10px;">
                                 <div id="displayOrderItems"></div>
-                                <input type="button" value="Confrime Order Items" class="btn" onclick="confirmOrderItems();">
+                                <span class="align-confdiv" >
+                                    <input type="button" value="Confrime Order Items" class="btn" onclick="confirmOrderItems();">
+                                    <span class="align-confdiv" style="margin-top: 20px; display: none;" id="showconfirm"><img src="https://cdn-icons-png.flaticon.com/128/5610/5610944.png" alt=":)" style="width: 15px; height: 15px;"><p>Products confirmed</p></span>
+                                </span>
                             </div>
                         </div>
                     </li><hr class="hr" style="margin: 30px -20px; height: 2px;">
@@ -152,7 +162,7 @@
                 <div class="payRight">
                     <div class="payRightInner">
                         <div style="text-align: center;">
-                            <input type="button" value="Continue" class="btn" onclick="confirmOrderItens();" style="margin-top: 8px;width: 100%; border-radius: 16px; padding: 10px;">
+                            <input type="button" value="Continue" onclick="ProceedForPayment();" id="proceedpay" class="proceedpay">
                             <p style="font-size: 12px; color: #565959 !important;">By placing your order, you agree to Amazon's</p>
                             <p style="font-size: 12px; color: #565959 !important;">
                                 <a href="#"class="a" style="font-size: 12px;">privacy notice</a> and <a href="#"class="a" style="font-size: 12px;">conditions of use.</a>
@@ -185,7 +195,7 @@
                                 </tr>
                                 <tr>
                                     <td class="td1">Import Fees Deposit:</td>
-                                    <td>$<span id="total">0.00</span></td>
+                                    <td>$<span id="totalImport">0.00</span></td>
                                 </tr>
                             </table>
                         </div>
@@ -203,6 +213,21 @@
                 </div>
             </div>
         </div>
+        <div class="wrapper">
+            <div id="toast">
+                <div class="container-1">
+                    <i class="fas fa-check-square"></i>
+                </div>
+                <div class="container-2">
+                    <p>Success</p>
+                    <p>Your changes are saved successfully.</p>
+                </div>
+                <button id="close" onclick="closeToast()">
+                    &times;
+                </button>
+            </div>
+        </div>
     </div>
     <script src="../scripts/payment.js"></script>
+    <script src="../scripts/footer.js"></script>
 </body>

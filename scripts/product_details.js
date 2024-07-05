@@ -6,6 +6,9 @@ window.onload = function() {
     performsomeaction();
     loadData();
 };
+window.addEventListener('beforeunload', function (event) {
+    this.localStorage.removeItem(getTextFromURL());
+});
 var cartimg, cartprice, carturl,cartdis;
 
 
@@ -309,7 +312,9 @@ function orderItem(){
                     "imageUrl":cartimg,
                     "price": cartprice,
                     "url": carturl,
-                    "title":cartdis
+                    "title":cartdis,
+                    "deal":JSON.parse(localStorage.getItem(id)).deal,
+                    "delivery":JSON.parse(localStorage.getItem(id)).delivary
                 },
                 "quantity": parseInt(quantity),
                 "inCart": false
@@ -351,7 +356,7 @@ function imageZoom(imgID, resultID) {
       x = pos.x - (lens.offsetWidth / 2);
       y = pos.y - (lens.offsetHeight / 2);
       /* Prevent the lens from being positioned outside the image: */
-      if (x > img.width - lens.offsetWidth) {x = img.width - lens.offsetWidth;}
+      if (x > img.width - lens.offsetWidth+76) {x = img.width - lens.offsetWidth+76}
       if (x < 0) {x = 0;}
       if (y > img.height - lens.offsetHeight) {y = img.height - lens.offsetHeight;}
       if (y < 0) {y = 0;}

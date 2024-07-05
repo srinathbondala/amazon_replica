@@ -102,8 +102,8 @@ function loadOrderData(){
     if(localStorage.getItem('OrderItems') != null){
         renderorderData(JSON.parse(localStorage.getItem('OrderItems')));
     }
-
 }
+var total=0;
 function renderorderData(data1){
     let innerText=``;
     if (Array.isArray(data1)) {
@@ -127,29 +127,37 @@ function renderorderData(data1){
                 </div>
             </div>
             `;
+            total+=item.price;
         });
+        document.getElementById("paycnt").innerHTML=data1.length;
+        document.getElementById("subtotal").innerHTML=total;
+        document.getElementById("total").innerHTML=total;
+        document.getElementById("tax").innerHTML=total;
     }
     else{
         let data=data1.product;
         innerText += `
         <div class="ItemsInOrder">
-            <hr class="hr">
-            <div class="cartBarItem">
-                <a href='product_details.html?text=${data.id}' ><img src="${data.imageUrl}" alt="img" class="ImgeInCart" style="width:80px; height:90px;"> </a>
-                <p>${data.price}</p>
-            </div>
-            <div class="cartBarItemInner">
-            <select name="1" id="select" class="categorydropdown" style="padding: 0px 15px; height: 20px;" disable>
-            <option value=${data1.quantity}>${data1.quantity}</option>
+        <hr class="hr">
+        <div class="cartBarItem">
+        <a href='product_details.html?text=${data.id}' ><img src="${data.imageUrl}" alt="img" class="ImgeInCart" style="width:80px; height:90px;"> </a>
+        <p>${data.price}</p>
+        </div>
+        <div class="cartBarItemInner">
+        <select name="1" id="select" class="categorydropdown" style="padding: 0px 15px; height: 20px;" disable>
+        <option value=${data1.quantity}>${data1.quantity}</option>
             </select>
             <span class="quantity" style="padding: 4px; width:15px; height:15px;">
             <img src="../background_images/trash_icon.png" alt="delete" style="height: 15px; width: 15px;" onclick="deleteFromOrderList(this);">
             </span>
             </div>
-        </div>
-        `;
-    }
-    document.getElementById("displayOrderItems").innerHTML=innerText;
+            </div>
+            `;
+            document.getElementById("subtotal").innerHTML=data.price;
+            document.getElementById("total").innerHTML=data.price;
+
+        }
+        document.getElementById("displayOrderItems").innerHTML=innerText;
 }
 
 function deleteFromOrderList(ref){
@@ -161,4 +169,114 @@ function deleteFromOrderList(ref){
 
 function confirmOrderItems(){
     orderItems=1;
+    document.getElementById("showconfirm").style.display = "flex";
+    document.getElementById("proceedpay").classList.add("btn");
+    document.getElementById("proceedpay").classList.add("pop");
+}
+function ProceedForPayment(){
+    if(orderItems==1){
+        scrollTo(0,0);
+        document.getElementById("container1").style.display="none";
+        showloader();
+        placeOrder();
+        setTimeout(()=>{
+            document.getElementById("container1").style.display="flex";
+        },1000);
+        clearTimeout(x);
+        toast.style.transform = "translateX(0)";
+        x = setTimeout(()=>{
+            toast.style.transform = "translateX(400px)"
+        }, 4000);
+        setTimeout(()=>{
+            hideloader();
+        },2000)
+    }
+    else{
+        alert("Please confirm items to proceed for payment");
+    }
+}
+
+let x;
+let toast = document.getElementById("toast");
+function closeToast(){
+    toast.style.transform = "translateX(400px)";
+}
+
+async function placeOrder(){
+    try{
+        let order_status=[];
+        const orderdata = JSON.parse(localStorage.getItem('OrderItems'));
+        orderdata.forEach(item=>{
+            order_status.push(
+                {
+                    "product_id": item.product.id,
+                    "comments": [],
+                    "status": "pending",
+                    "price": item.product.price,
+                    "delivery_date": item.product.delivary? item.product.delivary:"Not Confirmed"
+                }
+                
+            );
+        });
+        let order = {
+            "totalPrice": total,
+            "shippingAddress": {
+              "address": "SENIOUR CIVIL JUDGE QUATERS . QUATER No.B3, West Marredpally. SECUNDER...",
+              "city": "SECUNDERABAD",
+              "state": "TELANGANA",
+              "country": "India",
+              "pincode": "500026"
+            },
+            "order_status": order_status
+        }
+        //   [
+        //     {
+        //       "product_id": "663b21d07271b12c8eabf051",
+        //       "comments": [],
+        //       "status": "pending",
+        //       "price": 22.99,
+        //       "delivery_date": "2024-07-24"
+        //     }
+        //   ]
+          
+        const authToken = `Bearer ${getCookie('jwtToken')}`;
+        const resopnse = await fetch('http://localhost:8080/user/addOrder', {
+            method : 'POST',
+            headers : {
+                'Content-Type': 'application/json',
+                'Authorization': authToken
+            },
+            body : JSON.stringify(order)
+        });
+        if(!resopnse.ok){
+            throw new Error('Error Placing Order');
+        }
+        else{
+            removeFromCart(JSON.parse(localStorage.getItem('OrderItems')));
+        }
+        setTimeout(()=>{
+            hideloader();
+            localStorage.removeItem('OrderItems');
+            window.location.href="./review.html?text=success";
+        },1000);
+    }catch(error){
+        alert("error Occured to Order");
+        console.log(error);
+    }
+}
+
+function removeFromCart(arr){
+    let cartdata = JSON.parse(localStorage.getItem('CartItems'));
+    const set = new Set();
+    let val=[];
+    arr.forEach((values,idx)=>{
+        set.add(values.product.id);
+    });
+    cartdata.forEach((value,index)=>{
+        if(!set.has(value.product.id)){
+            val.push(value);
+        }
+    });
+    localStorage.setItem(JSON.stringify(val));
+    saveCart();
 }

@@ -74,18 +74,22 @@ function verifyUser(name){
 }
 function editEmail(){
     alert("email");
+    window.location.href="./editDetails.html?prams=email";
 }
 function editPhoneNumber(){
     alert("phoneNumber");
+    window.location.href="./editDetails.html?prams=phoneNumber";
 }
 function editPassword(){
     alert("Password");
+    window.location.href="./editDetails.html?prams=password";
 }
 function DeleteAccount(){
     alert("Delete");
 }
 function editUserName(){
     alert("name");
+    window.location.href="./editDetails.html?prams=userName";
 }
 function validatePassword(password){
     showloader();
