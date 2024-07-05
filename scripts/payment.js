@@ -127,7 +127,7 @@ function renderorderData(data1){
                 </div>
             </div>
             `;
-            total+=item.price;
+            total+= quantity * parseFloat(item.price);
         });
         document.getElementById("paycnt").innerHTML=data1.length;
         document.getElementById("subtotal").innerHTML=total;
@@ -153,8 +153,8 @@ function renderorderData(data1){
             </div>
             </div>
             `;
-            document.getElementById("subtotal").innerHTML=data.price;
-            document.getElementById("total").innerHTML=data.price;
+            document.getElementById("subtotal").innerHTML=parseFloat(data.price)*parseFloat(data1.quantity);
+            document.getElementById("total").innerHTML=parseFloat(data.price)*parseFloat(data1.quantity);
 
         }
         document.getElementById("displayOrderItems").innerHTML=innerText;

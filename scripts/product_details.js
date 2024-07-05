@@ -152,7 +152,6 @@ function review(comments,rating,count,ratingval){
     for (let i = 5; i >= 1; i--) {
         let rate = v[i-1];
         let percentage = ((parseInt(rate) / parseInt(count)) * 100).toFixed(0);
-    
         template += `
             <div class="row">
                 <div class="side">
