@@ -277,6 +277,6 @@ function removeFromCart(arr){
             val.push(value);
         }
     });
-    localStorage.setItem(JSON.stringify(val));
+    localStorage.setItem('CartItems',JSON.stringify(val));
     saveCart();
 }

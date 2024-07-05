@@ -216,7 +216,7 @@ function renderCartDataC(data) {
                 itemDiv.classList.add('item');
                 let abc=(item1.quantity * parseFloat(item.price)).toFixed(2);
                 itemDiv.innerHTML = `
-                <input type="checkbox" id="item${index + 1}" name="item${index + 1}" onclick="updateTotal(this,'${item1.quantity}','${item.price}','${item.title}','${item.id}');">
+                <input type="checkbox" id="item${index + 1}" name="item${index + 1}" onclick="updateTotal(this,'${item1.quantity}','${item.price}','${item.title}','${item.id}');" unchecked>
                 <label for="item${index + 1}" class="item-inner-div">
                     <span class="item-inner">
                         <div class="item-inner-div">
@@ -329,6 +329,7 @@ function handleChange(self,productId,price){
     let currsubtot2= parseFloat(currsubtot.split(':')[1].trim());
     if (index !== -1) {
         document.getElementById("subTotal").textContent = currsubtot.split(':')[0]+" : "+(currsubtot2+(preval-cartdata[index].quantity)*price).toFixed(2);
+        document.getElementById("valuetocart").textContent = currsubtot.split(':')[0]+" : "+(currsubtot2+(preval-cartdata[index].quantity)*price).toFixed(2);
         cartdata[index].quantity = parseInt(preval);
     }
     else{
