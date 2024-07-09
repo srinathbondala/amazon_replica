@@ -1,10 +1,20 @@
+body {
+    font-size: 14px;
+    line-height: 20px;
+    font-family: Arial, sans-serif;
+}
 .cen{
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin: auto;
+    transform: translate(-50%, -55%);
 }
 .logic{
     width: 100%;
+}
+.addclasslist{
+    width:36%;
 }
 .innerlogic{
     width:85%;
@@ -14,4 +24,80 @@ h1 {
     font-weight: 400;
     font-size: 28px;
     line-height: 36px;
+}
+.mainBorder{
+    border: 1px #ddd solid;
+    min-height: 250px;
+    margin-top: 10px;
+    padding: 20px;
+    display: flex;
+    gap:8px;
+    flex-wrap: wrap;
+}
+#addAddressDiv{
+    border: 1.6px #C7C7C7 dashed;
+    flex-direction: column;
+    gap:5px;
+}
+.AddressSize{
+    min-height: 250px;
+    width: 305px;
+    max-width: 100%;
+    border-radius: 8px;
+}
+.addressBorder{
+    border: 1px #C7C7C7 solid;
+}
+#addAddressDiv:hover{
+    cursor: pointer;
+}
+.innerAdderss{
+    color: #0f1111;
+    padding: 15px;
+}
+.innerAdderss li{
+    color: #0f1111;
+    list-style: none;
+}
+.innerAddressImg{
+    width:40px;
+    height: 10px;
+}
+.small-size{
+    font-size: 12px;
+    line-height: 16px;
+}
+.Address-span{
+    display:flex; align-items: center; gap:10px;
+}
+.overshadeContainer{
+    background-color: white;
+    width: 40%;
+    padding: 2%;
+    border-radius: 7px;
+    max-height: 80%;
+}
+#addressContainer{
+    display: none;
+}
+.inner-form{
+    display: flex;
+    height: 100%;
+    flex-direction: column;
+    gap: 10px;
+    overflow-y: auto;
+}
+.inner-form span{
+    display: flex;
+    flex-direction: column;
+    font-weight: 600;
+}
+.clsbtn{
+    font-size: 30px;
+}
+.clsbtn:hover{
+    cursor: pointer;
+}
+#nameContainer, #emailContainer, #phoneContainer{
+    display: none;
 }

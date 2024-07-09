@@ -43,6 +43,8 @@ function checkSignIn(){
       const usernameHeaderElement = document.getElementById("user_name_header");
       const nameUpdateInAllElement = document.getElementById("all_username");
       const headerSignInElement = document.getElementById("header_signin");
+      const addressName = document.getElementById("addressName");
+      const addressTab = document.getElementById("addressTab");
 
       if (localStorage.getItem('jwtToken') === null) {
           getdatafromjwt(jwtToken);
@@ -69,7 +71,18 @@ function checkSignIn(){
       if (nameUpdateInAllElement) {
           nameUpdateInAllElement.innerHTML = `Hello, ${storedJwt.username}`;
       }
-
+      // Update the address user name if the element is present
+      if (addressName && addressTab) {
+        let selfId=JSON.parse(localStorage.getItem('UserItems')).defaultAddress;
+        let userData = JSON.parse(localStorage.getItem("UserItems")).details;
+        for(let i=0;i<userData.length;i++){
+            if(userData[i].id==selfId){
+                addressName.innerHTML ="Deliver to " + userData[i].name;
+                addressTab.innerHTML = userData[i].city+", "+userData[i].pincode;
+                break;
+            }
+          }
+        }
       // Update the header signin element to show "Sign Out"
       if (headerSignInElement) {
           headerSignInElement.textContent = "Sign Out";
@@ -100,8 +113,8 @@ function validateCartDiv(){
     console.log('JWT token is not available');
   }
 }
-function loadPage(pageUrl, value) {
-  fetch(pageUrl)
+async function loadPage(pageUrl, value) {
+  await fetch(pageUrl)
   .then(response => response.text())
   .then(html => {
       value.innerHTML = html;
@@ -112,8 +125,8 @@ function loadPage(pageUrl, value) {
       console.log(error);
   });
 }
-function loadPagep(pageUrl, value) {
-  fetch(pageUrl)
+async function loadPagep(pageUrl, value) {
+  await fetch(pageUrl)
   .then(response => response.text())
   .then(html => {
       value.innerHTML = html;
@@ -134,8 +147,8 @@ function loadPagep(pageUrl, value) {
       console.log(error);
   });
 }
-function loadPageh(pageUrl, value) {
-  fetch(pageUrl)
+async function loadPageh(pageUrl, value) {
+  await fetch(pageUrl)
   .then(response => response.text())
   .then(html => {
       value.innerHTML = html;
@@ -169,13 +182,13 @@ function adjustWidth() {
   }
 }
 
-function signout(){
+async function signout(){
   if(getCookie('jwtToken')){
     if(confirm("Are you sure you want to sign out?")){
       deleteCookie('jwtToken');
       localStorage.removeItem('jwtToken');
       try{
-        fetch('http://localhost:8080/auth1/logout', {
+        await fetch('http://localhost:8080/auth1/logout', {
             method: 'POST'
         })
         .then(data =>{
@@ -315,8 +328,9 @@ function getUserDataFromServer(){
       console.error('Error:', error);
   });
 }
-function getCartDataFromServer(){
-  fetch('http://localhost:8080/user/cart', {
+async function getCartDataFromServer(){
+  if(!getCookie('jwtToken')) return;
+  await fetch('http://localhost:8080/user/cart', {
      method: 'GET',
      headers: {
          'Authorization': `Bearer ${getCookie('jwtToken')}`
@@ -481,4 +495,10 @@ function stopScroll(){
 }
 function startScroll(){
   document.documentElement.style.overflow = 'auto';
+}
+
+function openAddress(){
+   if(getCookie('jwtToken')){
+      window.location.href = "../html_files/editDetails.html?parms=Addresses";
+   }
 }

@@ -28,9 +28,9 @@ header{
 #logo{
     display: flex;
     align-items: center;
-    width: fit-content;
-    margin-left: 10px;
-    padding-top: 10px;
+    margin-left: 8px;
+    padding: 5px;
+    margin-top: 20px;
 }
 .over{
     transition: background-color 0.3s, border-radius 0.3s;
@@ -60,7 +60,7 @@ header{
 .para1{
     color: white; 
     padding-top:1vh;
-    font-size: small; 
+    font-size: 12px; 
     opacity: 0.8; 
     margin-bottom: 0;
     width:max-content;
@@ -81,6 +81,7 @@ header{
     overflow: hidden;
     white-space: normal;
     height: 1.2em;
+    font-size: 14px;
     display: -webkit-box;
     -webkit-box-orient: vertical;
     -webkit-line-clamp: 1;
@@ -224,6 +225,9 @@ header{
 
 /* Extra small devices (phones, less than 600px) */
 @media (max-width: 430px) {
+    body{
+        width: 100vw !important;
+    }
     header{
         height: 80px !important;
     }
@@ -281,6 +285,24 @@ header{
     }
     .cartItemRight{
         position: relative !important;
+        width: 100% !important;
+    }
+    language{
+        width: 50px !important;
+    }
+    order p{
+        height: 12px;
+    }
+    signin{
+        width: 100px !important;
+    }
+    signin p{
+        height: 10px;
+    }
+    .ProfileAlloptions_inner{
+        flex-direction: column;
+    }
+    .profileDiv,.profileDivInner{
         width: 100% !important;
     }
 }

@@ -4,11 +4,13 @@ document.getElementById("myForm").addEventListener("submit", function(event) {
     let email = document.getElementById("email").value;
     let password = document.getElementById("password").value;
     let repassword = document.getElementById("repassword").value;
-    if(Validite(name,email,password,repassword)){
+    let phone = document.getElementById("mobile").value;
+    if(Validite(name,email,password,phone,repassword)){
         let bodyitem = {
-            "username": name,
-            "email": email,
+            "username": name.trim(),
+            "email": email.trim(),
             "password": password,
+            "phone":phone.trim(),
             "roles": ["ROLE_USER"]
           };
         console.log(bodyitem);
@@ -37,7 +39,7 @@ document.getElementById("myForm").addEventListener("submit", function(event) {
         });
     }
 });
-function Validite(name,email,password,repassword){
+function Validite(name,email,password,phone,repassword){
     if (name.trim() === "") {
         alert("Please enter your name.");
         return false;
@@ -47,10 +49,21 @@ function Validite(name,email,password,repassword){
         alert("Please enter your email.");
         return false;
     }
+
     if (!validateEmail(email)) {
         alert("Please enter a valid email address.");
         return false;
     }
+
+    if(phone.trim() === ""){
+        alert("Please enter your Mobile Number.");
+        return false;
+    }
+    const pattern = /^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/;
+    if (!pattern.test(phone)) {
+        alert("Enter valid Mobile Number");
+        return "false";
+    } 
 
     if (password.length < 6 && passwordcheck(password)) {
         alert("Password must be at least 6 characters.");

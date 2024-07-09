@@ -53,6 +53,27 @@ body{
     transition: opacity 1s ease;
 }
 
+.profileContentInner{
+    width: 100%;
+    height: 50px;
+    background-color: #067d62;
+    padding: 2px;
+    border-radius: 8px;
+    margin-top: 15px;
+}
+#successMain{
+    display: none;
+}
+.profileContentInner1{
+    background-color: white;
+    border-radius: 8px;
+    margin-left: 10px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    padding-left: 20px;
+}
+
 .closemark{
     position: absolute; top:10px; right:20px; font-size: xx-large;
 }

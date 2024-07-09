@@ -214,10 +214,9 @@ function renderCartDataC(data) {
                 item= item.product;
                 const itemDiv = document.createElement('div');
                 itemDiv.classList.add('item');
-                let abc=(item1.quantity * parseFloat(item.price)).toFixed(2);
                 itemDiv.innerHTML = `
-                <input type="checkbox" id="item${index + 1}" name="item${index + 1}" onclick="updateTotal(this,'${item1.quantity}','${item.price}','${item.title}','${item.id}');" unchecked>
-                <label for="item${index + 1}" class="item-inner-div">
+                <input type="checkbox" id="item${index + 1}" name="item${index + 1}" quantity="${item1.quantity}" onclick="updateTotal(this,'${item.price}','${item.title}','${item.id}');" unchecked>
+                <label for="item${index + 1}" class="item-inner-div" onclick="">
                     <span class="item-inner">
                         <div class="item-inner-div">
                             <a href="product_details.html?k=${item.category}&text=${item.id}"><img src="${item.imageUrl}" alt="item${index + 1}" class="item-inner-div-img"> </a>
@@ -230,7 +229,7 @@ function renderCartDataC(data) {
                                         <label for="isgift" style="font-size: 12px; margin-left: 5px; font-family: Arial, sans-serif;">This is a gift</label>
                                     </div>
                                     <div style="margin-top: 14px;">
-                                        <select name="count" class="categorydropdown" onchange="handleChange(this,'${String(item.id)}','${item.price}')">
+                                        <select name="count" class="categorydropdown" onchange="handleChange(event,this,'${String(item.id)}','${item.price}')">
                                             ${generateQuantityOptions(item1.quantity)}
                                         </select>
                                         <a href="#delete" class="aafter" onclick="DeleteFromCart(this,'${String(item.id)}');">Delete</a>
@@ -240,7 +239,7 @@ function renderCartDataC(data) {
                                     </div>
                                 </div>
                                 <div class="items-div-right">
-                                    <span style="align-self: flex-end; font-size: large; font-weight: 600;" id="${item.id}price">$ ${abc}</span>
+                                    <span style="align-self: flex-end; font-size: large; font-weight: 600;" >$ ${item.price}</span>
                                 </div>
                             </div>
                         </div>
@@ -293,7 +292,7 @@ function redirectPayment(){
             }
         });
         localStorage.setItem('OrderItems',JSON.stringify(val));
-        window.location.href = './payment.html';
+        window.location.href = './payment.html?page=cart';
     }
     else{
         alert("Please select Items");
@@ -316,39 +315,46 @@ function generateQuantityOptions(selectedQuantity) {
     options += `<option value="10+" ${selectedQuantity >= 10 ? 'selected' : ''}>Qty: 10+</option>`;
     return options;
 }
-function handleChange(self,productId,price){
-    let preval= self.closest('select').value;
+function handleChange(event,self,productId,price){
+    let preval= event.target.value;
     if(preval=="10+"){
         alert("products Not available");
         return;
     }
     let cartdata=JSON.parse(localStorage.getItem('CartItems'));
     let index = cartdata.findIndex(item => item.product.id == productId);
-    document.getElementById(productId+"price").textContent="$ "+(preval*price).toFixed(2);
     let currsubtot=document.getElementById("subTotal").textContent;
     let currsubtot2= parseFloat(currsubtot.split(':')[1].trim());
     if (index !== -1) {
         document.getElementById("subTotal").textContent = currsubtot.split(':')[0]+" : "+(currsubtot2+(preval-cartdata[index].quantity)*price).toFixed(2);
-        document.getElementById("valuetocart").textContent = currsubtot.split(':')[0]+" : "+(currsubtot2+(preval-cartdata[index].quantity)*price).toFixed(2);
+        if(noselected>0 && selectedItems.has(productId)){
+            let currsubtot1=document.getElementById("valuetocart").textContent;
+            let currsubtot3= parseFloat(currsubtot1.split(':')[1].trim());
+            document.getElementById("valuetocart").textContent = currsubtot1.split(':')[0]+": "+(currsubtot3+(preval-cartdata[index].quantity)*price).toFixed(2);
+        }
         cartdata[index].quantity = parseInt(preval);
+        event.target.setAttribute('quantity',preval);
+        if(noselected>0 && selectedItems.has(productId))
+            document.getElementById(productId+"+quant").textContent=preval;
+        localStorage.setItem('CartItems', JSON.stringify(cartdata));
     }
     else{
         alert('Item not found');
     }
-    localStorage.setItem('CartItems', JSON.stringify(cartdata));
 }
 
 var sum=0;
 var noselected=0;
-function updateTotal(self,quantity,price,title,id){
+function updateTotal(self,price,title,id){
     showloader();
+    let quantity=parseInt(self.getAttribute('quantity'));
     if(self.closest('input').checked){
         totalSelected++;
         sum+=quantity*parseFloat(price);
         noselected++;
         document.getElementById("result").innerHTML+=`<tr id="${id}">
                         <td class="titleSum"> # ${title}</td>
-                        <td>${quantity}</td>    
+                        <td id=${id}+quant>${quantity}</td>    
                 </tr>`;
                 selectedItems.add(id);
     }

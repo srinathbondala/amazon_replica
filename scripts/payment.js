@@ -252,7 +252,9 @@ async function placeOrder(){
             throw new Error('Error Placing Order');
         }
         else{
-            removeFromCart(JSON.parse(localStorage.getItem('OrderItems')));
+            let urlParams = new URLSearchParams(window.location.search);
+            let a=urlParams.get('page');
+            a=="cart"?removeFromCart(orderdata):console.log("Selected directly Cart");
         }
         setTimeout(()=>{
             hideloader();

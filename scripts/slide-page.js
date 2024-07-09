@@ -190,7 +190,7 @@ function processData(data) {
                             }
                             templateHTML+=`<span class="rating-count1"> (${item.ratingCount})</span>
                         </div>
-                        <p style="color: gray;">${item.count} bought in the past month</p>
+                        <p style="color: #565959;">${item.count} bought in the past month</p>
                         <div>
                             <span style="font-size:14px">$</span>
                             <span class="price1">${item.price}</span>

@@ -14,11 +14,104 @@
     <div id="overshade">
         <div id="loader" class="center"></div>
     </div>
+    <div id="addAddressHiden">
+        <div class="overshadeContainer cen">
+            <span class="flex" style="justify-content: space-between;"><h2>Add a new address</h2><p class="clsbtn" onclick="CloseAddressDiv();">&times;</p></span><br>
+            <form class="inner-form" id="AddressForm">
+                <span><p>Country/Region</p>
+                    <select name="country" id="country" class="categorydropdown">
+                        <option value="India">India</option>
+                        <option value="USA">USA</option>
+                        <option value="UK">UK</option>
+                        <option value="Canada">Canada</option>
+                        <option value="Australia">Australia</option>
+                        <option value="Japan">Japan</option>
+                        <option value="China">China</option>
+                        <option value="Russia">Russia</option>
+                    </select>         
+                </span>
+                <span><p>Full name (First and Last name)</p>
+                    <input type="text" name="name" id="name" class="quantity" style="width: 95%; margin-right: 10px;" required>     
+                </span>
+                <span><p>Street address</p>
+                    <input type="text" name="address" id="address" class="quantity" placeholder="Street address, P.O.box, company name, c/o" style="width: 95%; margin-right: 10px;" required>     
+                </span>
+                <span><p>City</p>
+                    <input type="text" name="city" id="city" class="quantity" style="width: 95%; margin-right: 10px;" required>     
+                </span>
+                <span><p>State / Province / Region</p>
+                    <input type="text" name="state" id="state" class="quantity" style="width: 95%; margin-right: 10px;" required>     
+                </span>
+                <span><p>Zip Code</p>
+                    <input type="text" name="code" id="pincode" class="quantity" style="width: 95%; margin-right: 10px;" required>     
+                </span>
+                <span><p>Phone number</p>
+                    <input type="tel" name="phno" id="phone" class="quantity" style="width: 95%; margin-right: 10px;" required>     
+                    <p style="font-size: smaller;font-weight: lighter;">May be used to assist delivery</p>
+                </span>
+                <span>
+                    <input type="button" name="addAddressBtn" value="Add Address" onclick="addAdressToDatabase();" class="btn" id="AddressButton">
+                </span>
+            </form>
+        </div>
+    </div>
     <div id="content"></div>
-    <div class="logic cen">
-        <div class="innerlogic">
-            <div class="order_hedding"><p><a href="../html_files/homepage.html" class="a">Your Account</a> <span> > </span> <span style="color: #c45500; font-size: 14px;" id="parm">Login & Security</span></p></div>
-            <h1 id="MainHeading" style="margin-top:16px;"></h1>
+    <div class="flex">
+        <div class="logic flex" style="flex-direction: column;">
+            <div class="innerlogic" id="addressMainDiv">
+                <div class="order_hedding"><p><a href="../html_files/homepage.html" class="a">Your Account</a> <span> > </span> <span style="color: #c45500; font-size: 14px;" id="parm">Login & Security</span></p></div>
+                <h1 id="MainHeading" style="margin-top:16px;"></h1>
+                <div class="mainBorder" id="addressContainer">
+                    <div id="addAddressDiv" class="flex AddressSize" onclick="displayAddressDiv();">
+                        <img src="/background_images/addicon.png" alt="+" id="addAddressBtn">
+                        <h2 style="color: #565959;">Add Address</h2>
+                    </div>
+                </div>
+                <div class="mainBorder" id="nameContainer">
+                    <div id="addCardDiv">
+                        <p>If you want to change the name associated with your Amazon customer account, you may do so below. Be sure to click the <b>Save Changes</b> button when you are done.</p>
+                        <br>
+                        <p><b>New name</b></p>
+                        <input type="text" name="name" id="newname" class="quantity" required>
+                        <br>
+                        <input type="button" name="saveNameBtn" value="Save Changes" onclick="UpdateName();" class="btn" id="saveNameButton">
+                    </div>
+                </div>
+                <div class="mainBorder" id="emailContainer" style="padding: 16px 24px; border-radius: 8px;">
+                    <div id="addCardDiv">
+                        <h1 id="MainHeading1"></h1>
+                        <p style="margin-top: 10px;">Enter the new email address you would like to associate with your account below. We will send a One Time Password (OTP) to that address.</p>
+                        <br>
+                        <p><b>New email address</b></p>
+                        <input type="text" name="name" id="email" class="quantity" style="width: 95%;" required>
+                        <br>
+                        <input type="button" name="saveNameBtn" value="Continue" onclick="SendOtp();" class="btn" id="saveNameButton" style="width: 100%;">
+                    </div>
+                </div>
+                <div class="mainBorder" id="phoneContainer" style="padding: 16px 24px; border-radius: 8px;">
+                    <div id="addCardDiv">
+                        <h1 id="MainHeading1"></h1>
+                        <p><b>Old mobile phone number:</b></p>
+                        <p id="oldphone"></p><br>
+                        <p><b>Mobile number:</b></p>
+                        <span>
+                            <select id="phoneprefix" class="categorydropdown">
+                                <option value="+91">+91</option>
+                                <option value="+1">+1</option>
+                                <option value="+44">+44</option>
+                                <option value="+81">+81</option>
+                                <option value="+86">+86</option>
+                                <option value="+7">+7</option>
+                            </select>
+                            <input type="tel" name="phno" id="phoneadd" class="quantity" required>
+                        </span>
+                        <p style="margin-top: 10px;">By enrolling a mobile phone number, you consent to receive automated security notifications via text message from Amazon. Your mobile phone number will not be shared with third parties or affiliates for marketing or promotional purposes without your permission. Remove your number in Login & Security to cancel. For more information, visit amzn.com/help or call +1 888 280 4331. Message and data rates may apply. Message frequency varies.</p>
+                        <br>
+                        <input type="button" name="saveNameBtn" value="Continue" onclick="updateNumber();" class="btn" id="saveNameButton" style="width: 20%;">
+                        <input type="button" value="Cancle" onclick="ClosePhoneDiv();" class="btn" style="width: 20%; margin-top: 10px; margin-left: 10px;">
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
     <div id="footer"></div>

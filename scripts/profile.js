@@ -6,8 +6,26 @@ window.onload = function() {
         if(getCookie('validLogin')==null){
             openVerifyPage();
         }
+        let urlParams = new URLSearchParams(window.location.search);
+        if(urlParams.has('successCodes')){
+            let successCodes=urlParams.get('successCodes');
+            document.getElementById("successMain").style.display="block";
+            if(successCodes==="SUCCESS_CHANGE_NAME"){
+                document.getElementById("successCodeVal").innerHTML="Name updated";
+            }
+            else if(successCodes==="SUCCESS_CHANGE_EMAIL"){
+                document.getElementById("successCodeVal").innerHTML="Email updated";
+            }
+            else if(successCodes==="SUCCESS_CHANGE_PHONE"){
+                document.getElementById("successCodeVal").innerHTML="Phone Number updated";
+            }
+            else if(successCodes==="SUCCESS_CHANGE_PASSWORD"){
+                document.getElementById("successCodeVal").innerHTML="Password updated";
+            }
+        }
     } catch (e) {
         alert(e);
+        console.error(e);
     }
 }
 const contentDiv = document.getElementById('content');
@@ -39,19 +57,22 @@ function openVerifyPage(){
 }
 function loadVerifyData(){
     const num = document.getElementById("numberVerify");
-    userVerData=JSON.parse(localStorage.getItem("UserItems"));
-    document.getElementById("nameVerify").textContent=userVerData.username;
-    document.getElementById("nameVerify1").textContent=userVerData.username;
-    document.getElementById("verifynumber").textContent= userVerData.phone==null?"No Phone Number":userVerData.phone;
-    if(userVerData.phone==null){
-        document.getElementById("verifynumber").style.fontSize="10px";
-        document.getElementById("verifynumber").style.color="#c45500";
+    if(localStorage.getItem("UserItems")==null){    
+        userVerData=JSON.parse(localStorage.getItem("UserItems"));
+        document.getElementById("nameVerify").textContent=userVerData.username;
+        document.getElementById("nameVerify1").textContent=userVerData.username;
+        if(userVerData.phone && userVerData.phone==null){
+            document.getElementById("verifynumber").textContent="No Phone Number";
+            document.getElementById("verifynumber").style.fontSize="10px";
+            document.getElementById("verifynumber").style.color="#c45500";
+        }
+        else{
+            document.getElementById("verifynumber").textContent=userVerData.phone;
+            document.getElementById("verifynumber").style.fontSize="15px";
+            document.getElementById("verifynumber").style.color="black";
+        }
+        num.textContent=userVerData.email;
     }
-    else{
-        document.getElementById("verifynumber").style.fontSize="15px";
-        document.getElementById("verifynumber").style.color="black";
-    }
-    num.textContent=userVerData.email;
 }
 function verifyUser(name){
     switch (name) {
@@ -59,7 +80,7 @@ function verifyUser(name){
             editUserName();
             break;
         case 'Email':
-            editEmail();
+            addEmail();
             break;
         case 'PhoneNo':
             editPhoneNumber();
@@ -72,24 +93,24 @@ function verifyUser(name){
             break;
     }
 }
-function editEmail(){
-    alert("email");
-    window.location.href="./editDetails.html?prams=email";
+function addEmail(){
+    // alert("email");
+    window.location.href="./editDetails.html?parms=Email";
 }
 function editPhoneNumber(){
-    alert("phoneNumber");
-    window.location.href="./editDetails.html?prams=phoneNumber";
+    // alert("phoneNumber");
+    window.location.href="./editDetails.html?parms=PhoneNumber";
 }
 function editPassword(){
-    alert("Password");
-    window.location.href="./editDetails.html?prams=password";
+    // alert("Password");
+    window.location.href="./editDetails.html?parms=password";
 }
 function DeleteAccount(){
     alert("Delete");
 }
 function editUserName(){
-    alert("name");
-    window.location.href="./editDetails.html?prams=userName";
+    // alert("name");
+    window.location.href="./editDetails.html?parms=UserName";
 }
 function validatePassword(password){
     showloader();
@@ -110,11 +131,12 @@ async function VerifyPass(password){
         });
 
         if (!response.ok) {
+            hideloader();
             throw new Error(`HTTP error! status: ${response.status}`);
         }
         const result = await response.text();
         if(result==="Success"){
-            setCookie("validLogin",result,1800000);
+            setCookie("validLogin",result,2000000);
             const overshad1 = document.getElementById("overshade1");
             document.getElementById("incorrectMain").style.display="none";
             document.getElementById("overshade1").classList.add("vanish");
@@ -129,5 +151,6 @@ async function VerifyPass(password){
     } catch (error) {
         console.error('Error:', error);
         alert("Error Occured");
+        hideloader();
     }
 }
