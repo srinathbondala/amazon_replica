@@ -250,7 +250,8 @@ function AddToCart(){
                                 "id": id,
                                 "imageUrl":cartimg,
                                 "price": cartprice,
-                                "url": carturl
+                                "url": carturl,
+                                "title":cartdis
                             },
                             "quantity": parseInt(quantity),
                             "inCart": true

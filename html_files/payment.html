@@ -25,7 +25,7 @@
         <div class="payHeraderupper">
             <div class="payHeading">
                 <img src="/background_images/logo.jpeg" alt="amazon" id="amazonicon" onclick="window.location.href=`../html_files/cart.html`;">
-                <h1 style="width:50%; text-align: center;" class="totalHeading">Checkout ( <span id="paycnt" style="font-size: x-large;">1</span> itms )</h1>
+                <h1 style="width:50%; text-align: center;" class="totalHeading">Checkout ( <span id="paycnt" style="font-size: x-large;">1</span> items )</h1>
                 <a class="a-link-normal no-link" target="_blank" rel="noopener" href="https://www.amazon.com/gp/help/customer/display.html?nodeId=GX7NJQ4ZB8MHFRNJ&ref_=ox_spc_privacy&ie=UTF8">
                     <img alt="Website is secured with SSL" src="https://m.media-amazon.com/images/G/01/x-locale/checkout/truespc/secured-ssl._CB485936932_.png">
                 </a>
@@ -46,13 +46,17 @@
                                 <h3 style="margin-bottom: 5px;">Your addresses</h3>
                                     <hr class="hr" style="margin-bottom: 10px;">
                                 </div>
-                                <div class="defaultAddress">
-                                    <input type="checkbox" name="group1" value="address1" class="Addressoption" id="adresscheck" checked>
-                                    <div style="color: black;">
-                                        <p style="font-weight: bold;">Chilukamari Krishna teja</p>
-                                        <p>SENIOUR CIVIL JUDGE QUATERS . QUATER No.B3</p>
-                                        <p>West Marredpally. SECUNDERABAD</p>
-                                        <p>SECUNDERABAD, TELANGANA 500026</p>
+                                <div class="defaultAddress" id="defaultAdd">
+                                    <div style="display: flex;">
+                                        <input type="radio" name="group1" value="address1" class="Addressoption" id="adresscheck" checked onchange="changeAddress();">
+                                        <label for="adresscheck">
+                                            <div style="color: black;" id="default">
+                                                <p style="font-weight: bold;">Chilukamari Krishna teja</p>
+                                                <p>SENIOUR CIVIL JUDGE QUATERS . QUATER No.B3</p>
+                                                <p>West Marredpally. SECUNDERABAD</p>
+                                                <p>SECUNDERABAD, TELANGANA 500026</p>
+                                            </div>
+                                        </label>
                                     </div>
                                 </div>
                                 <div id="AllAdress">

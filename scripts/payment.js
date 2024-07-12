@@ -12,6 +12,29 @@ window.onload = function(){
             }
         }
     }
+    loadAddress();
+}
+function loadAddress(){
+    let addressDefaultDiv = document.getElementById("default");
+    let localAdress1 = JSON.parse(localStorage.getItem('UserItems'));
+    let loadDetails = localAdress1.details;
+    if(loadDetails.length>0){
+        for(let i=0;i<loadDetails.length;i++){
+            if(localAdress1.defaultAddress == loadDetails[i].id){
+                let content = `<p style="font-weight: bold;">${loadDetails[i].name}</p>
+                <p>${loadDetails[i].address}</p>
+                <span style="display:flex; gap:5px;"><p>${loadDetails[i].city},</p><p> ${loadDetails[i].pincode}</p></span>
+                <span style="display:flex; gap:5px;"><p>${loadDetails[i].state},</p><p>${loadDetails[i].country}</p></span>`;
+                addressDefaultDiv.innerHTML=content;
+                document.getElementById("payAdress").innerHTML=content;
+                break;
+            }
+        }
+    }
+    else{
+        document.getElementById("AllAdress").style.display = "block";
+    }
+    let addressDiv = document.getElementById("AllAdress");
 }
 function ShowAdress(){
     if( document.getElementById("change1").textContent!="Close"){
@@ -34,6 +57,9 @@ function ShowAdress(){
         address[0].classList.remove("addressAddStart");
         document.getElementsByClassName("defaultAddress")[0].classList.remove("defaultadd");
     }
+}
+function changeAddress(){
+    alert("changed");
 }
 function addNewAddressTab(){
     alert("Add New Address");
@@ -213,7 +239,8 @@ async function placeOrder(){
                     "comments": [],
                     "status": "pending",
                     "price": item.product.price,
-                    "delivery_date": item.product.delivary? item.product.delivary:"Not Confirmed"
+                    "delivery_date": item.product.delivary? item.product.delivary:"Not Confirmed",
+                    "quantity": item.quantity
                 }
                 
             );

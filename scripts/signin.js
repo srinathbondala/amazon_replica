@@ -99,7 +99,7 @@ async function signin(){
             setTimeout(()=>{
                 document.getElementById("container1").style.display="flex";
                 document.getElementById("txt").innerHTML="Login successful";
-            },1000);
+            },200);
             setTimeout(()=>{
                 hideloader();
                 toast.style.transform = "translateX(-50px)";

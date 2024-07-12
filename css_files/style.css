@@ -30,7 +30,7 @@ header{
     align-items: center;
     margin-left: 8px;
     padding: 5px;
-    margin-top: 20px;
+    margin-top: 4px;
 }
 .over{
     transition: background-color 0.3s, border-radius 0.3s;

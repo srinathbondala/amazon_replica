@@ -125,7 +125,7 @@ async function UpdateNumberDatabase(data){
 
 /*-------------------------------------------Address functions--------------------------------------*/
 function loadAdressUpdate(){
-    document.getElementById("addressContainer").style.display="block";
+    document.getElementById("addressContainer").style.display="flex";
     try{
     let addressDiv = document.getElementById("addressContainer");
     let content="";

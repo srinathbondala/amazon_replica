@@ -6,7 +6,11 @@ window.onload = function() {
     if(getCookie('jwtToken')){
         // renderCartData(cartData);
         loadCartDataC();
+        
         loadSuggesions(suggestedDiv);
+        setTimeout(()=>{
+            document.getElementById("checkform").reset();
+        },500);
     }
     else{
         document.querySelector('cartleftbottom').innerHTML = "";
@@ -182,6 +186,9 @@ function renderCartDataC(data) {
             </div>
         `;
         shoppingCartContainer.innerHTML = upperPart;
+        var itemDivform = document.createElement('form');
+        itemDivform.setAttribute("id","checkform");
+        // shoppingCartContainer.appendChild(itemDivform);
         let total = 0;
         let cnt=0,totcnt=0;
         let sumary="";
@@ -207,7 +214,7 @@ function renderCartDataC(data) {
                         <p class="a" onclick="deleteslt(this)">Delete</p>
                         <p class="a" onclick="">Add to list</p>
                     </div>
-            </div>
+                </div>
                 `;
             } else {
                 var item1=item;
@@ -215,8 +222,8 @@ function renderCartDataC(data) {
                 const itemDiv = document.createElement('div');
                 itemDiv.classList.add('item');
                 itemDiv.innerHTML = `
-                <input type="checkbox" id="item${index + 1}" name="item${index + 1}" quantity="${item1.quantity}" onclick="updateTotal(this,'${item.price}','${item.title}','${item.id}');" unchecked>
-                <label for="item${index + 1}" class="item-inner-div" onclick="">
+                <input type="checkbox" id="item${index + 1}" name="item${index + 1}" quantity="${item1.quantity}" onclick="updateTotal(this,'${item.price}','${item.title}','${item.id}');" class="innerCheck">
+                <label for="item${index + 1}" class="item-inner-div">
                     <span class="item-inner">
                         <div class="item-inner-div">
                             <a href="product_details.html?k=${item.category}&text=${item.id}"><img src="${item.imageUrl}" alt="item${index + 1}" class="item-inner-div-img"> </a>
@@ -224,7 +231,7 @@ function renderCartDataC(data) {
                                 <div class="items-div-left">
                                     <a href="product_details.html?k=${item.category}&text=${item.id}" class="pointer"><span><p class="itemp">${item.title}</p></span></a>
                                     <p class="items-div-left-p">${item.stock ? 'In Stock' : 'Out of Stock'}</p>
-                                    <div style="margin-top: 8px; display: flex;align-items: center;">
+                                    <div style="margin-top: 8px; display: flex; align-items: center;">
                                         <input type="checkbox" name="isgift" id="isgiftcbx">
                                         <label for="isgift" style="font-size: 12px; margin-left: 5px; font-family: Arial, sans-serif;">This is a gift</label>
                                     </div>
@@ -247,7 +254,7 @@ function renderCartDataC(data) {
                     </span>
                 </label>
             `;
-                shoppingCartContainer.appendChild(itemDiv);
+                itemDivform.appendChild(itemDiv);
                 total += item1.quantity * parseFloat(item.price);
                 cnt++;
                 totcnt += item1.quantity;
@@ -258,6 +265,7 @@ function renderCartDataC(data) {
                 // `;
             }
         });
+        shoppingCartContainer.appendChild(itemDivform);
         const subtotalElement = document.createElement('p');
         subtotalElement.style.alignSelf = 'flex-end';
         subtotalElement.style.fontSize = 'large';

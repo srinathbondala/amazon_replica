@@ -83,4 +83,46 @@
     align-items: center;
     justify-content: center;
 }
-
+.orderDiv{
+    width: 100%;
+    border: 1px #ddd solid;
+    border-radius: 2px;
+}
+.orderInnerLeft{
+    width: 50%;
+}
+.oredrDivInner{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 12px;
+}
+.orderInnerLeft ul{
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: space-between;
+    text-align: center;
+}
+.orderInnerLeft ul li{
+    list-style: none;
+}
+.orderInnerRight span{
+    display: inline-flex;
+    gap: 10px;
+}
+.orderInnerRight{
+    text-align: center;
+}
+.orderDiv p{
+    font-size: 12px;
+}
+.allOrdersContent{
+    padding: 10px 12px;
+}
+.cartImage{
+    margin-top: 20px;
+    width: 60px;
+    height: 20px;
+}
