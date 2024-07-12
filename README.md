@@ -100,13 +100,20 @@ The backend is developed using Spring Boot and includes JWT authentication for s
 
 The application uses AJAX calls to interact with the backend services. These calls handle user authentication, product fetching, cart management, and order processing, ensuring a dynamic and responsive user experience.
 
+# Project Demo Images
+
+Here are some screenshots of our Amazon replica project:
+
+![Main Page](Demo_Images/main-page.png)
+![Amazon Account](Demo_Images/amazonAccount.png)
+![Amazon Slider](Demo_Images/amazonSlider.png)
+![Amazon Spring](Demo_Images/amazonSpring.png)
+![Amazon Items Menu](Demo_Images/amazon_items_menue.png)
+![Cart](Demo_Images/cart.png)
+
 ## Contributing
 
 Feel free to fork this repository and submit pull requests. For major changes, please open an issue first to discuss what you would like to change.
-
-## License
-
-This project is licensed under the MIT License.
 
 ## Contact
 
