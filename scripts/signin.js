@@ -110,7 +110,7 @@ async function signin(){
             clearTimeout(x);
             setTimeout(()=>{
                 window.location.href = '../index.html';
-            }, 5000);
+            }, 2000);
         } catch (error) {
             console.error('Error:', error);
         }
