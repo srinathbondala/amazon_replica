@@ -105,11 +105,10 @@ async function signin(){
                 toast.style.transform = "translateX(-50px)";
                 x = setTimeout(()=>{
                     toast.style.transform = "translateX(445px)"
-                }, 4000);
+                }, 2000);
             },2000)
             clearTimeout(x);
             setTimeout(()=>{
-                hideloader();
                 window.location.href = '../index.html';
             }, 2000);
         } catch (error) {

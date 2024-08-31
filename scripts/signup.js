@@ -23,10 +23,13 @@ document.getElementById("myForm").addEventListener("submit", function(event) {
         })
         .then(response => {
             if (!response.ok) {
+                alert("User Already Exists");
                 throw new Error('Failed to register user: ' + response.statusText);
             }
             if (response.status === 204) {
                 console.log('User registered successfully');
+                alert("User registered successfully");
+                window.location.href = '../index.html';
             } else {
                 return response.text();
             }

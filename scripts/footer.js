@@ -34,6 +34,7 @@ async function getdatafromjwt(jwtToken){
 }
 
 function checkSignIn(){
+  try{
   const jwtToken = getCookie('jwtToken');
   if (jwtToken) {
       console.log('JWT token is available');
@@ -75,7 +76,8 @@ function checkSignIn(){
       if (addressName && addressTab) {
         let selfId=JSON.parse(localStorage.getItem('UserItems')).defaultAddress;
         let userData = JSON.parse(localStorage.getItem("UserItems")).details;
-        for(let i=0;i<userData.length;i++){
+        if(userData!=null){
+          for(let i=0;i<userData.length;i++){
             if(userData[i].id==selfId){
                 addressName.innerHTML ="Deliver to " + userData[i].name;
                 addressTab.innerHTML = userData[i].city+", "+userData[i].pincode;
@@ -83,6 +85,7 @@ function checkSignIn(){
             }
           }
         }
+      }
       // Update the header signin element to show "Sign Out"
       if (headerSignInElement) {
           headerSignInElement.textContent = "Sign Out";
@@ -97,6 +100,7 @@ function checkSignIn(){
       localStorage.removeItem('CartItems');
       console.log('JWT token is not available');
     }
+  }catch(e){hideloader();}
 }
 
 function validateCartDiv(){
