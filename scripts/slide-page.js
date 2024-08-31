@@ -109,10 +109,10 @@ function loadjsondata() {
     console.log(category);
     var URL=""
     if(getFeatureFromURL()!=null){
-        URL= `http://localhost:8080/amazon/dataByCategory/${category}/${getFeatureFromURL()}`;
+        URL= `https://amazon-server-1-27sp.onrender.com/amazon/dataByCategory/${category}/${getFeatureFromURL()}`;
     }
     else{
-        URL = `http://localhost:8080/amazon/dataByCategory/${category}`;
+        URL = `https://amazon-server-1-27sp.onrender.com/amazon/dataByCategory/${category}`;
     }
     // var cachedData = getCachedData(category);
     // if (cachedData) {

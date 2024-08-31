@@ -267,7 +267,7 @@ async function placeOrder(){
         //   ]
           
         const authToken = `Bearer ${getCookie('jwtToken')}`;
-        const resopnse = await fetch('http://localhost:8080/user/addOrder', {
+        const resopnse = await fetch('https://amazon-server-1-27sp.onrender.com/user/addOrder', {
             method : 'POST',
             headers : {
                 'Content-Type': 'application/json',

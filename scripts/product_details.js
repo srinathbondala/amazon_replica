@@ -36,7 +36,7 @@ function loadData() {
     //     renderData(JSON.parse(storedData));
     //     loadCartData();
     // } else {
-        fetch('http://localhost:8080/amazon/dataByid/'+id)
+        fetch('https://amazon-server-1-27sp.onrender.com/amazon/dataByid/'+id)
             .then(response => response.json())
             .then(data => {
                 localStorage.setItem(id, JSON.stringify(data));
@@ -229,7 +229,7 @@ function AddToCart(){
             var quantity = document.getElementById("quantity").value;
             if(quantity>0){
                 showloader();
-                fetch('http://localhost:8080/user/addToCart', {
+                fetch('https://amazon-server-1-27sp.onrender.com/user/addToCart', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',

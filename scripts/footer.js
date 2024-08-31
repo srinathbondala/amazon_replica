@@ -7,7 +7,7 @@ function backtotop(){
 
 async function getdatafromjwt(jwtToken){
   try {
-    const response = await fetch('http://localhost:8080/auth1/details', {
+    const response = await fetch('https://amazon-server-1-27sp.onrender.com/auth1/details', {
         method: 'GET',
         headers: {
             'Authorization': `Bearer ${jwtToken}`
@@ -188,7 +188,7 @@ async function signout(){
       deleteCookie('jwtToken');
       localStorage.removeItem('jwtToken');
       try{
-        await fetch('http://localhost:8080/auth1/logout', {
+        await fetch('https://amazon-server-1-27sp.onrender.com/auth1/logout', {
             method: 'POST'
         })
         .then(data =>{
@@ -314,7 +314,7 @@ function hideloader(){
     document.body.style.overflow = "auto";
 }
 function getUserDataFromServer(){
-   fetch('http://localhost:8080/user/getUserData', {
+   fetch('https://amazon-server-1-27sp.onrender.com/user/getUserData', {
       method: 'GET',
       headers: {
           'Authorization': `Bearer ${getCookie('jwtToken')}`
@@ -330,7 +330,7 @@ function getUserDataFromServer(){
 }
 async function getCartDataFromServer(){
   if(!getCookie('jwtToken')) return;
-  await fetch('http://localhost:8080/user/cart', {
+  await fetch('https://amazon-server-1-27sp.onrender.com/user/cart', {
      method: 'GET',
      headers: {
          'Authorization': `Bearer ${getCookie('jwtToken')}`
@@ -379,7 +379,7 @@ async function saveCart() {
                 }
               );
           });
-          const response = await fetch('http://localhost:8080/user/removeFromCart', {
+          const response = await fetch('https://amazon-server-1-27sp.onrender.com/user/removeFromCart', {
               method: 'POST',
               headers: {
                   'Content-Type': 'application/json',
@@ -472,7 +472,7 @@ function loadSuggesions(suggestedDiv){
           </div>
       </div>
   `;
-  // fetch('http://localhost:8080/amazon/data')
+  // fetch('https://amazon-server-1-27sp.onrender.com/amazon/data')
   // .then(response => response.json())
   // .then(data => {
   //     loadSuggesionsData(data);

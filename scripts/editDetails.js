@@ -54,7 +54,7 @@ function UpdateName(){
     UpdateNameDatabase(name.trim());
 }
 async function UpdateNameDatabase(data){
-    const response = await fetch("http://localhost:8080/user/updateProfile/updateName",{
+    const response = await fetch("https://amazon-server-1-27sp.onrender.com/user/updateProfile/updateName",{
         method: "POST",
         headers: {
             "Content-Type": "application/json",
@@ -106,7 +106,7 @@ function ClosePhoneDiv(){
 }
 
 async function UpdateNumberDatabase(data){
-    const response = await fetch("http://localhost:8080/user/updateProfile/updatePhone",{
+    const response = await fetch("https://amazon-server-1-27sp.onrender.com/user/updateProfile/updatePhone",{
         method: "POST",
         headers: {
             "Content-Type": "application/json",
@@ -174,7 +174,7 @@ function loadAdressUpdate(){
 }
 
 async function deleteAddress(element){
-    let response = await fetch("http://localhost:8080/user/deleteAddress",{
+    let response = await fetch("https://amazon-server-1-27sp.onrender.com/user/deleteAddress",{
         method: "POST",
         headers: {
             "Content-Type": "application/json",
@@ -270,7 +270,7 @@ function validateCridentials(name,address,city,state,pincode,country,phone){
 }
 
 async function setDefaultAddress(element){
-    const response = await fetch("http://localhost:8080/user/defaultAddressSet",{
+    const response = await fetch("https://amazon-server-1-27sp.onrender.com/user/defaultAddressSet",{
         method: "POST",
         headers: {
             "Content-Type": "application/json",
@@ -298,7 +298,7 @@ async function sendDataBase(name,address,city,state,pincode,country,phone){
         country: country,
         phone: phone
     }
-    const response = await fetch("http://localhost:8080/user/addAddress",{
+    const response = await fetch("https://amazon-server-1-27sp.onrender.com/user/addAddress",{
         method: "POST",
         headers: {
             "Content-Type": "application/json",

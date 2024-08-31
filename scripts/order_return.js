@@ -29,7 +29,7 @@ function loadOrdersSelect(){
 
 async function loadOrderData(range){
     try{
-        const resopnse = await fetch('http://localhost:8080/user/getOrders/'+range,{
+        const resopnse = await fetch('https://amazon-server-1-27sp.onrender.com/user/getOrders/'+range,{
             method:'GET',
             headers:{
                 'Content-Type':'application/json',

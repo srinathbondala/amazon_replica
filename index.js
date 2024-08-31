@@ -1,4 +1,5 @@
 // loadPage('mainpage-content.html');
+
 window.onload = function() {
     try {
         loadjsondata();
@@ -13,7 +14,8 @@ window.onload = function() {
 function loadjsondata(){
     var xhr = new XMLHttpRequest();
     // xhr.open('GET', '../data.json', true);
-    xhr.open('GET', 'http://localhost:8080/amazon/data',true);
+    // xhr.open('GET', 'http://localhost:8080/amazon/data',true);
+    xhr.open('GET', 'https://amazon-server-1-27sp.onrender.com/amazon/data',true);
     xhr.onreadystatechange = function() {
         if (xhr.readyState == 4) {
             if (xhr.status == 200) {

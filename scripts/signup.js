@@ -14,7 +14,7 @@ document.getElementById("myForm").addEventListener("submit", function(event) {
             "roles": ["ROLE_USER"]
           };
         console.log(bodyitem);
-        fetch('http://localhost:8080/auth1/signup', {
+        fetch('https://amazon-server-1-27sp.onrender.com/auth1/signup', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'

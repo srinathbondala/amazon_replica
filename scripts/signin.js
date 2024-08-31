@@ -32,7 +32,7 @@ function sellerAccountSetup(){
 }
 
 function logout(){
-    fetch('http://localhost:8080/auth1/logout',{
+    fetch('https://amazon-server-1-27sp.onrender.com/auth1/logout',{
         method: 'POST'
     })
     .then(data =>{
@@ -73,7 +73,7 @@ async function signin(){
         };
         // console.log(loginRequest);
         try {
-            const response = await fetch('http://localhost:8080/auth1/signin', {
+            const response = await fetch('https://amazon-server-1-27sp.onrender.com/auth1/signin', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -109,6 +109,7 @@ async function signin(){
             },2000)
             clearTimeout(x);
             setTimeout(()=>{
+                hideloader();
                 window.location.href = '../index.html';
             }, 2000);
         } catch (error) {

@@ -121,7 +121,7 @@ async function VerifyPass(password){
         "password": password
     }
     try {
-        const response = await fetch('http://localhost:8080/auth1/validateUser', {
+        const response = await fetch('https://amazon-server-1-27sp.onrender.com/auth1/validateUser', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
